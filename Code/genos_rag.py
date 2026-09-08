@@ -15,9 +15,22 @@ def main():
     
     file_path = 'aiops_logs.csv'
     
-    if not os.path.exists(file_path):
-        print(f"[!] Error: {file_path} not found in the current directory.")
-        print("Please ensure your dataset is named 'aiops_logs.csv' and placed here.")
+    # Candidate locations for aiops_logs.csv
+    candidates = [
+        file_path,
+        os.path.join('Data', 'aiops_logs.csv'),
+        os.path.join('..', 'Data', 'aiops_logs.csv'),
+    ]
+    resolved_file = None
+    for cand in candidates:
+        if os.path.exists(cand):
+            resolved_file = cand
+            break
+
+    if resolved_file is None:
+        print(f"[!] Error: {file_path} not found in the current directory or Data/ folder.")
+        print("Please ensure your dataset is named 'aiops_logs.csv' and placed in Data/.")
+        resolved_file = os.path.join('Data', 'aiops_logs.csv') if os.path.exists('Data') else file_path
         
         # Let's create a tiny sample if it's missing just so the code doesn't crash
         print("[*] Creating a small sample dataset so you can test the pipeline...")
@@ -27,11 +40,11 @@ def main():
 2026-02-20T13:36:16.734755,production,client-test-app,15,1.0,2.0.0,HTTP_EXCEPTION,NETWORK,HIGH,FAILURE,2026-02-20 13:35:56.530359+00:00,DESKTOP-N00M686,Windows,11,3.12.2,unknown,1.0.0,8ed293ae,17896,9fd789b0,Connection timeout to external API,network.py,50.0,requests,ERROR,,,,,13,2026-02-20,Friday,2,8,20
 2026-02-20T13:37:43.229051,production,client-test-app,6,1.0,2.0.0,DB_ERROR,DATABASE,LOW,FAILURE,2026-02-20 13:37:38.523921+00:00,DESKTOP-N00M686,Windows,11,3.12.2,unknown,1.0.0,8ed293ae,17896,910ca7ba,Exception on /db/constraint [GET],flask/app.py,1414.0,client_app2,ERROR,,,,,13,2026-02-20,Friday,2,8,20
 """
-        with open(file_path, "w") as f:
+        with open(resolved_file, "w") as f:
             f.write(sample_data)
 
-    print(f"\n[*] Loading dataset from {file_path}...")
-    df = pd.read_csv(file_path)
+    print(f"\n[*] Loading dataset from {resolved_file}...")
+    df = pd.read_csv(resolved_file)
 
     # Filter for failed events to build our historical failure knowledge base
     failures_df = df[df['status'] == 'FAILURE'].copy()
@@ -131,7 +144,8 @@ Diagnosis:"""
     test_logs['ai_diagnosis'] = diagnoses
     
     # Save to CSV
-    output_file = 'final_output_diagnosis.csv'
+    output_dir = 'Output' if os.path.exists('Output') else (os.path.join('..', 'Output') if os.path.exists(os.path.join('..', 'Output')) else '.')
+    output_file = os.path.join(output_dir, 'final_output_diagnosis.csv')
     test_logs.to_csv(output_file, index=False)
 
     print(f"\n[AI DIAGNOSIS COMPLETE]")
