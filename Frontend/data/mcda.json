@@ -1,0 +1,121 @@
+{
+  "criteria": [
+    {
+      "name": "Novelty",
+      "weight": 0.25,
+      "weight_pct": "25%"
+    },
+    {
+      "name": "Expected Performance Improvement",
+      "weight": 0.2,
+      "weight_pct": "20%"
+    },
+    {
+      "name": "Research Gap Strength",
+      "weight": 0.15,
+      "weight_pct": "15%"
+    },
+    {
+      "name": "Technical Feasibility",
+      "weight": 0.15,
+      "weight_pct": "15%"
+    },
+    {
+      "name": "Dataset Availability",
+      "weight": 0.1,
+      "weight_pct": "10%"
+    },
+    {
+      "name": "Computational Requirements",
+      "weight": 0.05,
+      "weight_pct": "5%"
+    },
+    {
+      "name": "Publication Potential",
+      "weight": 0.1,
+      "weight_pct": "10%"
+    }
+  ],
+  "architectures": [
+    {
+      "id": "toporag",
+      "name": "TopoRAG",
+      "scores": [
+        9.0,
+        9.0,
+        9.5,
+        8.5,
+        9.0,
+        8.5,
+        9.0
+      ],
+      "weighted_total": 8.925,
+      "rank": 3,
+      "is_winner": false
+    },
+    {
+      "id": "chronoos",
+      "name": "ChronoOS",
+      "scores": [
+        8.0,
+        8.5,
+        8.5,
+        8.0,
+        8.5,
+        8.5,
+        8.0
+      ],
+      "weighted_total": 8.225,
+      "rank": 4,
+      "is_winner": false
+    },
+    {
+      "id": "staterag",
+      "name": "StateRAG",
+      "scores": [
+        7.5,
+        8.5,
+        8.5,
+        7.0,
+        6.5,
+        7.0,
+        8.0
+      ],
+      "weighted_total": 7.7,
+      "rank": 5,
+      "is_winner": false
+    },
+    {
+      "id": "safeneuroos",
+      "name": "SafeNeuroOS",
+      "scores": [
+        9.5,
+        9.0,
+        9.0,
+        8.5,
+        8.0,
+        9.0,
+        9.5
+      ],
+      "weighted_total": 9.075,
+      "rank": 2,
+      "is_winner": false
+    },
+    {
+      "id": "toposaferag",
+      "name": "TopoSafe-RAG (Unified)",
+      "scores": [
+        9.5,
+        9.5,
+        9.5,
+        8.5,
+        8.5,
+        9.0,
+        9.5
+      ],
+      "weighted_total": 9.275,
+      "rank": 1,
+      "is_winner": true
+    }
+  ]
+}

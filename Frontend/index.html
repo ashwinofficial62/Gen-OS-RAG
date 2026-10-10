@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GenOS: TopoSafe-RAG | Telemetry Analytics & Architecture Dashboard</title>
+  <meta name="description" content="Minimal, monochromatic, read-only analytics dashboard for GenOS: TopoSafe-RAG Operating System telemetry failure diagnosis.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="vendor/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- ======================================================================
+       STICKY SIDEBAR NAVIGATION
+       ====================================================================== -->
+  <aside class="sidebar" aria-label="Dashboard Navigation">
+    <div class="sidebar-brand">
+      <h1 class="sidebar-title">GenOS</h1>
+      <div class="sidebar-subtitle">TopoSafe-RAG AIOps</div>
+    </div>
+
+    <nav aria-label="Main Sections">
+      <ul class="nav-list">
+        <li>
+          <a href="#sec-overview" class="nav-link active" id="nav-overview">
+            <span>0. Overview</span>
+            <span class="nav-tag">UNIFIED</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sec-toporag" class="nav-link" id="nav-toporag">
+            <span>1. TopoRAG</span>
+            <span class="nav-tag">PROVENANCE</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sec-chronoos" class="nav-link" id="nav-chronoos">
+            <span>2. ChronoOS</span>
+            <span class="nav-tag">DELTA-T</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sec-staterag" class="nav-link" id="nav-staterag">
+            <span>3. StateRAG</span>
+            <span class="nav-tag">BIMODAL</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sec-safeneuroos" class="nav-link" id="nav-safeneuroos">
+            <span>4. SafeNeuroOS</span>
+            <span class="nav-tag">CONFORMAL</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sec-toposaferag" class="nav-link" id="nav-toposaferag">
+            <span>5. TopoSafe-RAG</span>
+            <span class="nav-tag">PIPELINE</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Grayscale Dark and Light Mode">
+        <span>THEME</span>
+        <span id="theme-mode-text">LIGHT</span>
+      </button>
+      <div class="sys-meta">
+        <div>STATUS: READ-ONLY</div>
+        <div>OFFLINE: VENDORED</div>
+        <div>DATASET: 1,746 EVENTS</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       MAIN CONTENT CONTAINER
+       ====================================================================== -->
+  <main class="main-container">
+
+    <!-- GLOBAL FILTER BAR -->
+    <section class="global-filter-bar" aria-label="Global Incident Filter">
+      <span class="filter-title">Filter Incidents:</span>
+      
+      <div class="filter-group">
+        <label for="filter-event">Event Type:</label>
+        <select id="filter-event" class="filter-select">
+          <option value="ALL">All Event Types (6)</option>
+          <option value="SERVER_ERROR">SERVER_ERROR (194)</option>
+          <option value="ROUTING_ERROR">ROUTING_ERROR (110)</option>
+          <option value="LOG">LOG (67)</option>
+          <option value="HTTP_EXCEPTION">HTTP_EXCEPTION (50)</option>
+          <option value="DB_ERROR">DB_ERROR (33)</option>
+          <option value="HTTP_ERROR">HTTP_ERROR (17)</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filter-severity">Severity:</label>
+        <select id="filter-severity" class="filter-select">
+          <option value="ALL">All Severities</option>
+          <option value="LOW">LOW (354)</option>
+          <option value="HIGH">HIGH (117)</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="filter-safety">Safety Outcome:</label>
+        <select id="filter-safety" class="filter-select">
+          <option value="ALL">All Outcomes</option>
+          <option value="VERIFIED_SAFE">VERIFIED_SAFE (471)</option>
+          <option value="BLOCKED">BLOCKED / QUARANTINED (0)</option>
+        </select>
+      </div>
+
+      <button id="filter-reset-btn" class="filter-reset-btn" aria-label="Reset all filters">RESET</button>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 0: OVERVIEW
+         ==================================================================== -->
+    <section id="sec-overview" class="section-block" aria-labelledby="head-overview">
+      <div class="section-header">
+        <div class="section-badge-row">
+          <span class="badge-tag highlight">GenOS Core</span>
+          <span class="badge-tag">OS Telemetry Diagnosis</span>
+        </div>
+        <h2 id="head-overview" class="section-title">GenOS: TopoSafe-RAG Operating System Failure Diagnosis</h2>
+        <p class="section-thesis">
+          An autonomous, neuro-symbolically verified operating system telemetry diagnostics engine resolving the 
+          three fatal pitfalls of conventional AIOps: <strong>Topological Flattening</strong>, <strong>Temporal Discretization</strong>, 
+          and <strong>Open-World Hallucination</strong>.
+        </p>
+      </div>
+
+      <!-- Overview KPI Strip -->
+      <div class="kpi-strip" id="overview-kpis">
+        <div class="kpi-card">
+          <span class="kpi-label">Telemetry Ingested</span>
+          <span class="kpi-val num" id="kpi-total-events">1,746</span>
+          <span class="kpi-sub">Total Raw Stream Events</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Triage Failures</span>
+          <span class="kpi-val num" id="kpi-failures">471</span>
+          <span class="kpi-sub">26.98% Failure Ratio</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Blocked by Safety</span>
+          <span class="kpi-val num" id="kpi-blocked">0.00%</span>
+          <span class="kpi-sub">0 Destructive Commands</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Flagged OOD (&gt; 0.85)</span>
+          <span class="kpi-val num" id="kpi-ood">0.00%</span>
+          <span class="kpi-sub">100% In-Distribution</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Median Conformal Dist</span>
+          <span class="kpi-val num" id="kpi-med-dist">0.4271</span>
+          <span class="kpi-sub">Threshold &tau; = 0.8500</span>
+        </div>
+      </div>
+
+      <!-- Interactive SVG Pipeline Diagram -->
+      <div class="svg-diagram-card">
+        <div class="prose-subhead" style="align-self: flex-start; margin-bottom: 0.75rem;">
+          Interactive End-to-End Execution Pipeline (Click any stage to jump to solution section):
+        </div>
+        <svg viewBox="0 0 1000 160" width="100%" height="160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pipeline Architecture Diagram">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--ink)" />
+            </marker>
+          </defs>
+          
+          <!-- Stage 1 -->
+          <g class="pipeline-node" onclick="location.href='#sec-overview'" style="cursor: pointer;">
+            <rect x="10" y="45" width="130" height="70" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.5" />
+            <text x="75" y="75" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="var(--ink)">1. Stream Ingest</text>
+            <text x="75" y="95" text-anchor="middle" font-family="var(--font-mono)" font-size="9" fill="var(--ink-muted)">1,746 Events</text>
+          </g>
+          <line x1="140" y1="80" x2="170" y2="80" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#arrow)" />
+
+          <!-- Stage 2 -->
+          <g class="pipeline-node" onclick="location.href='#sec-toporag'" style="cursor: pointer;">
+            <rect x="170" y="45" width="140" height="70" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.5" />
+            <text x="240" y="75" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="var(--ink)">2. Topo Encoder</text>
+            <text x="240" y="95" text-anchor="middle" font-family="var(--font-mono)" font-size="9" fill="var(--ink-muted)">Host/PID/Trace/Line</text>
+          </g>
+          <line x1="310" y1="80" x2="340" y2="80" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#arrow)" />
+
+          <!-- Stage 3 -->
+          <g class="pipeline-node" onclick="location.href='#sec-chronoos'" style="cursor: pointer;">
+            <rect x="340" y="45" width="140" height="70" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.5" />
+            <text x="410" y="75" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="var(--ink)">3. Delta-T Engine</text>
+            <text x="410" y="95" text-anchor="middle" font-family="var(--font-mono)" font-size="9" fill="var(--ink-muted)">Continuous Latency</text>
+          </g>
+          <line x1="480" y1="80" x2="510" y2="80" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#arrow)" />
+
+          <!-- Stage 4 -->
+          <g class="pipeline-node" onclick="location.href='#sec-safeneuroos'" style="cursor: pointer;">
+            <rect x="510" y="45" width="140" height="70" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.5" />
+            <text x="580" y="75" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="var(--ink)">4. Conformal Gate</text>
+            <text x="580" y="95" text-anchor="middle" font-family="var(--font-mono)" font-size="9" fill="var(--ink-muted)">&tau; = 0.85 Gating</text>
+          </g>
+          <line x1="650" y1="80" x2="680" y2="80" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#arrow)" />
+
+          <!-- Stage 5 -->
+          <g class="pipeline-node" onclick="location.href='#sec-toposaferag'" style="cursor: pointer;">
+            <rect x="680" y="45" width="140" height="70" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.5" />
+            <text x="750" y="75" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="var(--ink)">5. Vector Reasoner</text>
+            <text x="750" y="95" text-anchor="middle" font-family="var(--font-mono)" font-size="9" fill="var(--ink-muted)">Causal RAG Diagnosis</text>
+          </g>
+          <line x1="820" y1="80" x2="850" y2="80" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#arrow)" />
+
+          <!-- Stage 6 -->
+          <g class="pipeline-node" onclick="location.href='#sec-safeneuroos'" style="cursor: pointer;">
+            <rect x="850" y="45" width="140" height="70" fill="var(--paper)" stroke="var(--ink)" stroke-width="2" />
+            <text x="920" y="75" text-anchor="middle" font-family="var(--font-sans)" font-size="11" font-weight="700" fill="var(--ink)">6. POSIX Verifier</text>
+            <text x="920" y="95" text-anchor="middle" font-family="var(--font-mono)" font-size="9" fill="var(--ink-muted)">AST Invariant Check</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Solution Overview Cards -->
+      <div class="prose-subhead">Proposed Novel Architectural Directions:</div>
+      <div class="kpi-strip" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));">
+        <div class="kpi-card" onclick="location.href='#sec-toporag'" style="cursor: pointer;">
+          <span class="kpi-label">Arch 1 &bull; 8.925</span>
+          <strong style="font-size: 1.1rem; color: var(--ink);">TopoRAG</strong>
+          <span class="kpi-sub">Process graph provenance &amp; Laplacian encodings</span>
+        </div>
+        <div class="kpi-card" onclick="location.href='#sec-chronoos'" style="cursor: pointer;">
+          <span class="kpi-label">Arch 2 &bull; 8.225</span>
+          <strong style="font-size: 1.1rem; color: var(--ink);">ChronoOS</strong>
+          <span class="kpi-sub">Continuous-time point process &amp; Time2Vec harmonics</span>
+        </div>
+        <div class="kpi-card" onclick="location.href='#sec-staterag'" style="cursor: pointer;">
+          <span class="kpi-label">Arch 3 &bull; 7.700</span>
+          <strong style="font-size: 1.1rem; color: var(--ink);">StateRAG</strong>
+          <span class="kpi-sub">Multimodal hardware metric tensor cross-attention</span>
+        </div>
+        <div class="kpi-card" onclick="location.href='#sec-safeneuroos'" style="cursor: pointer;">
+          <span class="kpi-label">Arch 4 &bull; 9.075</span>
+          <strong style="font-size: 1.1rem; color: var(--ink);">SafeNeuroOS</strong>
+          <span class="kpi-sub">Sub-5ms conformal gating &amp; POSIX invariant checker</span>
+        </div>
+        <div class="kpi-card" onclick="location.href='#sec-toposaferag'" style="cursor: pointer; border-width: 2px;">
+          <span class="kpi-label">Unified &bull; 9.275</span>
+          <strong style="font-size: 1.1rem; color: var(--ink);">TopoSafe-RAG</strong>
+          <span class="kpi-sub">Unified active pipeline deployed in repository</span>
+        </div>
+      </div>
+
+      <!-- MCDA Decision Matrix Table -->
+      <div class="chart-header" style="margin-top: 1.5rem;">
+        <h3 class="chart-title">Systematic Multi-Criteria Architecture Evaluation (MCDA)</h3>
+        <p class="chart-desc">Weighted evaluation matrix across 7 research and engineering criteria from ARCHSELECTION.md.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table" id="mcda-table">
+          <thead>
+            <tr>
+              <th>Evaluation Criteria</th>
+              <th class="num">Weight</th>
+              <th class="num">TopoRAG</th>
+              <th class="num">ChronoOS</th>
+              <th class="num">StateRAG</th>
+              <th class="num">SafeNeuroOS</th>
+              <th class="num">TopoSafe-RAG</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1. Novelty</td><td class="num">25%</td><td class="num">9.0</td><td class="num">8.0</td><td class="num">7.5</td><td class="num">9.5</td><td class="num">9.5</td></tr>
+            <tr><td>2. Expected Performance Improvement</td><td class="num">20%</td><td class="num">9.0</td><td class="num">8.5</td><td class="num">8.5</td><td class="num">9.0</td><td class="num">9.5</td></tr>
+            <tr><td>3. Research Gap Strength</td><td class="num">15%</td><td class="num">9.5</td><td class="num">8.5</td><td class="num">8.5</td><td class="num">9.0</td><td class="num">9.5</td></tr>
+            <tr><td>4. Technical Feasibility</td><td class="num">15%</td><td class="num">8.5</td><td class="num">8.0</td><td class="num">7.0</td><td class="num">8.5</td><td class="num">8.5</td></tr>
+            <tr><td>5. Dataset Availability</td><td class="num">10%</td><td class="num">9.0</td><td class="num">8.5</td><td class="num">6.5</td><td class="num">8.0</td><td class="num">8.5</td></tr>
+            <tr><td>6. Computational Requirements</td><td class="num">5%</td><td class="num">8.5</td><td class="num">8.5</td><td class="num">7.0</td><td class="num">9.0</td><td class="num">9.0</td></tr>
+            <tr><td>7. Publication Potential</td><td class="num">10%</td><td class="num">9.0</td><td class="num">8.0</td><td class="num">8.0</td><td class="num">9.5</td><td class="num">9.5</td></tr>
+            <tr class="highlight-winner">
+              <td>Weighted Total Score</td>
+              <td class="num">100%</td>
+              <td class="num">8.925</td>
+              <td class="num">8.225</td>
+              <td class="num">7.700</td>
+              <td class="num">9.075</td>
+              <td class="num">9.275</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <h4 class="chart-title">MCDA Weighted Architecture Scores</h4>
+          <p class="chart-desc">Horizontal comparative ranking of all candidate architectures based on weighted formula &Sigma; w_i &times; S_i.</p>
+        </div>
+        <div class="chart-canvas-wrap" style="height: 200px;">
+          <canvas id="chart-mcda" aria-label="MCDA Score Bar Chart" role="img"></canvas>
+        </div>
+        <div class="chart-controls">
+          <span class="chart-source-tag">source: docs/ARCHSELECTION.md.table</span>
+          <div class="chart-actions">
+            <button class="btn-ghost" onclick="toggleDataDrawer('drawer-mcda')">View Data</button>
+            <button class="btn-ghost" onclick="downloadChartPNG('chart-mcda', 'mcda_scores')">Download PNG</button>
+          </div>
+        </div>
+        <div class="chart-data-drawer" id="drawer-mcda">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 1: TOPORAG
+         ==================================================================== -->
+    <section id="sec-toporag" class="section-block" aria-labelledby="head-toporag">
+      <div class="section-header">
+        <div class="section-badge-row">
+          <span class="badge-tag highlight">Arch 1</span>
+          <span class="badge-tag">Topological Provenance</span>
+          <span class="badge-tag">Gap: Topological Blindness</span>
+        </div>
+        <h2 id="head-toporag" class="section-title">TopoRAG: Topology-Aware Graph-Relational Retrieval</h2>
+        <p class="section-thesis">
+          Enforces execution DAG topology and Graph Laplacian Positional Encodings to eliminate cross-namespace 
+          false positive matches across distinct operating system processes.
+        </p>
+      </div>
+
+      <div class="doc-prose-block">
+        <div class="prose-subhead">Problem It Solves:</div>
+        <p>
+          Conventional AIOps treats OS telemetry as flat, linear text. When a worker process fails because an ancestral daemon exhausted file descriptors or locks, flat text RAG matches superficial error strings (e.g., "Connection refused") across millions of completely unrelated socket callers. TopoRAG grounds similarity search into the process provenance Directed Acyclic Graph (DAG) and source call-hierarchy.
+        </p>
+        <div class="prose-subhead" style="margin-top: 1rem;">Core Mechanism &amp; Formulation:</div>
+        <div class="equation-box">
+L = I - D^(-1/2) * A * D^(-1/2)          [Normalized Graph Laplacian]
+e_spectral(v_i) = [u_2(v_i), ..., u_{m+1}(v_i)]
+e_topo(v_i) = [e_spectral(v_i) || e_depth(v_i)]
+S_TopoRAG(q, i) = cos(e_text(q), e_text(i)) * exp(-gamma * d_graph(q, i))
+        </div>
+      </div>
+
+      <!-- TopoRAG KPI Strip -->
+      <div class="kpi-strip">
+        <div class="kpi-card">
+          <span class="kpi-label">Total Failures</span>
+          <span class="kpi-val num">471</span>
+          <span class="kpi-sub">Across Telemetry Stream</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Top Failure Type</span>
+          <span class="kpi-val num" style="font-size: 1.4rem;">SERVER_ERROR</span>
+          <span class="kpi-sub">194 Incidents (41.2%)</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Top Failing Module</span>
+          <span class="kpi-val num" style="font-size: 1.1rem;">system_framework/app.py</span>
+          <span class="kpi-sub">404 Incidents (85.8%)</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Distinct Event Types</span>
+          <span class="kpi-val num">6</span>
+          <span class="kpi-sub">Categorized Failure Classes</span>
+        </div>
+      </div>
+
+      <!-- TopoRAG Charts Grid -->
+      <div class="charts-grid-2">
+        <!-- 1. Failures by Event Type (matches RUN_3/failures_by_event_type.png) -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">Failures by Event Type</h4>
+            <p class="chart-desc">Incident frequency distribution across 6 identified system failure categories.</p>
+            <p class="chart-os-relevance">Why it matters: Categorizes kernel vs application runtime dispatcher failure modes.</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-event-types" aria-label="Failures by Event Type Bar Chart"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: final_output_diagnosis.csv.event_type</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-event-types')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-event-types', 'failures_by_event_type')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-event-types"></div>
+        </div>
+
+        <!-- 2. Top Failing Components (matches RUN_3/top_failing_components.png) -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">Top Failing Modules / Source Files</h4>
+            <p class="chart-desc">Failure occurrences ranked by resolved OS component source file.</p>
+            <p class="chart-os-relevance">Why it matters: Pinpoints execution bottlenecks in request dispatchers.</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-top-files" aria-label="Top Failing Modules Horizontal Bar Chart"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: final_output_diagnosis.csv.file (NaN filled)</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-top-files')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-top-files', 'top_failing_components')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-top-files"></div>
+        </div>
+      </div>
+
+      <div class="charts-grid-2">
+        <!-- 3. Module x Event Type Matrix -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">Module &times; Event Type Cross-Tabulation</h4>
+            <p class="chart-desc">Failure counts mapped across resolved module and event category.</p>
+            <p class="chart-os-relevance">Why it matters: Discovers whether errors cluster in specific subsystems.</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-module-matrix" aria-label="Module Cross Tabulation Chart"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: final_output_diagnosis.csv.crosstab</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-module-matrix')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-module-matrix', 'module_event_matrix')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-module-matrix"></div>
+        </div>
+
+        <!-- 4. Module Group Share Donut -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">Share of Failures by Module Group</h4>
+            <p class="chart-desc">Proportional breakdown of failure locations across top components.</p>
+            <p class="chart-os-relevance">Why it matters: Measures failure blast radius concentration.</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-module-donut" aria-label="Module Share Donut Chart"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: final_output_diagnosis.csv.file.value_counts</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-module-donut')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-module-donut', 'module_share_donut')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-module-donut"></div>
+        </div>
+      </div>
+
+      <!-- Provenance Explorer Table -->
+      <div class="chart-header">
+        <h3 class="chart-title">Provenance Explorer (Searchable Failure Incidents)</h3>
+        <p class="chart-desc">Click any row to view complete incident diagnosis and provenance chain in the incident drawer.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table" id="provenance-table">
+          <thead>
+            <tr>
+              <th class="num">ID</th>
+              <th>Host</th>
+              <th class="num">PID</th>
+              <th>TraceID</th>
+              <th>Module / File</th>
+              <th>Event Type</th>
+              <th>Severity</th>
+              <th>Safety Status</th>
+              <th class="num">Distance</th>
+            </tr>
+          </thead>
+          <tbody id="provenance-tbody">
+            <!-- Rendered by app.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <span class="chart-source-tag" id="table-pagination-info">Showing page 1 of 48 (10 items / page)</span>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn-ghost" id="btn-prev-page">&larr; Previous</button>
+          <button class="btn-ghost" id="btn-next-page">Next &rarr;</button>
+          <button class="btn-ghost" id="btn-export-provenance-csv">Download CSV</button>
+        </div>
+      </div>
+
+      <div class="info-subgrid">
+        <div class="info-pane">
+          <div class="info-pane-title">OS Concepts Demonstrated</div>
+          <ul class="info-list">
+            <li>Process hierarchy, namespaces, and task descriptor boundaries.</li>
+            <li>Socket descriptor sharing across worker threads.</li>
+            <li>Graph Laplacian representations for execution call DAGs.</li>
+            <li>Execution locality constraints to reduce false-positive incident triage.</li>
+          </ul>
+        </div>
+        <div class="info-pane warning">
+          <div class="info-pane-title">Limitations &amp; Data Gaps</div>
+          <ul class="info-list">
+            <li>Single host only (DESKTOP-N00M686 logged across all rows).</li>
+            <li>Parent Process IDs (PPID) are not logged in the CSV; process tree depth is estimated from stack frames.</li>
+            <li>404 rows have unpopulated file fields (defaulted to system_framework/app.py).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 2: CHRONOOS
+         ==================================================================== -->
+    <section id="sec-chronoos" class="section-block" aria-labelledby="head-chronoos">
+      <div class="section-header">
+        <div class="section-badge-row">
+          <span class="badge-tag highlight">Arch 2</span>
+          <span class="badge-tag">Continuous Dynamics</span>
+          <span class="badge-tag">Gap: Temporal Discretization</span>
+        </div>
+        <h2 id="head-chronoos" class="section-title">ChronoOS: Continuous-Time Point Process Analytics</h2>
+        <p class="section-thesis">
+          Models OS telemetry as a continuous-time marked point process with Hawkes intensity and Time2Vec 
+          harmonics to distinguish acute avalanche storms from chronic background drift.
+        </p>
+      </div>
+
+      <div class="doc-prose-block">
+        <div class="prose-subhead">Problem It Solves:</div>
+        <p>
+          Discrete sliding token windows discard physical latency intervals (&Delta;t). A retry avalanche generating 500 exceptions in 20ms is tokenized identically to 500 benign warnings trickling in over 24 hours. ChronoOS captures continuous inter-event latency intervals and cascade acceleration.
+        </p>
+        <div class="prose-subhead" style="margin-top: 1rem;">Core Mechanism &amp; Formulation:</div>
+        <div class="equation-box">
+lambda_k(t) = mu_k(t) + sum_{t_i &lt; t} alpha_{k, k_i} * exp(-beta * (t - t_i))    [Hawkes Intensity]
+t2v(Delta t)[j] = sin(omega_j * Delta t + phi_j) or cos(...)                   [Continuous Time2Vec]
+nabla_t lambda(t) = d lambda(t) / dt                                          [Cascade Acceleration]
+        </div>
+      </div>
+
+      <!-- ChronoOS KPI Strip -->
+      <div class="kpi-strip">
+        <div class="kpi-card">
+          <span class="kpi-label">Cascade Burst Gaps</span>
+          <span class="kpi-val num">52.77%</span>
+          <span class="kpi-sub">248 Gaps &lt; 2.0 Seconds</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Drift Gaps</span>
+          <span class="kpi-val num">47.23%</span>
+          <span class="kpi-sub">222 Gaps &ge; 2.0 Seconds</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Median Delta-T</span>
+          <span class="kpi-val num">1.497 s</span>
+          <span class="kpi-sub">Inter-Event Latency</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">P90 Delta-T</span>
+          <span class="kpi-val num">13.174 s</span>
+          <span class="kpi-sub">90th Percentile Interval</span>
+        </div>
+      </div>
+
+      <!-- ChronoOS Charts -->
+      <div class="charts-grid-2">
+        <!-- 1. Cumulative Failures Over Time (matches RUN_3/failures_over_time.png) -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">System Failure Progression Over Time</h4>
+            <p class="chart-desc">Cumulative accumulation of 471 failures across the telemetry timeline.</p>
+            <p class="chart-os-relevance">Why it matters: Identifies sudden burst plateaus vs continuous gradual failure accumulation.</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-cumulative-failures" aria-label="Cumulative Failures Over Time Line Chart"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: final_output_diagnosis.csv.timestamp.cumsum()</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-cumulative-failures')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-cumulative-failures', 'failures_over_time')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-cumulative-failures"></div>
+        </div>
+
+        <!-- 2. Inter-Event Delta-T Distribution (matches RUN_3/inter_event_deltat_distribution.png) -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">Continuous Inter-Event Latency Delta (&Delta;t)</h4>
+            <p class="chart-desc">Histogram of consecutive failure time intervals (clipped at 120s; vertical mark at 2.0s).</p>
+            <p class="chart-os-relevance">Why it matters: Distinguishes acute cascading storms from uncoupled drift.</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-deltat-hist" aria-label="Inter Event Delta T Histogram"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: final_output_diagnosis.csv.timestamp.diff()</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-deltat-hist')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-deltat-hist', 'inter_event_deltat_distribution')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-deltat-hist"></div>
+        </div>
+      </div>
+
+      <!-- 3. Empirical Event Rate & Cascade Acceleration -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h4 class="chart-title">Rolling Empirical Event Rate &amp; Cascade Acceleration Proxy</h4>
+          <p class="chart-desc">
+            Empirical 1-minute failure rate (proxy for Hawkes &lambda;(t)) and its first difference &Delta;&lambda; 
+            (proxy for cascade acceleration &nabla;_t &lambda;(t)).
+          </p>
+          <p class="chart-os-relevance">Why it matters: Detects impending watchdog timeout triggers before system panics.</p>
+        </div>
+        <div class="chart-canvas-wrap tall">
+          <canvas id="chart-empirical-rate" aria-label="Empirical Event Rate and Acceleration Chart"></canvas>
+        </div>
+        <div class="chart-controls">
+          <span class="chart-source-tag">source: derived from timestamp resample('1min') &amp; np.diff()</span>
+          <div class="chart-actions">
+            <button class="btn-ghost" onclick="toggleDataDrawer('drawer-empirical-rate')">View Data</button>
+            <button class="btn-ghost" onclick="downloadChartPNG('chart-empirical-rate', 'empirical_rate_proxy')">Download PNG</button>
+          </div>
+        </div>
+        <div class="chart-data-drawer" id="drawer-empirical-rate"></div>
+      </div>
+
+      <!-- Top Burst Episodes Table -->
+      <div class="chart-header" style="margin-top: 1.5rem;">
+        <h3 class="chart-title">Top Detected Burst Episodes (&Delta;t &lt; 2.0 s Cascades)</h3>
+        <p class="chart-desc">Consecutive failure chains exceeding 3 events with inter-arrival under 2 seconds.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table" id="burst-table">
+          <thead>
+            <tr>
+              <th class="num">Episode</th>
+              <th>Start Time (UTC)</th>
+              <th>End Time (UTC)</th>
+              <th class="num">Duration</th>
+              <th class="num">Failures</th>
+              <th class="num">Peak Rate</th>
+              <th>Modules Involved</th>
+            </tr>
+          </thead>
+          <tbody id="burst-tbody">
+            <!-- Populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-subgrid">
+        <div class="info-pane">
+          <div class="info-pane-title">OS Concepts Demonstrated</div>
+          <ul class="info-list">
+            <li>Interrupt arrival rates and timer tick resolution.</li>
+            <li>Socket retry storms and exponential backoff dynamics.</li>
+            <li>Cascade failure propagation through IPC dependency chains.</li>
+            <li>Preemptive mitigation triggered by velocity thresholds.</li>
+          </ul>
+        </div>
+        <div class="info-pane warning">
+          <div class="info-pane-title">Limitations &amp; Data Gaps</div>
+          <ul class="info-list">
+            <li>Continuous Hawkes intensity parameters (&mu;, &alpha;, &beta;) are theoretical formulations; the chart presents an empirical rolling rate proxy.</li>
+            <li>Timestamp precision in the CSV is millisecond-level (sub-millisecond interrupt timing unrecorded).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 3: STATERAG
+         ==================================================================== -->
+    <section id="sec-staterag" class="section-block" aria-labelledby="head-staterag">
+      <div class="section-header">
+        <div class="section-badge-row">
+          <span class="badge-tag highlight">Arch 3</span>
+          <span class="badge-tag">Multimodal State Fusion</span>
+          <span class="badge-tag">Gap: Multimodal Decoupling</span>
+        </div>
+        <h2 id="head-staterag" class="section-title">StateRAG: Multimodal Hardware-State Conditioned Retrieval</h2>
+        <p class="section-thesis">
+          Bimodal cross-attention architecture uniting discrete log tokens with continuous OS hardware metric 
+          tensors to prevent static snapshot misdiagnoses.
+        </p>
+      </div>
+
+      <div class="doc-prose-block">
+        <div class="prose-subhead">Problem It Solves:</div>
+        <p>
+          An OS is fundamentally a resource controller. Failure logs are mere downstream shadows of physical resource exhaustion. A generic log like "Process Terminated (137)" could stem from OOM-killer, container cgroup limit, or hypervisor steal stall. Text-only RAG cannot disambiguate them without hardware metrics.
+        </p>
+        <div class="prose-subhead" style="margin-top: 1rem;">Core Mechanism &amp; Formulation:</div>
+        <div class="equation-box">
+x(t) = (L(t), M(t))                            [Bimodal Log + Metric State]
+H_text = TransformerEncoder(L(t))              [Text Tower]
+H_metric = 1D_TCN(M(t))                        [Dilated Temporal CNN Tower]
+H_fused = Softmax(Q * K^T / sqrt(d_k)) * V     [Cross-Modal Attention]
+Z_state = g * H_text + (1 - g) * H_fused       [Gated Residual Fusion]
+        </div>
+      </div>
+
+      <!-- Unmeasured Dataset Transparency Panel -->
+      <div class="unmeasured-panel">
+        <span class="unmeasured-badge">Specified in docs &bull; Not measured in current dataset</span>
+        <h4 style="font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem;">
+          Hardware Resource Metric Tensors: Complete Data Gap Disclosure
+        </h4>
+        <p style="font-size: 0.88rem; color: var(--ink-2); line-height: 1.5; margin-bottom: 1rem;">
+          In accordance with the project's strict data integrity rules, no synthetic or fabricated CPU, RAM, or I/O charts 
+          are rendered. The current telemetry datasets (<code>processed_events_analysis.csv</code> and <code>aiops_logs.csv</code>) 
+          record application/service events but do not capture OS kernel resource metric streams. Below is the formal 
+          input tensor specification required to realize the full StateRAG pipeline:
+        </p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Required Hardware Metric</th>
+                <th>Target Unit</th>
+                <th>Physical OS Subsystem / Diagnostic Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>cpu_utilization_pct</code></td><td>% [0-100]</td><td>Kernel CPU scheduler saturation vs idle stall</td></tr>
+              <tr><td><code>cpu_iowait_pct</code></td><td>% [0-100]</td><td>Block device bottleneck &amp; disk I/O queue wait</td></tr>
+              <tr><td><code>memory_used_bytes</code></td><td>Bytes</td><td>Resident Set Size (RSS) expansion &amp; memory leak</td></tr>
+              <tr><td><code>swap_used_bytes</code></td><td>Bytes</td><td>Memory thrashing &amp; impending OOM-killer invocation</td></tr>
+              <tr><td><code>page_fault_rate</code></td><td>Faults/sec</td><td>Major vs minor page faults across cgroup boundaries</td></tr>
+              <tr><td><code>file_descriptor_count</code></td><td>Count</td><td>File descriptor table exhaustion before socket open fails</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Partial Proxy Metric: duration_ms -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h4 class="chart-title">Available Proxy Metric: Execution Duration (duration_ms)</h4>
+          <p class="chart-desc">
+            Round-trip task/request duration recorded in telemetry (available for 544 events across the stream).
+          </p>
+          <p class="chart-os-relevance">Why it matters: Serves as a partial empirical proxy for execution thread latency.</p>
+        </div>
+        <div class="chart-canvas-wrap">
+          <canvas id="chart-duration-proxy" aria-label="Execution Latency Proxy Histogram"></canvas>
+        </div>
+        <div class="chart-controls">
+          <span class="chart-source-tag">source: processed_events_analysis.csv.duration_ms (Proxy Only)</span>
+          <div class="chart-actions">
+            <button class="btn-ghost" onclick="toggleDataDrawer('drawer-duration-proxy')">View Data</button>
+            <button class="btn-ghost" onclick="downloadChartPNG('chart-duration-proxy', 'duration_ms_proxy')">Download PNG</button>
+          </div>
+        </div>
+        <div class="chart-data-drawer" id="drawer-duration-proxy"></div>
+      </div>
+
+      <div class="info-subgrid">
+        <div class="info-pane">
+          <div class="info-pane-title">OS Concepts Demonstrated</div>
+          <ul class="info-list">
+            <li>Multimodal coupling between physical hardware state and symbolic error logs.</li>
+            <li>Cgroups, memory page allocators, and slab cache behavior.</li>
+            <li>1D Temporal Convolutions for sub-second telemetry sensor streams.</li>
+          </ul>
+        </div>
+        <div class="info-pane warning">
+          <div class="info-pane-title">Limitations &amp; Data Gaps</div>
+          <ul class="info-list">
+            <li>Hardware sensor counters (CPU, RAM, swap, I/O) are entirely absent from the CSVs.</li>
+            <li>Only <code>duration_ms</code> exists as a partial latency measurement.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 4: SAFENEUROOS
+         ==================================================================== -->
+    <section id="sec-safeneuroos" class="section-block" aria-labelledby="head-safeneuroos">
+      <div class="section-header">
+        <div class="section-badge-row">
+          <span class="badge-tag highlight">Arch 4</span>
+          <span class="badge-tag">Conformal Safety Gate</span>
+          <span class="badge-tag">Gap: Open-World Hallucination</span>
+        </div>
+        <h2 id="head-safeneuroos" class="section-title">SafeNeuroOS: Conformal Gating &amp; POSIX Safety Validator</h2>
+        <p class="section-thesis">
+          Two-tiered asymmetric edge gating with conformal uncertainty distance bounds (&tau; = 0.85) and 
+          deterministic POSIX invariant grammar verification to eliminate destructive AI hallucinations.
+        </p>
+      </div>
+
+      <div class="doc-prose-block">
+        <div class="prose-subhead">Problem It Solves:</div>
+        <p>
+          Deploying stochastic generative LLMs directly into operating systems is dangerous: generative models have no concept of physical kernel invariants and hallucinate destructive commands (e.g. <code>rm -rf /</code>, <code>mkfs</code>, <code>kill -9 1</code>). SafeNeuroOS imposes mathematical conformal uncertainty bounds (&tau; = 0.85) to quarantine OOD events and intercepts all remediation advice with a deterministic POSIX invariant checker.
+        </p>
+        <div class="prose-subhead" style="margin-top: 1rem;">Core Mechanism &amp; Formulation:</div>
+        <div class="equation-box">
+s(z) = min_{j} ||z - z_j||_2                                     [Non-Conformity Distance]
+tau_alpha = Quantile({s(z_i)}, ceil((n+1)(1-alpha))/n)           [Conformal Bound: 0.85]
+Decision: Tier-2 RAG if s(z) &lt;= tau; Quarantine Zero-Day if s(z) &gt; tau
+Invariant Rule: forall c in Commands, c not in {rm -rf /, mkfs, dd of=/dev/*, kill -9 1}
+        </div>
+      </div>
+
+      <!-- SafeNeuroOS KPI Strip -->
+      <div class="kpi-strip">
+        <div class="kpi-card">
+          <span class="kpi-label">Conformal Threshold</span>
+          <span class="kpi-val num">&tau; = 0.85</span>
+          <span class="kpi-sub">Statistical Coverage Bound</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">In-Distribution</span>
+          <span class="kpi-val num">100.0%</span>
+          <span class="kpi-sub">471 Incidents &le; 0.85</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">OOD Zero-Days</span>
+          <span class="kpi-val num">0.00%</span>
+          <span class="kpi-sub">0 Exceeded Bound</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Verified Safe Fixes</span>
+          <span class="kpi-val num">100.0%</span>
+          <span class="kpi-sub">471 Verified Invariant Safe</span>
+        </div>
+      </div>
+
+      <!-- SafeNeuroOS Charts Grid -->
+      <div class="charts-grid-2">
+        <!-- 1. Conformal Distance Distribution (matches RUN_3/conformal_distance_distribution.png) -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">Conformal Epistemic Uncertainty &amp; Retrieval Distance</h4>
+            <p class="chart-desc">Histogram of vector retrieval distances with mean line and &tau;=0.85 conformal bound.</p>
+            <p class="chart-os-relevance">Why it matters: Verifies that only known historical precedents are sent to the LLM reasoner.</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-conformal-dist" aria-label="Conformal Distance Distribution Chart"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: final_output_diagnosis.csv.conformal_retrieval_distance</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-conformal-dist')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-conformal-dist', 'conformal_distance_distribution')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-conformal-dist"></div>
+        </div>
+
+        <!-- 2. Severity Distribution Donut (matches RUN_3/severity_distribution.png) -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">OS Failure Severity Distribution</h4>
+            <p class="chart-desc">Breakdown of diagnosed failures by operational severity rating (LOW vs HIGH).</p>
+            <p class="chart-os-relevance">Why it matters: Determines escalation tier and edge response urgency.</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-severity-donut" aria-label="Severity Distribution Donut Chart"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: final_output_diagnosis.csv.severity</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-severity-donut')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-severity-donut', 'severity_distribution')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-severity-donut"></div>
+        </div>
+      </div>
+
+      <!-- 2x2 Confusion Table & Stacked Severity -->
+      <div class="charts-grid-2">
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">2&times;2 Conformal &amp; Safety Decision Matrix</h4>
+            <p class="chart-desc">Distribution of failure incidents cross-classified by epistemic region and safety status.</p>
+          </div>
+          <div class="table-wrap" style="margin: 0.5rem 0;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Decision Space</th>
+                  <th class="num">Verified Safe</th>
+                  <th class="num">Quarantined / Blocked</th>
+                  <th class="num">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>In-Distribution (dist &le; 0.85)</strong></td>
+                  <td class="num">471</td>
+                  <td class="num">0</td>
+                  <td class="num">471</td>
+                </tr>
+                <tr>
+                  <td><strong>OOD Novel Zero-Day (dist &gt; 0.85)</strong></td>
+                  <td class="num">0</td>
+                  <td class="num">0</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr class="highlight-winner">
+                  <td>Total Evaluated Failures</td>
+                  <td class="num">471</td>
+                  <td class="num">0</td>
+                  <td class="num">471</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="chart-os-relevance" style="margin-top: 0.5rem;">
+            Empirical observation: 100% of tested failure patterns matched historical topological precedents within the &tau;=0.85 radius.
+          </p>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">Severity Breakdown Split by Safety Outcome</h4>
+            <p class="chart-desc">Stacked bar distribution of LOW and HIGH severity incidents verified by SymbolicSafetyValidator.</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-severity-stacked" aria-label="Severity Split by Safety Stacked Bar Chart"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: final_output_diagnosis.csv.crosstab(severity, safety_verification)</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-severity-stacked')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-severity-stacked', 'severity_safety_stacked')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-severity-stacked"></div>
+        </div>
+      </div>
+
+      <!-- Formal POSIX Invariant Rules Specification Table -->
+      <div class="chart-header" style="margin-top: 1.5rem;">
+        <h3 class="chart-title">Deterministic POSIX &amp; System Safety Invariant Rules</h3>
+        <p class="chart-desc">Formally checked context-free grammar invariants enforced in genos_rag.py (SymbolicSafetyValidator).</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table" id="rules-table">
+          <thead>
+            <tr>
+              <th>Rule ID</th>
+              <th>Invariant Guard</th>
+              <th>Forbidden Pattern Regex</th>
+              <th>Hazard Class</th>
+              <th>POSIX Safety Rationale</th>
+            </tr>
+          </thead>
+          <tbody id="rules-tbody">
+            <!-- Populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-subgrid">
+        <div class="info-pane">
+          <div class="info-pane-title">OS Concepts Demonstrated</div>
+          <ul class="info-list">
+            <li>Split conformal prediction for mathematically bounded coverage guarantees.</li>
+            <li>Sub-millisecond edge admission control to prevent system hang.</li>
+            <li>Deterministic POSIX AST invariant validation.</li>
+            <li>Process isolation and non-destructive core dump containment.</li>
+          </ul>
+        </div>
+        <div class="info-pane warning">
+          <div class="info-pane-title">Limitations &amp; Data Gaps</div>
+          <ul class="info-list">
+            <li>Current evaluation run produced 0 blocked commands because the synthetic logs contained no malicious shell injection triggers.</li>
+            <li>All 471 incidents evaluated to VERIFIED_SAFE; edge OOD zero-days were not exercised in this batch.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 5: TOPOSAFERAG (UNIFIED)
+         ==================================================================== -->
+    <section id="sec-toposaferag" class="section-block" aria-labelledby="head-toposaferag">
+      <div class="section-header">
+        <div class="section-badge-row">
+          <span class="badge-tag highlight">Production System</span>
+          <span class="badge-tag">Unified TopoSafe-RAG</span>
+          <span class="badge-tag">MCDA Winner (9.275)</span>
+        </div>
+        <h2 id="head-toposaferag" class="section-title">TopoSafe-RAG: Unified Autonomous OS Failure Diagnosis</h2>
+        <p class="section-thesis">
+          The unified production pipeline combining TopoRAG topological provenance, ChronoOS continuous delta-t 
+          dynamics, and SafeNeuroOS conformal POSIX safety verification.
+        </p>
+      </div>
+
+      <!-- Funnel Chart Card -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h4 class="chart-title">End-to-End Telemetry Ingestion to Verified Remediation Funnel</h4>
+          <p class="chart-desc">Real transition counts through the active TopoSafe-RAG diagnostic lifecycle.</p>
+          <p class="chart-os-relevance">Why it matters: Demonstrates the filter efficiency from raw noisy telemetry to verified fixes.</p>
+        </div>
+        <div class="chart-canvas-wrap">
+          <canvas id="chart-funnel" aria-label="End to End Funnel Chart"></canvas>
+        </div>
+        <div class="chart-controls">
+          <span class="chart-source-tag">source: Data/processed_events_analysis.csv &rarr; Output/final_output_diagnosis.csv</span>
+          <div class="chart-actions">
+            <button class="btn-ghost" onclick="toggleDataDrawer('drawer-funnel')">View Data</button>
+            <button class="btn-ghost" onclick="downloadChartPNG('chart-funnel', 'end_to_end_funnel')">Download PNG</button>
+          </div>
+        </div>
+        <div class="chart-data-drawer" id="drawer-funnel"></div>
+      </div>
+
+      <!-- Per-Stage Contribution Table -->
+      <div class="chart-header" style="margin-top: 1.5rem;">
+        <h3 class="chart-title">Per-Stage Architectural Contribution Matrix</h3>
+        <p class="chart-desc">How each proposed novel architecture powers each stage of the unified pipeline.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Pipeline Stage</th>
+              <th>TopoRAG Contribution</th>
+              <th>ChronoOS Contribution</th>
+              <th>StateRAG Contribution</th>
+              <th>SafeNeuroOS Contribution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Stage 1: Ingestion &amp; Triage</strong></td>
+              <td>Parses PID, host, trace ID</td>
+              <td>Extracts UTC timestamp sequence</td>
+              <td>Parses execution duration_ms</td>
+              <td>Triage by error severity (LOW / HIGH)</td>
+            </tr>
+            <tr>
+              <td><strong>Stage 2: Context Encoding</strong></td>
+              <td>Synthesizes call path &amp; module tree</td>
+              <td>Computes continuous &Delta;t intervals</td>
+              <td>Fuses execution duration proxy</td>
+              <td>Formats canonical structural prompt</td>
+            </tr>
+            <tr>
+              <td><strong>Stage 3: Epistemic Gating</strong></td>
+              <td>Calculates structural vector distance</td>
+              <td>Modulates bounds during storm</td>
+              <td>Rejects state-divergent false friends</td>
+              <td>Enforces conformal threshold (&tau; = 0.85)</td>
+            </tr>
+            <tr>
+              <td><strong>Stage 4: Causal Reasoner</strong></td>
+              <td>Retrieves structurally linked causes</td>
+              <td>Orders precedents chronologically</td>
+              <td>State-grounded causal inference</td>
+              <td>Dispatches to FLAN-T5 / symbolic AI</td>
+            </tr>
+            <tr>
+              <td><strong>Stage 5: Safety Validator</strong></td>
+              <td>Guarantees patch targets origin module</td>
+              <td>SLA deadline validation</td>
+              <td>Validates resource headroom</td>
+              <td>POSIX regex AST blocks destructive cmds</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Side-by-Side Solution Comparison -->
+      <div class="chart-header" style="margin-top: 1.5rem;">
+        <h3 class="chart-title">Comprehensive Comparison of All 5 Architectures</h3>
+        <p class="chart-desc">Honest assessment of claims, supporting data evidence, and implementation status in repository.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table" id="comparison-table">
+          <thead>
+            <tr>
+              <th>Architecture</th>
+              <th>Core Research Gap</th>
+              <th>Key Mathematical Mechanism</th>
+              <th>Real Data Evidence Available</th>
+              <th>Implementation Status</th>
+            </tr>
+          </thead>
+          <tbody id="comparison-tbody">
+            <!-- Populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Reproducibility Panel -->
+      <div class="chart-card" style="margin-top: 1.5rem;">
+        <div class="chart-header">
+          <h4 class="chart-title">Pipeline Reproducibility &amp; Verification Commands</h4>
+          <p class="chart-desc">Exact terminal commands to run the pipeline, regenerate visualizations, and start the dashboard.</p>
+        </div>
+        <div class="equation-box" style="margin: 0.5rem 0;">
+# 1. Activate isolated Python environment
+.\venv\Scripts\Activate.ps1
+
+# 2. Run TopoSafe-RAG Failure Diagnosis Pipeline (outputs Output/final_output_diagnosis.csv)
+python Code/genos_rag.py
+
+# 3. Generate Analytical Visualizations (saves to next Output/RUN_k/)
+python Code/visualize_results.py
+
+# 4. Rebuild Dashboard JSON Data Artifacts
+python Frontend/build_data.py
+
+# 5. Launch Local Monochromatic Dashboard Server (Offline, No CDN)
+python -m http.server 8000 --directory Frontend
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       INCIDENT DETAILS DRAWER (INTERACTIVE MODAL/DRAWER)
+       ====================================================================== -->
+  <div class="incident-drawer-overlay" id="incident-drawer-overlay" aria-hidden="true">
+    <div class="incident-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-incident-title">
+      <div class="drawer-header">
+        <h3 id="drawer-incident-title" class="drawer-title">Incident Details</h3>
+        <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close incident drawer">&times; CLOSE</button>
+      </div>
+
+      <div class="drawer-field">
+        <span class="drawer-field-label">Timestamp (UTC):</span>
+        <span class="drawer-field-val font-mono" id="d-timestamp"></span>
+      </div>
+
+      <div class="drawer-field">
+        <span class="drawer-field-label">Topological Provenance:</span>
+        <span class="drawer-field-val font-mono" id="d-provenance"></span>
+      </div>
+
+      <div class="drawer-field">
+        <span class="drawer-field-label">Event Category &amp; Severity:</span>
+        <span class="drawer-field-val" id="d-event-sev"></span>
+      </div>
+
+      <div class="drawer-field">
+        <span class="drawer-field-label">Raw Incident Message:</span>
+        <div class="equation-box" id="d-raw-msg" style="margin: 0.25rem 0;"></div>
+      </div>
+
+      <div class="drawer-field">
+        <span class="drawer-field-label">Topological Incident Document (Input to RAG):</span>
+        <div class="equation-box" id="d-topo-doc" style="margin: 0.25rem 0;"></div>
+      </div>
+
+      <div class="drawer-field">
+        <span class="drawer-field-label">AI Diagnostic Analysis &amp; Remediation Advice:</span>
+        <div class="equation-box" id="d-ai-diag" style="margin: 0.25rem 0; font-weight: 600;"></div>
+      </div>
+
+      <div class="drawer-field">
+        <span class="drawer-field-label">Conformal Retrieval Distance:</span>
+        <span class="drawer-field-val font-mono" id="d-conformal-dist"></span>
+      </div>
+
+      <div class="drawer-field">
+        <span class="drawer-field-label">Neuro-Symbolic POSIX Safety Gate:</span>
+        <span class="drawer-field-val" id="d-safety-gate"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

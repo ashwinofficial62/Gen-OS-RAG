@@ -1,0 +1,134 @@
+{
+  "funnel": [
+    {
+      "stage": "1. Ingested Stream Events",
+      "count": 1746,
+      "pct": 100.0,
+      "source": "processed_events_analysis.csv"
+    },
+    {
+      "stage": "2. Triage Failures (status=FAILURE)",
+      "count": 471,
+      "pct": 26.98,
+      "source": "processed_events_analysis.csv"
+    },
+    {
+      "stage": "3. Conformal In-Distribution Retained",
+      "count": 471,
+      "pct": 26.98,
+      "source": "final_output_diagnosis.csv"
+    },
+    {
+      "stage": "4. POSIX Verified Safe Remediations",
+      "count": 471,
+      "pct": 26.98,
+      "source": "final_output_diagnosis.csv"
+    }
+  ],
+  "pipeline_matrix": [
+    {
+      "pipeline_stage": "Stage 1: Ingestion & Triage",
+      "toporag_feature": "Parses process ID, host, trace ID",
+      "chronoos_feature": "Records UTC timestamp, extracts inter-event sequence",
+      "staterag_feature": "Parses execution duration_ms (when recorded)",
+      "safeneuroos_feature": "Evaluates error severity (LOW / HIGH)"
+    },
+    {
+      "pipeline_stage": "Stage 2: Contextual Encoding",
+      "toporag_feature": "Synthesizes call-graph path & module hierarchy",
+      "chronoos_feature": "Computes dynamic continuous latency Delta-t",
+      "staterag_feature": "Fuses duration latency proxy into incident document",
+      "safeneuroos_feature": "Formats canonical structural prompt for embedding"
+    },
+    {
+      "pipeline_stage": "Stage 3: Epistemic Gating",
+      "toporag_feature": "Computes structural TF-IDF / dense FAISS distance",
+      "chronoos_feature": "Modulates distance thresholds during burst storms",
+      "staterag_feature": "Rejects false friends diverging in latency regimes",
+      "safeneuroos_feature": "Applies conformal uncertainty bound (tau = 0.85)"
+    },
+    {
+      "pipeline_stage": "Stage 4: Diagnostic Reasoner",
+      "toporag_feature": "Retrieves top-k structurally aligned historical precedents",
+      "chronoos_feature": "Orders precedent context chronologically",
+      "staterag_feature": "Generates resource-aware root-cause hypothesis",
+      "safeneuroos_feature": "Dispatches to FLAN-T5 or domain neuro-symbolic engine"
+    },
+    {
+      "pipeline_stage": "Stage 5: Verification & Safety",
+      "toporag_feature": "Ensures patch targets originating failing component",
+      "chronoos_feature": "Verifies mitigation execution within SLA deadline",
+      "staterag_feature": "Checks hardware capacity before remediation",
+      "safeneuroos_feature": "Deterministic POSIX regex AST blocks destructive commands"
+    }
+  ],
+  "solution_comparison": [
+    {
+      "solution": "TopoRAG",
+      "gap_addressed": "Topological Blindness",
+      "mechanism": "Graph Laplacian Positional Encoding (LPE) + Process DAGs",
+      "data_evidence": "process_id, trace_id, file, line, method, path",
+      "status": "Implemented (Encoding in genos_rag.py, DAG specs in docs)"
+    },
+    {
+      "solution": "ChronoOS",
+      "gap_addressed": "Temporal Discretization",
+      "mechanism": "Continuous Time2Vec Harmonic Encoding + Hawkes Point Process",
+      "data_evidence": "Continuous timestamp, delta-t diffs, duration_ms",
+      "status": "Implemented (Delta-t in genos_rag.py, Hawkes specs in docs)"
+    },
+    {
+      "solution": "StateRAG",
+      "gap_addressed": "Multimodal Decoupling",
+      "mechanism": "1D TCN Metric Tower + Cross-Attention Fusion Layer",
+      "data_evidence": "duration_ms (partial proxy only; CPU/RAM unmeasured)",
+      "status": "Design Spec in docs (Hardware tensors not in CSV)"
+    },
+    {
+      "solution": "SafeNeuroOS",
+      "gap_addressed": "Open-World Hallucination",
+      "mechanism": "Conformal Uncertainty Filter (tau=0.85) + POSIX Safety Gate",
+      "data_evidence": "conformal_retrieval_distance, safety_verification",
+      "status": "Implemented in genos_rag.py (Conformal + Regex Safety)"
+    },
+    {
+      "solution": "TopoSafe-RAG",
+      "gap_addressed": "End-to-End AIOps Gaps",
+      "mechanism": "Unified Topological Encoding + Conformal Gate + POSIX Validator",
+      "data_evidence": "Complete 471 output records in final_output_diagnosis.csv",
+      "status": "Fully Implemented & Active Production Pipeline"
+    }
+  ],
+  "reproducibility": {
+    "steps": [
+      {
+        "command": "python -m venv venv",
+        "desc": "Initialize isolated Python environment."
+      },
+      {
+        "command": ".\\venv\\Scripts\\Activate.ps1",
+        "desc": "Activate environment on Windows (or source venv/bin/activate on Unix)."
+      },
+      {
+        "command": "pip install -r Code/requirements.txt",
+        "desc": "Install project dependencies."
+      },
+      {
+        "command": "python Code/genos_rag.py",
+        "desc": "Execute TopoSafe-RAG pipeline (outputs Output/final_output_diagnosis.csv)."
+      },
+      {
+        "command": "python Code/visualize_results.py",
+        "desc": "Generate analytical figures in next Output/RUN_k directory."
+      },
+      {
+        "command": "python Frontend/build_data.py",
+        "desc": "Rebuild JSON data artifacts for frontend dashboard."
+      },
+      {
+        "command": "python -m http.server 8000 --directory Frontend",
+        "desc": "Launch local zero-dependency dashboard server."
+      }
+    ]
+  }
+}

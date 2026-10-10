@@ -1,0 +1,819 @@
+{
+  "kpis": {
+    "conformal_tau": 0.85,
+    "mean_distance": 0.4283,
+    "median_distance": 0.4271,
+    "min_distance": 0.2832,
+    "max_distance": 0.8385,
+    "total_evaluated": 471,
+    "in_distribution_count": 471,
+    "in_distribution_pct": 100.0,
+    "ood_count": 0,
+    "ood_pct": 0.0,
+    "verified_safe_count": 471,
+    "verified_safe_pct": 100.0,
+    "blocked_count": 0,
+    "blocked_pct": 0.0
+  },
+  "conformal_histogram": [
+    {
+      "bin_start": 0.283,
+      "bin_end": 0.32,
+      "bin_label": "0.28-0.32",
+      "count": 6,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.32,
+      "bin_end": 0.357,
+      "bin_label": "0.32-0.36",
+      "count": 0,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.357,
+      "bin_end": 0.394,
+      "bin_label": "0.36-0.39",
+      "count": 0,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.394,
+      "bin_end": 0.431,
+      "bin_label": "0.39-0.43",
+      "count": 437,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.431,
+      "bin_end": 0.468,
+      "bin_label": "0.43-0.47",
+      "count": 0,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.468,
+      "bin_end": 0.505,
+      "bin_label": "0.47-0.51",
+      "count": 26,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.505,
+      "bin_end": 0.542,
+      "bin_label": "0.51-0.54",
+      "count": 0,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.542,
+      "bin_end": 0.579,
+      "bin_label": "0.54-0.58",
+      "count": 0,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.579,
+      "bin_end": 0.616,
+      "bin_label": "0.58-0.62",
+      "count": 0,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.616,
+      "bin_end": 0.653,
+      "bin_label": "0.62-0.65",
+      "count": 1,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.653,
+      "bin_end": 0.69,
+      "bin_label": "0.65-0.69",
+      "count": 0,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.69,
+      "bin_end": 0.727,
+      "bin_label": "0.69-0.73",
+      "count": 0,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.727,
+      "bin_end": 0.764,
+      "bin_label": "0.73-0.76",
+      "count": 0,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.764,
+      "bin_end": 0.801,
+      "bin_label": "0.76-0.80",
+      "count": 0,
+      "is_ood_bin": false
+    },
+    {
+      "bin_start": 0.801,
+      "bin_end": 0.838,
+      "bin_label": "0.80-0.84",
+      "count": 1,
+      "is_ood_bin": false
+    }
+  ],
+  "safety_outcomes": [
+    {
+      "label": "VERIFIED_SAFE",
+      "count": 471,
+      "percentage": 100.0
+    },
+    {
+      "label": "BLOCKED / QUARANTINED",
+      "count": 0,
+      "percentage": 0.0
+    }
+  ],
+  "distribution_outcomes": [
+    {
+      "label": "In-Distribution (dist <= 0.85)",
+      "count": 471,
+      "percentage": 100.0
+    },
+    {
+      "label": "Out-of-Distribution (dist > 0.85)",
+      "count": 0,
+      "percentage": 0.0
+    }
+  ],
+  "confusion_matrix": {
+    "in_dist_safe": 471,
+    "in_dist_blocked": 0,
+    "ood_safe": 0,
+    "ood_blocked": 0
+  },
+  "severity_by_safety": [
+    {
+      "severity": "LOW",
+      "verified_safe": 354,
+      "blocked": 0
+    },
+    {
+      "severity": "HIGH",
+      "verified_safe": 117,
+      "blocked": 0
+    },
+    {
+      "severity": "CRITICAL",
+      "verified_safe": 0,
+      "blocked": 0
+    }
+  ],
+  "scatter_sample": [
+    {
+      "distance": 0.8385,
+      "severity": "HIGH",
+      "delta_t": 0.0,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.6222,
+      "severity": "HIGH",
+      "delta_t": 236.22,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "HIGH",
+      "delta_t": 1867.72,
+      "event_type": "HTTP_EXCEPTION"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 3.68,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "HIGH",
+      "delta_t": 1.39,
+      "event_type": "HTTP_EXCEPTION"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "HIGH",
+      "delta_t": 6.08,
+      "event_type": "HTTP_EXCEPTION"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 12.85,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 1.72,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 13.07,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "HIGH",
+      "delta_t": 6.51,
+      "event_type": "HTTP_EXCEPTION"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.02,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 45.73,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 10.96,
+      "event_type": "DB_ERROR"
+    },
+    {
+      "distance": 0.412,
+      "severity": "HIGH",
+      "delta_t": 0.01,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 8.65,
+      "event_type": "HTTP_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 4.15,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "HIGH",
+      "delta_t": 3.63,
+      "event_type": "HTTP_EXCEPTION"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "HIGH",
+      "delta_t": 2.74,
+      "event_type": "HTTP_EXCEPTION"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.02,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 2.88,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 2.68,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 3.89,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 7.13,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 4.13,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.412,
+      "severity": "HIGH",
+      "delta_t": 0.0,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "DB_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 8.73,
+      "event_type": "DB_ERROR"
+    },
+    {
+      "distance": 0.412,
+      "severity": "HIGH",
+      "delta_t": 0.0,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 9.31,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 6.04,
+      "event_type": "HTTP_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 2.65,
+      "event_type": "DB_ERROR"
+    },
+    {
+      "distance": 0.412,
+      "severity": "HIGH",
+      "delta_t": 0.0,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 1.94,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 1.29,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 24.08,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4777,
+      "severity": "HIGH",
+      "delta_t": 3.53,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 5.12,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 9.36,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 8.68,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 5.78,
+      "event_type": "DB_ERROR"
+    },
+    {
+      "distance": 0.412,
+      "severity": "HIGH",
+      "delta_t": 0.0,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 3.56,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 8.67,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 9.29,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "DB_ERROR"
+    },
+    {
+      "distance": 0.412,
+      "severity": "HIGH",
+      "delta_t": 0.0,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4777,
+      "severity": "HIGH",
+      "delta_t": 8.69,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 9.19,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 17.11,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 12.02,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 1.96,
+      "event_type": "HTTP_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "HIGH",
+      "delta_t": 13.26,
+      "event_type": "HTTP_EXCEPTION"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.73,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 8.69,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 8.64,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4777,
+      "severity": "HIGH",
+      "delta_t": 0.0,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.35,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 9.3,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.61,
+      "event_type": "HTTP_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 8.39,
+      "event_type": "DB_ERROR"
+    },
+    {
+      "distance": 0.412,
+      "severity": "HIGH",
+      "delta_t": 0.0,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 2.4,
+      "event_type": "DB_ERROR"
+    },
+    {
+      "distance": 0.412,
+      "severity": "HIGH",
+      "delta_t": 0.0,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 1.38,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.412,
+      "severity": "HIGH",
+      "delta_t": 0.0,
+      "event_type": "LOG"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "DB_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.0,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 4.93,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "HIGH",
+      "delta_t": 11.96,
+      "event_type": "HTTP_EXCEPTION"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.02,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 3.01,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.41,
+      "event_type": "SERVER_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 2.91,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 7.43,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 1.31,
+      "event_type": "ROUTING_ERROR"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "HIGH",
+      "delta_t": 12.44,
+      "event_type": "HTTP_EXCEPTION"
+    },
+    {
+      "distance": 0.4271,
+      "severity": "LOW",
+      "delta_t": 0.02,
+      "event_type": "SERVER_ERROR"
+    }
+  ],
+  "posix_invariant_rules": [
+    {
+      "rule_id": "INV-1",
+      "name": "Destructive Root Wipe Guard",
+      "pattern": "rm -(r|f|rf|fr) /",
+      "hazard_class": "Catastrophic Filesystem Destruction",
+      "posix_rationale": "Prevents irreversible recursive deletion of root namespace (/)."
+    },
+    {
+      "rule_id": "INV-2",
+      "name": "Filesystem Formatting Intercept",
+      "pattern": "mkfs.*",
+      "hazard_class": "Storage Superblock Annihilation",
+      "posix_rationale": "Prevents formatting active storage volumes and unmounted filesystems."
+    },
+    {
+      "rule_id": "INV-3",
+      "name": "Raw Device Overwrite Intercept",
+      "pattern": "dd if=.* of=/dev/[sh]d[a-z]",
+      "hazard_class": "Block Device Master Boot Record Corruption",
+      "posix_rationale": "Guards raw partition tables and block devices from direct stream overwrite."
+    },
+    {
+      "rule_id": "INV-4",
+      "name": "Init & Kernel Daemon Immunity",
+      "pattern": "kill -9 (1|0)",
+      "hazard_class": "Kernel Panic via Init Process Death",
+      "posix_rationale": "In POSIX, terminating PID 1 immediately triggers an involuntary kernel panic."
+    },
+    {
+      "rule_id": "INV-5",
+      "name": "Root Permission Blast Guard",
+      "pattern": "chmod (-R )?777 /",
+      "hazard_class": "Discretionary Access Control Neutralization",
+      "posix_rationale": "Violates POSIX DAC invariants by world-writing sensitive system directories."
+    },
+    {
+      "rule_id": "INV-6",
+      "name": "Authentication File Protection",
+      "pattern": "> /etc/passwd",
+      "hazard_class": "Security Credential Truncation",
+      "posix_rationale": "Neutralizes OS authentication subsystem by zeroing user account database."
+    }
+  ],
+  "blocked_incidents_sample": []
+}

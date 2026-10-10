@@ -1,0 +1,184 @@
+{
+  "failures_by_event_type": [
+    {
+      "event_type": "SERVER_ERROR",
+      "count": 194,
+      "percentage": 41.19
+    },
+    {
+      "event_type": "ROUTING_ERROR",
+      "count": 110,
+      "percentage": 23.35
+    },
+    {
+      "event_type": "LOG",
+      "count": 67,
+      "percentage": 14.23
+    },
+    {
+      "event_type": "HTTP_EXCEPTION",
+      "count": 50,
+      "percentage": 10.62
+    },
+    {
+      "event_type": "DB_ERROR",
+      "count": 33,
+      "percentage": 7.01
+    },
+    {
+      "event_type": "HTTP_ERROR",
+      "count": 17,
+      "percentage": 3.61
+    }
+  ],
+  "top_failing_modules": [
+    {
+      "module": "system_framework/app.py",
+      "count": 404,
+      "percentage": 85.77
+    },
+    {
+      "module": "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+      "count": 66,
+      "percentage": 14.01
+    },
+    {
+      "module": "c:\\Users\\DeLL\\Desktop\\Ai-assistant-distributors\\AI-Assisted-Distributed-Log-Monitoring-System\\Agent-sdk_v2\\client_app.py",
+      "count": 1,
+      "percentage": 0.21
+    }
+  ],
+  "module_event_matrix": [
+    {
+      "module": "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+      "DB_ERROR": 0,
+      "HTTP_ERROR": 0,
+      "HTTP_EXCEPTION": 0,
+      "LOG": 66,
+      "ROUTING_ERROR": 0,
+      "SERVER_ERROR": 0
+    },
+    {
+      "module": "c:\\Users\\DeLL\\Desktop\\Ai-assistant-distributors\\AI-Assisted-Distributed-Log-Monitoring-System\\Agent-sdk_v2\\client_app.py",
+      "DB_ERROR": 0,
+      "HTTP_ERROR": 0,
+      "HTTP_EXCEPTION": 0,
+      "LOG": 1,
+      "ROUTING_ERROR": 0,
+      "SERVER_ERROR": 0
+    },
+    {
+      "module": "system_framework/app.py",
+      "DB_ERROR": 33,
+      "HTTP_ERROR": 17,
+      "HTTP_EXCEPTION": 50,
+      "LOG": 0,
+      "ROUTING_ERROR": 110,
+      "SERVER_ERROR": 194
+    }
+  ],
+  "module_groups": [
+    {
+      "label": "system_framework/app.py",
+      "count": 404,
+      "percentage": 85.77
+    },
+    {
+      "label": "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+      "count": 66,
+      "percentage": 14.01
+    },
+    {
+      "label": "c:\\Users\\DeLL\\Desktop\\Ai-assistant-distributors\\AI-Assisted-Distributed-Log-Monitoring-System\\Agent-sdk_v2\\client_app.py",
+      "count": 1,
+      "percentage": 0.21
+    }
+  ],
+  "hierarchy_tree": {
+    "name": "DESKTOP-N00M686",
+    "children": [
+      {
+        "name": "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "children": [
+          {
+            "name": "LOG",
+            "value": 66
+          }
+        ]
+      },
+      {
+        "name": "c:\\Users\\DeLL\\Desktop\\Ai-assistant-distributors\\AI-Assisted-Distributed-Log-Monitoring-System\\Agent-sdk_v2\\client_app.py",
+        "children": [
+          {
+            "name": "LOG",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "system_framework/app.py",
+        "children": [
+          {
+            "name": "DB_ERROR",
+            "value": 33
+          },
+          {
+            "name": "HTTP_ERROR",
+            "value": 17
+          },
+          {
+            "name": "HTTP_EXCEPTION",
+            "value": 50
+          },
+          {
+            "name": "ROUTING_ERROR",
+            "value": 110
+          },
+          {
+            "name": "SERVER_ERROR",
+            "value": 194
+          }
+        ]
+      }
+    ]
+  },
+  "total_failures": 471,
+  "unique_files": 3,
+  "trace_sample": {
+    "trace_id": "c62fa3f0",
+    "description": "Representative Trace DAG linking client entrypoint to Flask request dispatcher",
+    "nodes": [
+      {
+        "id": "node1",
+        "label": "Client Application (client_app.py:50)",
+        "depth": 0,
+        "type": "origin"
+      },
+      {
+        "id": "node2",
+        "label": "WSGI Handler (flask/app.py:1414)",
+        "depth": 1,
+        "type": "dispatcher"
+      },
+      {
+        "id": "node3",
+        "label": "Route Target (/crash [GET])",
+        "depth": 2,
+        "type": "failure_point"
+      }
+    ],
+    "edges": [
+      {
+        "from": "node1",
+        "to": "node2",
+        "label": "HTTP Invocation"
+      },
+      {
+        "from": "node2",
+        "to": "node3",
+        "label": "Dispatch Exception"
+      }
+    ],
+    "note": "Derived from call-graph stack metadata (file, line, endpoint). Process parent-child PPID is not logged in dataset."
+  }
+}

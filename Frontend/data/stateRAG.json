@@ -1,0 +1,53 @@
+{
+  "measured_in_dataset": false,
+  "hardware_tensors_status": "Not measured in current dataset",
+  "required_columns_spec": [
+    {
+      "column": "cpu_utilization_pct",
+      "unit": "percentage [0-100%]",
+      "purpose": "Identifies CPU saturation vs starvation."
+    },
+    {
+      "column": "cpu_iowait_pct",
+      "unit": "percentage [0-100%]",
+      "purpose": "Distinguishes disk bottleneck from compute overload."
+    },
+    {
+      "column": "memory_used_bytes",
+      "unit": "bytes",
+      "purpose": "Tracks RSS expansion and slab cache leakage."
+    },
+    {
+      "column": "swap_used_bytes",
+      "unit": "bytes",
+      "purpose": "Detects thrashing and impending oom-killer invocation."
+    },
+    {
+      "column": "page_fault_rate",
+      "unit": "faults/sec",
+      "purpose": "Major vs minor page faults across cgroups."
+    },
+    {
+      "column": "file_descriptor_count",
+      "unit": "count",
+      "purpose": "Detects FD starvation before socket creation fail."
+    }
+  ],
+  "available_proxy_metrics": {
+    "metric_name": "duration_ms (Execution Latency)",
+    "source": "processed_events_analysis.csv / final_output_diagnosis.csv",
+    "description": "Roundtrip request/task duration in milliseconds recorded during service execution.",
+    "count": 0,
+    "mean_ms": 0.0,
+    "median_ms": 0.0,
+    "p95_ms": 0.0,
+    "max_ms": 0.0,
+    "histogram": []
+  },
+  "theoretical_architecture": {
+    "text_tower": "TransformerEncoder(tokens) -> R^{L x d}",
+    "metric_tower": "1D Dilated Temporal Convolutional Network (TCN) -> R^{T x d}",
+    "fusion_mechanism": "Bidirectional Cross-Attention Softmax(Q K^T / sqrt(d)) V with gated residual",
+    "objective": "Align linguistic failure tokens with physical hardware resource stress"
+  }
+}

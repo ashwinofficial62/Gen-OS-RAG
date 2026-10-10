@@ -1,0 +1,104 @@
+{
+  "kpis": {
+    "total_events": 1746,
+    "total_failures": 471,
+    "success_events": 1275,
+    "unique_modules": 3,
+    "unique_hosts": 1,
+    "unique_event_types": 6,
+    "pct_blocked_safety": 0.0,
+    "blocked_count": 0,
+    "pct_flagged_ood": 0.0,
+    "ood_count": 0,
+    "median_conformal_distance": 0.4271,
+    "mean_conformal_distance": 0.4283,
+    "tau_bound": 0.85
+  },
+  "pipeline_stages": [
+    {
+      "id": "ingest",
+      "name": "Telemetry Stream Ingestion",
+      "owner_section": "overview",
+      "desc": "Ingests heterogeneous multi-source OS telemetry logs."
+    },
+    {
+      "id": "filter",
+      "name": "Failure Triage Filter",
+      "owner_section": "overview",
+      "desc": "Extracts status=FAILURE system events (471 incidents)."
+    },
+    {
+      "id": "topological_encoder",
+      "name": "Topological Context Encoder",
+      "owner_section": "toporag",
+      "desc": "Synthesizes execution topology (Host, PID, TraceID, Module, Line, Route)."
+    },
+    {
+      "id": "temporal_engine",
+      "name": "Continuous Delta-T Engine",
+      "owner_section": "chronoos",
+      "desc": "Computes high-precision inter-event latency intervals and burst rates."
+    },
+    {
+      "id": "conformal_gate",
+      "name": "Tier-1 Conformal Gater",
+      "owner_section": "safeneuroos",
+      "desc": "Epistemic uncertainty boundary check (tau=0.85) to quarantine OOD zero-days."
+    },
+    {
+      "id": "vector_rag",
+      "name": "Topology-Penalized Vector RAG",
+      "owner_section": "toposaferag",
+      "desc": "Top-k causal precedent retrieval via Riemannian manifold search."
+    },
+    {
+      "id": "llm_reasoner",
+      "name": "LLM Diagnostic Reasoner",
+      "owner_section": "toposaferag",
+      "desc": "Context-augmented root-cause and mitigation advice synthesis."
+    },
+    {
+      "id": "safety_validator",
+      "name": "Tier-2 Neuro-Symbolic POSIX Gate",
+      "owner_section": "safeneuroos",
+      "desc": "Formal context-free grammar check intercepting destructive OS commands."
+    }
+  ],
+  "solutions_summary": [
+    {
+      "id": "toporag",
+      "name": "TopoRAG",
+      "thesis": "Enforces execution DAG topology and graph Laplacian positional encodings to eliminate cross-namespace false positives.",
+      "gap": "Topological Blindness",
+      "score": 8.925
+    },
+    {
+      "id": "chronoos",
+      "name": "ChronoOS",
+      "thesis": "Models OS telemetry as continuous-time point processes with Hawkes intensity and Time2Vec embeddings.",
+      "gap": "Temporal Discretization",
+      "score": 8.225
+    },
+    {
+      "id": "staterag",
+      "name": "StateRAG",
+      "thesis": "Cross-attention fusion uniting discrete log tokens with continuous hardware resource metric tensors.",
+      "gap": "Multimodal State Decoupling",
+      "score": 7.7
+    },
+    {
+      "id": "safeneuroos",
+      "name": "SafeNeuroOS",
+      "thesis": "Two-tiered asymmetric edge gating with conformal distance bounds and deterministic POSIX invariant verification.",
+      "gap": "Open-World Hallucination",
+      "score": 9.075
+    },
+    {
+      "id": "toposaferag",
+      "name": "TopoSafe-RAG",
+      "thesis": "Unified active architecture: Topological graph provenance + conformal uncertainty gating + POSIX safety validator.",
+      "gap": "Integrated Systems Fault Isolation",
+      "score": 9.275
+    }
+  ]
+}
