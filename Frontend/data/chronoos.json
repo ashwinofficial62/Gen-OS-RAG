@@ -2255,9 +2255,9 @@
       "event_count": 8,
       "peak_rate_per_sec": 5.8,
       "event_types": [
-        "DB_ERROR",
+        "SERVER_ERROR",
         "LOG",
-        "SERVER_ERROR"
+        "DB_ERROR"
       ],
       "modules_involved": [
         "system_framework/app.py",
@@ -2272,10 +2272,10 @@
       "event_count": 6,
       "peak_rate_per_sec": 1.85,
       "event_types": [
-        "DB_ERROR",
-        "ROUTING_ERROR",
+        "SERVER_ERROR",
         "LOG",
-        "SERVER_ERROR"
+        "ROUTING_ERROR",
+        "DB_ERROR"
       ],
       "modules_involved": [
         "system_framework/app.py",
@@ -2290,11 +2290,11 @@
       "event_count": 6,
       "peak_rate_per_sec": 2.46,
       "event_types": [
-        "ROUTING_ERROR",
-        "DB_ERROR",
         "LOG",
+        "DB_ERROR",
+        "HTTP_ERROR",
         "SERVER_ERROR",
-        "HTTP_ERROR"
+        "ROUTING_ERROR"
       ],
       "modules_involved": [
         "system_framework/app.py",
@@ -2309,10 +2309,10 @@
       "event_count": 6,
       "peak_rate_per_sec": 2.24,
       "event_types": [
-        "DB_ERROR",
         "SERVER_ERROR",
-        "ROUTING_ERROR",
-        "LOG"
+        "LOG",
+        "DB_ERROR",
+        "ROUTING_ERROR"
       ],
       "modules_involved": [
         "system_framework/app.py",
@@ -2327,10 +2327,10 @@
       "event_count": 6,
       "peak_rate_per_sec": 5.26,
       "event_types": [
-        "DB_ERROR",
-        "LOG",
+        "SERVER_ERROR",
         "HTTP_EXCEPTION",
-        "SERVER_ERROR"
+        "LOG",
+        "DB_ERROR"
       ],
       "modules_involved": [
         "system_framework/app.py",
@@ -2345,9 +2345,9 @@
       "event_count": 6,
       "peak_rate_per_sec": 23.96,
       "event_types": [
-        "LOG",
+        "SERVER_ERROR",
         "HTTP_EXCEPTION",
-        "SERVER_ERROR"
+        "LOG"
       ],
       "modules_involved": [
         "system_framework/app.py",
@@ -2362,10 +2362,10 @@
       "event_count": 6,
       "peak_rate_per_sec": 2.2,
       "event_types": [
-        "DB_ERROR",
         "SERVER_ERROR",
-        "ROUTING_ERROR",
-        "LOG"
+        "LOG",
+        "DB_ERROR",
+        "ROUTING_ERROR"
       ],
       "modules_involved": [
         "system_framework/app.py",
@@ -2380,9 +2380,9 @@
       "event_count": 6,
       "peak_rate_per_sec": 3.59,
       "event_types": [
-        "LOG",
+        "SERVER_ERROR",
         "HTTP_EXCEPTION",
-        "SERVER_ERROR"
+        "LOG"
       ],
       "modules_involved": [
         "system_framework/app.py",
@@ -2397,10 +2397,10 @@
       "event_count": 5,
       "peak_rate_per_sec": 3.28,
       "event_types": [
-        "DB_ERROR",
-        "ROUTING_ERROR",
+        "SERVER_ERROR",
         "LOG",
-        "SERVER_ERROR"
+        "ROUTING_ERROR",
+        "DB_ERROR"
       ],
       "modules_involved": [
         "system_framework/app.py",
@@ -2415,10 +2415,10 @@
       "event_count": 5,
       "peak_rate_per_sec": 3.25,
       "event_types": [
-        "DB_ERROR",
-        "ROUTING_ERROR",
+        "SERVER_ERROR",
         "LOG",
-        "SERVER_ERROR"
+        "ROUTING_ERROR",
+        "DB_ERROR"
       ],
       "modules_involved": [
         "system_framework/app.py",

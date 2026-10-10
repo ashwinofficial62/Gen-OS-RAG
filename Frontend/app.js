@@ -749,18 +749,20 @@ function renderConformalDistChart(tokens) {
 // 10. Severity Distribution Donut (matches RUN_3/severity_distribution.png)
 function renderSeverityDonutChart(tokens) {
   const canvas = document.getElementById('chart-severity-donut');
-  if (!canvas || !state.safeneuroos) return;
+  if (!canvas || !state.safeneuroos || !state.safeneuroos.severity_by_safety) return;
   const ctx = canvas.getContext('2d');
 
-  const sevCounts = [354, 117]; // LOW, HIGH
-  const labels = ['LOW Severity', 'HIGH Severity'];
+  const sevData = state.safeneuroos.severity_by_safety.filter(s => s.verified_safe > 0 || s.blocked > 0);
+  const labels = sevData.map(s => `${s.severity} Severity`);
+  const counts = sevData.map(s => s.verified_safe + s.blocked);
+  const total = counts.reduce((acc, c) => acc + c, 0);
 
   state.charts.severityDonut = new Chart(ctx, {
     type: 'doughnut',
     data: {
       labels: labels,
       datasets: [{
-        data: sevCounts,
+        data: counts,
         backgroundColor: [tokens.shades[4], tokens.ink],
         borderColor: tokens.paper,
         borderWidth: 2
@@ -777,7 +779,7 @@ function renderSeverityDonutChart(tokens) {
         },
         tooltip: {
           callbacks: {
-            label: (ctx) => `${ctx.label}: ${ctx.raw} (${(ctx.raw / 471 * 100).toFixed(1)}%)`
+            label: (ctx) => `${ctx.label}: ${ctx.raw} (${total > 0 ? (ctx.raw / total * 100).toFixed(1) : 0}%)`
           }
         }
       }
@@ -785,7 +787,7 @@ function renderSeverityDonutChart(tokens) {
   });
 
   populateDataDrawer('drawer-severity-donut', labels, ['Severity Level', 'Count', 'Proportion'], 
-    [['LOW', 354, '75.2%'], ['HIGH', 117, '24.8%']]
+    sevData.map((s, idx) => [s.severity, counts[idx], `${total > 0 ? (counts[idx] / total * 100).toFixed(1) : 0}%`])
   );
 }
 
