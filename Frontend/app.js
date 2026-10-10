@@ -6,7 +6,7 @@
 
 // Global State
 const state = {
-  theme: 'light',
+  theme: 'dark',
   overview: null,
   mcda: null,
   toporag: null,
@@ -27,7 +27,7 @@ const state = {
 };
 
 // Canvas Hatch / Dot Pattern Generators for Monochromatic Series Distinction
-function createDiagonalPattern(color = '#0a0a0a', bgColor = '#ffffff', width = 8) {
+function createDiagonalPattern(color = '#f5f5f5', bgColor = '#141414', width = 8) {
   const pCanvas = document.createElement('canvas');
   pCanvas.width = width;
   pCanvas.height = width;
@@ -43,7 +43,7 @@ function createDiagonalPattern(color = '#0a0a0a', bgColor = '#ffffff', width = 8
   return pCtx.createPattern(pCanvas, 'repeat');
 }
 
-function createDotPattern(color = '#0a0a0a', bgColor = '#ffffff', size = 8, dotRadius = 1.5) {
+function createDotPattern(color = '#f5f5f5', bgColor = '#141414', size = 8, dotRadius = 1.5) {
   const pCanvas = document.createElement('canvas');
   pCanvas.width = size;
   pCanvas.height = size;
@@ -59,16 +59,17 @@ function createDotPattern(color = '#0a0a0a', bgColor = '#ffffff', size = 8, dotR
 
 // Global Palette Tokens based on CSS variables
 function getThemeTokens() {
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+  const isDark = theme === 'dark';
   return {
     isDark,
     ink: isDark ? '#f5f5f5' : '#0a0a0a',
     ink2: isDark ? '#e5e5e5' : '#262626',
     ink3: isDark ? '#a3a3a3' : '#525252',
-    line: isDark ? '#333333' : '#d4d4d4',
+    line: isDark ? '#262626' : '#d4d4d4',
     paper: isDark ? '#0a0a0a' : '#ffffff',
-    paper2: isDark ? '#171717' : '#f5f5f5',
-    paper3: isDark ? '#262626' : '#e5e5e5',
+    paper2: isDark ? '#141414' : '#f5f5f5',
+    paper3: isDark ? '#1f1f1f' : '#e5e5e5',
     // Grayscale shade steps
     shades: isDark 
       ? ['#f5f5f5', '#d4d4d4', '#a3a3a3', '#737373', '#525252', '#404040', '#262626']
@@ -1032,15 +1033,18 @@ function exportFilteredIncidentsCSV() {
 // EVENT LISTENERS & FILTERING
 // -----------------------------------------------------------------------------
 function setupEventListeners() {
-  // Theme Toggle
+  // Theme Inversion Toggle
   const themeBtn = document.getElementById('theme-toggle');
   const themeText = document.getElementById('theme-mode-text');
   if (themeBtn) {
     themeBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
       const next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
-      themeText.textContent = next.toUpperCase();
+      state.theme = next;
+      if (themeText) {
+        themeText.textContent = next.toUpperCase();
+      }
       renderAllCharts();
     });
   }

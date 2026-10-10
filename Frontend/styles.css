@@ -4,17 +4,17 @@
    ========================================================================== */
 
 :root {
-  /* Light theme default */
-  --ink: #0a0a0a;
-  --ink-2: #262626;
-  --ink-3: #525252;
+  /* Dark theme as default: black background and white text */
+  --ink: #f5f5f5;
+  --ink-2: #e5e5e5;
+  --ink-3: #a3a3a3;
   --ink-muted: #737373;
-  --line: #d4d4d4;
+  --line: #262626;
   --line-strong: #737373;
-  --paper: #ffffff;
-  --paper-2: #f5f5f5;
-  --paper-3: #e5e5e5;
-  --focus-ring: #0a0a0a;
+  --paper: #0a0a0a;
+  --paper-2: #141414;
+  --paper-3: #1f1f1f;
+  --focus-ring: #ffffff;
 
   /* Typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -25,17 +25,18 @@
   --transition-fast: opacity 150ms ease, background-color 150ms ease;
 }
 
-[data-theme="dark"] {
-  --ink: #f5f5f5;
-  --ink-2: #e5e5e5;
-  --ink-3: #a3a3a3;
+[data-theme="light"] {
+  /* Inverted light theme: white background and black text */
+  --ink: #0a0a0a;
+  --ink-2: #262626;
+  --ink-3: #525252;
   --ink-muted: #737373;
-  --line: #333333;
+  --line: #d4d4d4;
   --line-strong: #737373;
-  --paper: #0a0a0a;
-  --paper-2: #171717;
-  --paper-3: #262626;
-  --focus-ring: #ffffff;
+  --paper: #ffffff;
+  --paper-2: #f5f5f5;
+  --paper-3: #e5e5e5;
+  --focus-ring: #0a0a0a;
 }
 
 @media (prefers-reduced-motion: reduce) {
