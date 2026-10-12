@@ -2,7 +2,7 @@
   "kpis": {
     "conformal_tau": 0.85,
     "mean_distance": 0.4283,
-    "median_distance": 0.4271,
+    "median_distance": 0.8902,
     "min_distance": 0.2832,
     "max_distance": 0.8385,
     "total_evaluated": 471,
