@@ -454,6 +454,36 @@ S_TopoRAG(q, i) = cos(e_text(q), e_text(i)) * exp(-gamma * d_graph(q, i))
         </div>
       </div>
 
+      <!-- TopoRAG Correlation Analysis Chart Card -->
+      <div class="chart-card" style="margin-bottom: 2rem;">
+        <div class="chart-header">
+          <div class="section-badge-row" style="margin-bottom: 0.35rem;">
+            <span class="badge-tag highlight">Analytical Correlation</span>
+            <span class="badge-tag">Cross-Process Topology</span>
+            <span class="badge-tag">Pearson r</span>
+          </div>
+          <h4 class="chart-title">Process-Tree Topology Correlation: Primary vs Secondary Worker Failure Invariants</h4>
+          <p class="chart-desc">
+            Scatter plot with linear regression trend line mapping failure distribution per category between Primary Worker (PID 17896) and Secondary Worker (PID 14920).
+          </p>
+          <p class="chart-os-relevance">Why it matters: Verifies whether failure propagation preserves identical structural failure proportions across isolated OS process hierarchies.</p>
+        </div>
+        <div class="chart-canvas-wrap tall">
+          <canvas id="chart-toporag-corr" aria-label="TopoRAG Process Failure Correlation Scatter Plot"></canvas>
+        </div>
+        <div class="correlation-card-addon" id="addon-toporag-corr">
+          <!-- Populated dynamically by app.js -->
+        </div>
+        <div class="chart-controls">
+          <span class="chart-source-tag">source: final_output_diagnosis.csv.crosstab(event_type, process_id)</span>
+          <div class="chart-actions">
+            <button class="btn-ghost" onclick="toggleDataDrawer('drawer-toporag-corr')">View Data</button>
+            <button class="btn-ghost" onclick="downloadChartPNG('chart-toporag-corr', 'toporag_process_correlation')">Download PNG</button>
+          </div>
+        </div>
+        <div class="chart-data-drawer" id="drawer-toporag-corr"></div>
+      </div>
+
       <!-- Provenance Explorer Table -->
       <div class="chart-header">
         <h3 class="chart-title">Provenance Explorer (Searchable Failure Incidents)</h3>
@@ -631,6 +661,36 @@ nabla_t lambda(t) = d lambda(t) / dt                                          [C
         <div class="chart-data-drawer" id="drawer-empirical-rate"></div>
       </div>
 
+      <!-- ChronoOS Correlation Analysis Chart Card -->
+      <div class="chart-card" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+        <div class="chart-header">
+          <div class="section-badge-row" style="margin-bottom: 0.35rem;">
+            <span class="badge-tag highlight">Analytical Correlation</span>
+            <span class="badge-tag">Point Process Dynamics</span>
+            <span class="badge-tag">Pearson r</span>
+          </div>
+          <h4 class="chart-title">Continuous Temporal Phase Correlation: Event Arrival Rate &lambda;(t) vs Cascade Acceleration &Delta;&lambda;</h4>
+          <p class="chart-desc">
+            Scatter plot with linear regression trend line mapping rolling failure frequency &lambda;(t) against discrete cascade acceleration &Delta;&lambda; across 41 observation windows.
+          </p>
+          <p class="chart-os-relevance">Why it matters: Quantifies non-linear storm propagation dynamics in operating system interrupt and event processing queues.</p>
+        </div>
+        <div class="chart-canvas-wrap tall">
+          <canvas id="chart-chrono-corr" aria-label="ChronoOS Rate vs Acceleration Correlation Scatter Plot"></canvas>
+        </div>
+        <div class="correlation-card-addon" id="addon-chrono-corr">
+          <!-- Populated dynamically by app.js -->
+        </div>
+        <div class="chart-controls">
+          <span class="chart-source-tag">source: derived from timestamp resample('1min') &amp; np.diff()</span>
+          <div class="chart-actions">
+            <button class="btn-ghost" onclick="toggleDataDrawer('drawer-chrono-corr')">View Data</button>
+            <button class="btn-ghost" onclick="downloadChartPNG('chart-chrono-corr', 'chronoos_temporal_correlation')">Download PNG</button>
+          </div>
+        </div>
+        <div class="chart-data-drawer" id="drawer-chrono-corr"></div>
+      </div>
+
       <!-- Top Burst Episodes Table -->
       <div class="chart-header" style="margin-top: 1.5rem;">
         <h3 class="chart-title">Top Detected Burst Episodes (&Delta;t &lt; 2.0 s Cascades)</h3>
@@ -762,6 +822,36 @@ Z_state = g * H_text + (1 - g) * H_fused       [Gated Residual Fusion]
           </div>
         </div>
         <div class="chart-data-drawer" id="drawer-duration-proxy"></div>
+      </div>
+
+      <!-- StateRAG Correlation Analysis Chart Card -->
+      <div class="chart-card" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+        <div class="chart-header">
+          <div class="section-badge-row" style="margin-bottom: 0.35rem;">
+            <span class="badge-tag highlight">Analytical Correlation</span>
+            <span class="badge-tag">Multimodal Latency Proxy</span>
+            <span class="badge-tag">Pearson r</span>
+          </div>
+          <h4 class="chart-title">Hardware Proxy Latency Correlation: Endpoint URI Length vs Execution Duration (duration_ms)</h4>
+          <p class="chart-desc">
+            Scatter plot with linear regression trend line mapping request target URI character length against recorded execution duration across 544 telemetry requests.
+          </p>
+          <p class="chart-os-relevance">Why it matters: Evaluates whether deeper hierarchical resource paths correlate with heavier kernel thread scheduling and socket execution latency.</p>
+        </div>
+        <div class="chart-canvas-wrap tall">
+          <canvas id="chart-staterag-corr" aria-label="StateRAG URI Length vs Duration Correlation Scatter Plot"></canvas>
+        </div>
+        <div class="correlation-card-addon" id="addon-staterag-corr">
+          <!-- Populated dynamically by app.js -->
+        </div>
+        <div class="chart-controls">
+          <span class="chart-source-tag">source: processed_events_analysis.csv (path length vs duration_ms)</span>
+          <div class="chart-actions">
+            <button class="btn-ghost" onclick="toggleDataDrawer('drawer-staterag-corr')">View Data</button>
+            <button class="btn-ghost" onclick="downloadChartPNG('chart-staterag-corr', 'staterag_latency_correlation')">Download PNG</button>
+          </div>
+        </div>
+        <div class="chart-data-drawer" id="drawer-staterag-corr"></div>
       </div>
 
       <div class="info-subgrid">
@@ -944,6 +1034,36 @@ Invariant Rule: forall c in Commands, c not in {rm -rf /, mkfs, dd of=/dev/*, ki
         </div>
       </div>
 
+      <!-- SafeNeuroOS Correlation Analysis Chart Card -->
+      <div class="chart-card" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+        <div class="chart-header">
+          <div class="section-badge-row" style="margin-bottom: 0.35rem;">
+            <span class="badge-tag highlight">Analytical Correlation</span>
+            <span class="badge-tag">Conformal Epistemic Uncertainty</span>
+            <span class="badge-tag">Pearson r</span>
+          </div>
+          <h4 class="chart-title">Epistemic Uncertainty Correlation: Context Document Length vs Conformal Distance s(z)</h4>
+          <p class="chart-desc">
+            Scatter plot with linear regression trend line mapping serialized structural incident document character length against vector retrieval non-conformity distance across all 471 failure incidents.
+          </p>
+          <p class="chart-os-relevance">Why it matters: Evaluates whether textual symptom context verbosity correlates with higher epistemic dispersion relative to calibrated prototypes.</p>
+        </div>
+        <div class="chart-canvas-wrap tall">
+          <canvas id="chart-safeneuro-corr" aria-label="SafeNeuroOS Document Length vs Conformal Distance Correlation Scatter Plot"></canvas>
+        </div>
+        <div class="correlation-card-addon" id="addon-safeneuro-corr">
+          <!-- Populated dynamically by app.js -->
+        </div>
+        <div class="chart-controls">
+          <span class="chart-source-tag">source: final_output_diagnosis.csv (incident_doc length vs conformal_retrieval_distance)</span>
+          <div class="chart-actions">
+            <button class="btn-ghost" onclick="toggleDataDrawer('drawer-safeneuro-corr')">View Data</button>
+            <button class="btn-ghost" onclick="downloadChartPNG('chart-safeneuro-corr', 'safeneuroos_conformal_correlation')">Download PNG</button>
+          </div>
+        </div>
+        <div class="chart-data-drawer" id="drawer-safeneuro-corr"></div>
+      </div>
+
       <!-- Formal POSIX Invariant Rules Specification Table -->
       <div class="chart-header" style="margin-top: 1.5rem;">
         <h3 class="chart-title">Deterministic POSIX &amp; System Safety Invariant Rules</h3>
@@ -1022,6 +1142,36 @@ Invariant Rule: forall c in Commands, c not in {rm -rf /, mkfs, dd of=/dev/*, ki
           </div>
         </div>
         <div class="chart-data-drawer" id="drawer-funnel"></div>
+      </div>
+
+      <!-- TopoSafe-RAG Correlation Analysis Chart Card -->
+      <div class="chart-card" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+        <div class="chart-header">
+          <div class="section-badge-row" style="margin-bottom: 0.35rem;">
+            <span class="badge-tag highlight">Analytical Correlation</span>
+            <span class="badge-tag">End-to-End Pipeline Scaling</span>
+            <span class="badge-tag">Pearson r</span>
+          </div>
+          <h4 class="chart-title">Pipeline Throughput Correlation: Total Telemetry Ingestion vs Triage Failure Rate</h4>
+          <p class="chart-desc">
+            Scatter plot with linear regression trend line mapping raw telemetry stream event volume against extracted failure triage count across 41 observation minutes.
+          </p>
+          <p class="chart-os-relevance">Why it matters: Verifies end-to-end telemetry triage consistency and demonstrates that failure extraction scales linearly with streaming ingest traffic without queue degradation.</p>
+        </div>
+        <div class="chart-canvas-wrap tall">
+          <canvas id="chart-toposafe-corr" aria-label="TopoSafe-RAG Pipeline Ingestion vs Triage Correlation Scatter Plot"></canvas>
+        </div>
+        <div class="correlation-card-addon" id="addon-toposafe-corr">
+          <!-- Populated dynamically by app.js -->
+        </div>
+        <div class="chart-controls">
+          <span class="chart-source-tag">source: processed_events_analysis.csv (1min resample stream_total vs failures)</span>
+          <div class="chart-actions">
+            <button class="btn-ghost" onclick="toggleDataDrawer('drawer-toposafe-corr')">View Data</button>
+            <button class="btn-ghost" onclick="downloadChartPNG('chart-toposafe-corr', 'toposaferag_pipeline_correlation')">Download PNG</button>
+          </div>
+        </div>
+        <div class="chart-data-drawer" id="drawer-toposafe-corr"></div>
       </div>
 
       <!-- Per-Stage Contribution Table -->

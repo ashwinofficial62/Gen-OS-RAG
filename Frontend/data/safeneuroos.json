@@ -815,5 +815,3797 @@
       "posix_rationale": "Neutralizes OS authentication subsystem by zeroing user account database."
     }
   ],
-  "blocked_incidents_sample": []
+  "blocked_incidents_sample": [],
+  "correlation": {
+    "stats": {
+      "n": 471,
+      "method": "Pearson Product-Moment (r)",
+      "pearson_r": 0.3618,
+      "slope": 0.0026,
+      "intercept": -0.3127,
+      "interpretation": "Weak Positive Linear Correlation",
+      "mean_x": 284.6391,
+      "mean_y": 0.4283,
+      "min_x": 277.0,
+      "max_x": 343.0,
+      "min_y": 0.2832,
+      "max_y": 0.8385,
+      "x_name": "Incident Context Document Character Length",
+      "y_name": "Conformal Retrieval Distance s(z)",
+      "x_unit": "chars",
+      "y_unit": "distance [0-1]",
+      "description": "Correlates serialized structural incident document character length with vector retrieval non-conformity distance s(z) across all 471 failure incidents. Tests whether longer symptom contexts correlate with increased retrieval dispersion.",
+      "causation_note": "Retrieval distance is determined by semantic embedding vector geometry relative to reference prototypes; document length reflects metadata verbosity and does not inherently cause higher distance."
+    },
+    "points": [
+      {
+        "id": 1,
+        "label": "Incident #1 (LOG)",
+        "x": 343,
+        "y": 0.8385,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 2,
+        "label": "Incident #2 (LOG)",
+        "x": 277,
+        "y": 0.6222,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 3,
+        "label": "Incident #3 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 4,
+        "label": "Incident #4 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 5,
+        "label": "Incident #5 (HTTP_EXCEPTION)",
+        "x": 293,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 6,
+        "label": "Incident #6 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 7,
+        "label": "Incident #7 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 8,
+        "label": "Incident #8 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 9,
+        "label": "Incident #9 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 10,
+        "label": "Incident #10 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 11,
+        "label": "Incident #11 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 12,
+        "label": "Incident #12 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 13,
+        "label": "Incident #13 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 14,
+        "label": "Incident #14 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 15,
+        "label": "Incident #15 (DB_ERROR)",
+        "x": 278,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 16,
+        "label": "Incident #16 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 17,
+        "label": "Incident #17 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 18,
+        "label": "Incident #18 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 19,
+        "label": "Incident #19 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 20,
+        "label": "Incident #20 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 21,
+        "label": "Incident #21 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 22,
+        "label": "Incident #22 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 23,
+        "label": "Incident #23 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 24,
+        "label": "Incident #24 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 25,
+        "label": "Incident #25 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 26,
+        "label": "Incident #26 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 27,
+        "label": "Incident #27 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 28,
+        "label": "Incident #28 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 29,
+        "label": "Incident #29 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 30,
+        "label": "Incident #30 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 31,
+        "label": "Incident #31 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 32,
+        "label": "Incident #32 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 33,
+        "label": "Incident #33 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 34,
+        "label": "Incident #34 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 35,
+        "label": "Incident #35 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 36,
+        "label": "Incident #36 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 37,
+        "label": "Incident #37 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 38,
+        "label": "Incident #38 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 39,
+        "label": "Incident #39 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 40,
+        "label": "Incident #40 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 41,
+        "label": "Incident #41 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 42,
+        "label": "Incident #42 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 43,
+        "label": "Incident #43 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 44,
+        "label": "Incident #44 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 45,
+        "label": "Incident #45 (SERVER_ERROR)",
+        "x": 285,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 46,
+        "label": "Incident #46 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 47,
+        "label": "Incident #47 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 48,
+        "label": "Incident #48 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 49,
+        "label": "Incident #49 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 50,
+        "label": "Incident #50 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 51,
+        "label": "Incident #51 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 52,
+        "label": "Incident #52 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 53,
+        "label": "Incident #53 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 54,
+        "label": "Incident #54 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 55,
+        "label": "Incident #55 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 56,
+        "label": "Incident #56 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 57,
+        "label": "Incident #57 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 58,
+        "label": "Incident #58 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 59,
+        "label": "Incident #59 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 60,
+        "label": "Incident #60 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 61,
+        "label": "Incident #61 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 62,
+        "label": "Incident #62 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 63,
+        "label": "Incident #63 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 64,
+        "label": "Incident #64 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 65,
+        "label": "Incident #65 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 66,
+        "label": "Incident #66 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 67,
+        "label": "Incident #67 (SERVER_ERROR)",
+        "x": 285,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 68,
+        "label": "Incident #68 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 69,
+        "label": "Incident #69 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 70,
+        "label": "Incident #70 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 71,
+        "label": "Incident #71 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 72,
+        "label": "Incident #72 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 73,
+        "label": "Incident #73 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 74,
+        "label": "Incident #74 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 75,
+        "label": "Incident #75 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 76,
+        "label": "Incident #76 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 77,
+        "label": "Incident #77 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 78,
+        "label": "Incident #78 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 79,
+        "label": "Incident #79 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 80,
+        "label": "Incident #80 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 81,
+        "label": "Incident #81 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 82,
+        "label": "Incident #82 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 83,
+        "label": "Incident #83 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 84,
+        "label": "Incident #84 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 85,
+        "label": "Incident #85 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 86,
+        "label": "Incident #86 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 87,
+        "label": "Incident #87 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 88,
+        "label": "Incident #88 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 89,
+        "label": "Incident #89 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 90,
+        "label": "Incident #90 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 91,
+        "label": "Incident #91 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 92,
+        "label": "Incident #92 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 93,
+        "label": "Incident #93 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 94,
+        "label": "Incident #94 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 95,
+        "label": "Incident #95 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 96,
+        "label": "Incident #96 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 97,
+        "label": "Incident #97 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 98,
+        "label": "Incident #98 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 99,
+        "label": "Incident #99 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 100,
+        "label": "Incident #100 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 101,
+        "label": "Incident #101 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 102,
+        "label": "Incident #102 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 103,
+        "label": "Incident #103 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 104,
+        "label": "Incident #104 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 105,
+        "label": "Incident #105 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 106,
+        "label": "Incident #106 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 107,
+        "label": "Incident #107 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 108,
+        "label": "Incident #108 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 109,
+        "label": "Incident #109 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 110,
+        "label": "Incident #110 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 111,
+        "label": "Incident #111 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 112,
+        "label": "Incident #112 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 113,
+        "label": "Incident #113 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 114,
+        "label": "Incident #114 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 115,
+        "label": "Incident #115 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 116,
+        "label": "Incident #116 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 117,
+        "label": "Incident #117 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 118,
+        "label": "Incident #118 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 119,
+        "label": "Incident #119 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 120,
+        "label": "Incident #120 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 121,
+        "label": "Incident #121 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 122,
+        "label": "Incident #122 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 123,
+        "label": "Incident #123 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 124,
+        "label": "Incident #124 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 125,
+        "label": "Incident #125 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 126,
+        "label": "Incident #126 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 127,
+        "label": "Incident #127 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 128,
+        "label": "Incident #128 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 129,
+        "label": "Incident #129 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 130,
+        "label": "Incident #130 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 131,
+        "label": "Incident #131 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 132,
+        "label": "Incident #132 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 133,
+        "label": "Incident #133 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 134,
+        "label": "Incident #134 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 135,
+        "label": "Incident #135 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 136,
+        "label": "Incident #136 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 137,
+        "label": "Incident #137 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 138,
+        "label": "Incident #138 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 139,
+        "label": "Incident #139 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 140,
+        "label": "Incident #140 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 141,
+        "label": "Incident #141 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 142,
+        "label": "Incident #142 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 143,
+        "label": "Incident #143 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 144,
+        "label": "Incident #144 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 145,
+        "label": "Incident #145 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 146,
+        "label": "Incident #146 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 147,
+        "label": "Incident #147 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 148,
+        "label": "Incident #148 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 149,
+        "label": "Incident #149 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 150,
+        "label": "Incident #150 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 151,
+        "label": "Incident #151 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 152,
+        "label": "Incident #152 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 153,
+        "label": "Incident #153 (LOG)",
+        "x": 284,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 154,
+        "label": "Incident #154 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 155,
+        "label": "Incident #155 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 156,
+        "label": "Incident #156 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 157,
+        "label": "Incident #157 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 158,
+        "label": "Incident #158 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 159,
+        "label": "Incident #159 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 160,
+        "label": "Incident #160 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 161,
+        "label": "Incident #161 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 162,
+        "label": "Incident #162 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 163,
+        "label": "Incident #163 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 164,
+        "label": "Incident #164 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 165,
+        "label": "Incident #165 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 166,
+        "label": "Incident #166 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 167,
+        "label": "Incident #167 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 168,
+        "label": "Incident #168 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 169,
+        "label": "Incident #169 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 170,
+        "label": "Incident #170 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 171,
+        "label": "Incident #171 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 172,
+        "label": "Incident #172 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 173,
+        "label": "Incident #173 (HTTP_ERROR)",
+        "x": 281,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 174,
+        "label": "Incident #174 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 175,
+        "label": "Incident #175 (DB_ERROR)",
+        "x": 278,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 176,
+        "label": "Incident #176 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 177,
+        "label": "Incident #177 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 178,
+        "label": "Incident #178 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 179,
+        "label": "Incident #179 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 180,
+        "label": "Incident #180 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 181,
+        "label": "Incident #181 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 182,
+        "label": "Incident #182 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 183,
+        "label": "Incident #183 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 184,
+        "label": "Incident #184 (LOG)",
+        "x": 284,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 185,
+        "label": "Incident #185 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 186,
+        "label": "Incident #186 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 187,
+        "label": "Incident #187 (HTTP_ERROR)",
+        "x": 281,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 188,
+        "label": "Incident #188 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 189,
+        "label": "Incident #189 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 190,
+        "label": "Incident #190 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 191,
+        "label": "Incident #191 (DB_ERROR)",
+        "x": 278,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 192,
+        "label": "Incident #192 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 193,
+        "label": "Incident #193 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 194,
+        "label": "Incident #194 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 195,
+        "label": "Incident #195 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 196,
+        "label": "Incident #196 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 197,
+        "label": "Incident #197 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 198,
+        "label": "Incident #198 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 199,
+        "label": "Incident #199 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 200,
+        "label": "Incident #200 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 201,
+        "label": "Incident #201 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 202,
+        "label": "Incident #202 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 203,
+        "label": "Incident #203 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 204,
+        "label": "Incident #204 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 205,
+        "label": "Incident #205 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 206,
+        "label": "Incident #206 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 207,
+        "label": "Incident #207 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 208,
+        "label": "Incident #208 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 209,
+        "label": "Incident #209 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 210,
+        "label": "Incident #210 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 211,
+        "label": "Incident #211 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 212,
+        "label": "Incident #212 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 213,
+        "label": "Incident #213 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 214,
+        "label": "Incident #214 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 215,
+        "label": "Incident #215 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 216,
+        "label": "Incident #216 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 217,
+        "label": "Incident #217 (DB_ERROR)",
+        "x": 278,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 218,
+        "label": "Incident #218 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 219,
+        "label": "Incident #219 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 220,
+        "label": "Incident #220 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 221,
+        "label": "Incident #221 (LOG)",
+        "x": 284,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 222,
+        "label": "Incident #222 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 223,
+        "label": "Incident #223 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 224,
+        "label": "Incident #224 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 225,
+        "label": "Incident #225 (LOG)",
+        "x": 284,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 226,
+        "label": "Incident #226 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 227,
+        "label": "Incident #227 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 228,
+        "label": "Incident #228 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 229,
+        "label": "Incident #229 (LOG)",
+        "x": 284,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 230,
+        "label": "Incident #230 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 231,
+        "label": "Incident #231 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 232,
+        "label": "Incident #232 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 233,
+        "label": "Incident #233 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 234,
+        "label": "Incident #234 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 235,
+        "label": "Incident #235 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 236,
+        "label": "Incident #236 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 237,
+        "label": "Incident #237 (DB_ERROR)",
+        "x": 278,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 238,
+        "label": "Incident #238 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 239,
+        "label": "Incident #239 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 240,
+        "label": "Incident #240 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 241,
+        "label": "Incident #241 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 242,
+        "label": "Incident #242 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 243,
+        "label": "Incident #243 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 244,
+        "label": "Incident #244 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 245,
+        "label": "Incident #245 (HTTP_ERROR)",
+        "x": 281,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 246,
+        "label": "Incident #246 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 247,
+        "label": "Incident #247 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 248,
+        "label": "Incident #248 (HTTP_ERROR)",
+        "x": 281,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 249,
+        "label": "Incident #249 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 250,
+        "label": "Incident #250 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 251,
+        "label": "Incident #251 (DB_ERROR)",
+        "x": 278,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 252,
+        "label": "Incident #252 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 253,
+        "label": "Incident #253 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 254,
+        "label": "Incident #254 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 255,
+        "label": "Incident #255 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 256,
+        "label": "Incident #256 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 257,
+        "label": "Incident #257 (SERVER_ERROR)",
+        "x": 285,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 258,
+        "label": "Incident #258 (SERVER_ERROR)",
+        "x": 285,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 259,
+        "label": "Incident #259 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 260,
+        "label": "Incident #260 (HTTP_ERROR)",
+        "x": 280,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 261,
+        "label": "Incident #261 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 262,
+        "label": "Incident #262 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 263,
+        "label": "Incident #263 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 264,
+        "label": "Incident #264 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 265,
+        "label": "Incident #265 (LOG)",
+        "x": 284,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 266,
+        "label": "Incident #266 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 267,
+        "label": "Incident #267 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 268,
+        "label": "Incident #268 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 269,
+        "label": "Incident #269 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 270,
+        "label": "Incident #270 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 271,
+        "label": "Incident #271 (DB_ERROR)",
+        "x": 278,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 272,
+        "label": "Incident #272 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 273,
+        "label": "Incident #273 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 274,
+        "label": "Incident #274 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 275,
+        "label": "Incident #275 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 276,
+        "label": "Incident #276 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 277,
+        "label": "Incident #277 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 278,
+        "label": "Incident #278 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 279,
+        "label": "Incident #279 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 280,
+        "label": "Incident #280 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 281,
+        "label": "Incident #281 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 282,
+        "label": "Incident #282 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 283,
+        "label": "Incident #283 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 284,
+        "label": "Incident #284 (LOG)",
+        "x": 284,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 285,
+        "label": "Incident #285 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 286,
+        "label": "Incident #286 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 287,
+        "label": "Incident #287 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 288,
+        "label": "Incident #288 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 289,
+        "label": "Incident #289 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 290,
+        "label": "Incident #290 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 291,
+        "label": "Incident #291 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 292,
+        "label": "Incident #292 (HTTP_ERROR)",
+        "x": 281,
+        "y": 0.4271,
+        "event_type": "HTTP_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 293,
+        "label": "Incident #293 (SERVER_ERROR)",
+        "x": 285,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 294,
+        "label": "Incident #294 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 295,
+        "label": "Incident #295 (ROUTING_ERROR)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 296,
+        "label": "Incident #296 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 297,
+        "label": "Incident #297 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 298,
+        "label": "Incident #298 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 299,
+        "label": "Incident #299 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 300,
+        "label": "Incident #300 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 301,
+        "label": "Incident #301 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 302,
+        "label": "Incident #302 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 303,
+        "label": "Incident #303 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 304,
+        "label": "Incident #304 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 305,
+        "label": "Incident #305 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 306,
+        "label": "Incident #306 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 307,
+        "label": "Incident #307 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 308,
+        "label": "Incident #308 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 309,
+        "label": "Incident #309 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 310,
+        "label": "Incident #310 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 311,
+        "label": "Incident #311 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 312,
+        "label": "Incident #312 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 313,
+        "label": "Incident #313 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 314,
+        "label": "Incident #314 (SERVER_ERROR)",
+        "x": 285,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 315,
+        "label": "Incident #315 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 316,
+        "label": "Incident #316 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 317,
+        "label": "Incident #317 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 318,
+        "label": "Incident #318 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 319,
+        "label": "Incident #319 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 320,
+        "label": "Incident #320 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 321,
+        "label": "Incident #321 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 322,
+        "label": "Incident #322 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 323,
+        "label": "Incident #323 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 324,
+        "label": "Incident #324 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 325,
+        "label": "Incident #325 (LOG)",
+        "x": 286,
+        "y": 0.2832,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 326,
+        "label": "Incident #326 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 327,
+        "label": "Incident #327 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 328,
+        "label": "Incident #328 (DB_ERROR)",
+        "x": 278,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 329,
+        "label": "Incident #329 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 330,
+        "label": "Incident #330 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 331,
+        "label": "Incident #331 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 332,
+        "label": "Incident #332 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 333,
+        "label": "Incident #333 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 334,
+        "label": "Incident #334 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 335,
+        "label": "Incident #335 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 336,
+        "label": "Incident #336 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 337,
+        "label": "Incident #337 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 338,
+        "label": "Incident #338 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 339,
+        "label": "Incident #339 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 340,
+        "label": "Incident #340 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 341,
+        "label": "Incident #341 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 342,
+        "label": "Incident #342 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 343,
+        "label": "Incident #343 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 344,
+        "label": "Incident #344 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 345,
+        "label": "Incident #345 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 346,
+        "label": "Incident #346 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 347,
+        "label": "Incident #347 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 348,
+        "label": "Incident #348 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 349,
+        "label": "Incident #349 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 350,
+        "label": "Incident #350 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 351,
+        "label": "Incident #351 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 352,
+        "label": "Incident #352 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 353,
+        "label": "Incident #353 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 354,
+        "label": "Incident #354 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 355,
+        "label": "Incident #355 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 356,
+        "label": "Incident #356 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 357,
+        "label": "Incident #357 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 358,
+        "label": "Incident #358 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 359,
+        "label": "Incident #359 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 360,
+        "label": "Incident #360 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 361,
+        "label": "Incident #361 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 362,
+        "label": "Incident #362 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 363,
+        "label": "Incident #363 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 364,
+        "label": "Incident #364 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 365,
+        "label": "Incident #365 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 366,
+        "label": "Incident #366 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 367,
+        "label": "Incident #367 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 368,
+        "label": "Incident #368 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 369,
+        "label": "Incident #369 (LOG)",
+        "x": 286,
+        "y": 0.2832,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 370,
+        "label": "Incident #370 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 371,
+        "label": "Incident #371 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 372,
+        "label": "Incident #372 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 373,
+        "label": "Incident #373 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 374,
+        "label": "Incident #374 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 375,
+        "label": "Incident #375 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 376,
+        "label": "Incident #376 (LOG)",
+        "x": 286,
+        "y": 0.2832,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 377,
+        "label": "Incident #377 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 378,
+        "label": "Incident #378 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 379,
+        "label": "Incident #379 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 380,
+        "label": "Incident #380 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 381,
+        "label": "Incident #381 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 382,
+        "label": "Incident #382 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 383,
+        "label": "Incident #383 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 384,
+        "label": "Incident #384 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 385,
+        "label": "Incident #385 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 386,
+        "label": "Incident #386 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 387,
+        "label": "Incident #387 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 388,
+        "label": "Incident #388 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 389,
+        "label": "Incident #389 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 390,
+        "label": "Incident #390 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 391,
+        "label": "Incident #391 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 392,
+        "label": "Incident #392 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 393,
+        "label": "Incident #393 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 394,
+        "label": "Incident #394 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 395,
+        "label": "Incident #395 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 396,
+        "label": "Incident #396 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 397,
+        "label": "Incident #397 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 398,
+        "label": "Incident #398 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 399,
+        "label": "Incident #399 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 400,
+        "label": "Incident #400 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 401,
+        "label": "Incident #401 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 402,
+        "label": "Incident #402 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 403,
+        "label": "Incident #403 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 404,
+        "label": "Incident #404 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 405,
+        "label": "Incident #405 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 406,
+        "label": "Incident #406 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 407,
+        "label": "Incident #407 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 408,
+        "label": "Incident #408 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 409,
+        "label": "Incident #409 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 410,
+        "label": "Incident #410 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 411,
+        "label": "Incident #411 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 412,
+        "label": "Incident #412 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 413,
+        "label": "Incident #413 (LOG)",
+        "x": 286,
+        "y": 0.2832,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 414,
+        "label": "Incident #414 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 415,
+        "label": "Incident #415 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 416,
+        "label": "Incident #416 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 417,
+        "label": "Incident #417 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 418,
+        "label": "Incident #418 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 419,
+        "label": "Incident #419 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 420,
+        "label": "Incident #420 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 421,
+        "label": "Incident #421 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 422,
+        "label": "Incident #422 (LOG)",
+        "x": 283,
+        "y": 0.4777,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 423,
+        "label": "Incident #423 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 424,
+        "label": "Incident #424 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 425,
+        "label": "Incident #425 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 426,
+        "label": "Incident #426 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 427,
+        "label": "Incident #427 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 428,
+        "label": "Incident #428 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 429,
+        "label": "Incident #429 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 430,
+        "label": "Incident #430 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 431,
+        "label": "Incident #431 (DB_ERROR)",
+        "x": 277,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 432,
+        "label": "Incident #432 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 433,
+        "label": "Incident #433 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 434,
+        "label": "Incident #434 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 435,
+        "label": "Incident #435 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 436,
+        "label": "Incident #436 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 437,
+        "label": "Incident #437 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 438,
+        "label": "Incident #438 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 439,
+        "label": "Incident #439 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 440,
+        "label": "Incident #440 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 441,
+        "label": "Incident #441 (DB_ERROR)",
+        "x": 278,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 442,
+        "label": "Incident #442 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 443,
+        "label": "Incident #443 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 444,
+        "label": "Incident #444 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 445,
+        "label": "Incident #445 (DB_ERROR)",
+        "x": 278,
+        "y": 0.4271,
+        "event_type": "DB_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 446,
+        "label": "Incident #446 (LOG)",
+        "x": 283,
+        "y": 0.412,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 447,
+        "label": "Incident #447 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 448,
+        "label": "Incident #448 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 449,
+        "label": "Incident #449 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 450,
+        "label": "Incident #450 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 451,
+        "label": "Incident #451 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 452,
+        "label": "Incident #452 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 453,
+        "label": "Incident #453 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 454,
+        "label": "Incident #454 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 455,
+        "label": "Incident #455 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 456,
+        "label": "Incident #456 (LOG)",
+        "x": 286,
+        "y": 0.2832,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 457,
+        "label": "Incident #457 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 458,
+        "label": "Incident #458 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 459,
+        "label": "Incident #459 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 460,
+        "label": "Incident #460 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 461,
+        "label": "Incident #461 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 462,
+        "label": "Incident #462 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 463,
+        "label": "Incident #463 (HTTP_EXCEPTION)",
+        "x": 291,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 464,
+        "label": "Incident #464 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 465,
+        "label": "Incident #465 (HTTP_EXCEPTION)",
+        "x": 290,
+        "y": 0.4271,
+        "event_type": "HTTP_EXCEPTION",
+        "severity": "HIGH"
+      },
+      {
+        "id": 466,
+        "label": "Incident #466 (LOG)",
+        "x": 286,
+        "y": 0.2832,
+        "event_type": "LOG",
+        "severity": "HIGH"
+      },
+      {
+        "id": 467,
+        "label": "Incident #467 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 468,
+        "label": "Incident #468 (SERVER_ERROR)",
+        "x": 284,
+        "y": 0.4271,
+        "event_type": "SERVER_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 469,
+        "label": "Incident #469 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 470,
+        "label": "Incident #470 (ROUTING_ERROR)",
+        "x": 287,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      },
+      {
+        "id": 471,
+        "label": "Incident #471 (ROUTING_ERROR)",
+        "x": 286,
+        "y": 0.4271,
+        "event_type": "ROUTING_ERROR",
+        "severity": "LOW"
+      }
+    ]
+  }
 }

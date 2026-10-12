@@ -528,6 +528,60 @@ body {
   display: block;
 }
 
+/* Correlation Metadata & Metric Callouts */
+.correlation-card-addon {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background-color: var(--paper-2);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.correlation-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.correlation-r-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 0.2rem 0.55rem;
+}
+
+.correlation-sub-meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+
+.correlation-interpretation {
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.correlation-causation-disclaimer {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.35;
+  border-top: 1px dashed var(--line);
+  padding-top: 0.35rem;
+  margin-top: 0.15rem;
+}
+
 /* --------------------------------------------------------------------------
    DATA TABLES
    -------------------------------------------------------------------------- */

@@ -172,14 +172,19 @@ function renderAllCharts() {
   renderTopFilesChart(tokens);
   renderModuleMatrixChart(tokens);
   renderModuleDonutChart(tokens);
+  renderTopoRAGCorrChart(tokens);
   renderCumulativeFailuresChart(tokens);
   renderDeltaTHistChart(tokens);
   renderEmpiricalRateChart(tokens);
+  renderChronoCorrChart(tokens);
   renderDurationProxyChart(tokens);
+  renderStateRAGCorrChart(tokens);
   renderConformalDistChart(tokens);
   renderSeverityDonutChart(tokens);
   renderSeverityStackedChart(tokens);
+  renderSafeNeuroCorrChart(tokens);
   renderFunnelChart(tokens);
+  renderTopoSafeCorrChart(tokens);
 }
 
 function destroyAllCharts() {
@@ -902,6 +907,573 @@ function renderFunnelChart(tokens) {
 
   populateDataDrawer('drawer-funnel', labels, ['Pipeline Stage', 'Retained Count', 'Funnel Retention', 'Source CSV'], 
     stages.map(s => [s.stage, s.count, `${s.pct}%`, s.source])
+  );
+}
+
+// -----------------------------------------------------------------------------
+// CORRELATION CHARTS IMPLEMENTATION (1 PER SOLUTION SECTION)
+// -----------------------------------------------------------------------------
+
+function populateCorrelationAddon(containerId, stats) {
+  const container = document.getElementById(containerId);
+  if (!container || !stats) return;
+  const rVal = (typeof stats.pearson_r === 'number') ? stats.pearson_r.toFixed(4) : '0.0000';
+  const slope = (typeof stats.slope === 'number') ? stats.slope.toFixed(4) : '0.0000';
+  const intercept = (typeof stats.intercept === 'number') ? (stats.intercept >= 0 ? `+ ${stats.intercept.toFixed(4)}` : `- ${Math.abs(stats.intercept).toFixed(4)}`) : '+ 0.0000';
+  
+  container.innerHTML = `
+    <div class="correlation-stats-row">
+      <span class="correlation-r-badge">
+        <span>Pearson r =</span>
+        <span class="num">${rVal}</span>
+      </span>
+      <span class="correlation-sub-meta">
+        N = ${stats.n} paired observations &bull; Trend Line: <span class="num">y = ${slope}x ${intercept}</span>
+      </span>
+    </div>
+    <div class="correlation-interpretation">
+      <strong>Relationship:</strong> ${stats.interpretation}. ${stats.description || ''}
+    </div>
+    ${stats.causation_note ? `<div class="correlation-causation-disclaimer"><strong>Note on Causation:</strong> ${stats.causation_note}</div>` : ''}
+  `;
+}
+
+// Helper to create OLS trend line dataset
+function createTrendLineDataset(points, stats, tokens, label = 'Linear Trend Line (OLS)') {
+  if (!points || points.length < 2 || !stats) return null;
+  const xVals = points.map(p => p.x);
+  const minX = Math.min(...xVals);
+  const maxX = Math.max(...xVals);
+  const slope = stats.slope || 0;
+  const intercept = stats.intercept || 0;
+
+  return {
+    label: label,
+    data: [
+      { x: minX, y: slope * minX + intercept },
+      { x: maxX, y: slope * maxX + intercept }
+    ],
+    type: 'line',
+    borderColor: tokens.ink3,
+    borderWidth: 2,
+    borderDash: [5, 5],
+    pointRadius: 0,
+    fill: false,
+    tension: 0
+  };
+}
+
+// 1. TopoRAG Correlation: Process Topology Blast Radius (PID 17896 vs PID 14920)
+function renderTopoRAGCorrChart(tokens) {
+  const canvas = document.getElementById('chart-toporag-corr');
+  if (!canvas || !state.toporag || !state.toporag.correlation) return;
+  const ctx = canvas.getContext('2d');
+  const corr = state.toporag.correlation;
+  const points = corr.points || [];
+  const stats = corr.stats || {};
+
+  populateCorrelationAddon('addon-toporag-corr', stats);
+
+  const scatterData = points.map(p => ({ x: p.x, y: p.y, label: p.label, total: p.total_failures }));
+  const trendDataset = createTrendLineDataset(points, stats, tokens);
+
+  const datasets = [
+    {
+      label: 'Failure Category Observation',
+      data: scatterData,
+      type: 'scatter',
+      backgroundColor: tokens.ink,
+      borderColor: tokens.paper,
+      borderWidth: 1.5,
+      pointRadius: 6,
+      pointHoverRadius: 8
+    }
+  ];
+  if (trendDataset) datasets.push(trendDataset);
+
+  state.charts.toporagCorr = new Chart(ctx, {
+    data: { datasets: datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+          labels: { color: tokens.ink, font: { family: 'var(--font-mono)', size: 10 }, boxWidth: 12 }
+        },
+        tooltip: {
+          callbacks: {
+            title: (items) => {
+              const raw = items[0].raw;
+              return raw.label ? `Event Type: ${raw.label}` : 'Trend Line Point';
+            },
+            label: (ctx) => {
+              const raw = ctx.raw;
+              if (raw.label) {
+                return [
+                  `Primary Worker (PID 17896): ${raw.x} failures`,
+                  `Secondary Worker (PID 14920): ${raw.y} failures`,
+                  `Cluster Total: ${raw.total} failures`
+                ];
+              }
+              return `Trend: x=${ctx.parsed.x.toFixed(1)}, y=${ctx.parsed.y.toFixed(1)}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom',
+          title: {
+            display: true,
+            text: 'Primary Worker Process (PID 17896) Failures',
+            color: tokens.ink,
+            font: { family: 'var(--font-mono)', size: 11, weight: 'bold' }
+          },
+          grid: { color: tokens.line },
+          ticks: { color: tokens.ink3, font: { family: 'var(--font-mono)' } }
+        },
+        y: {
+          type: 'linear',
+          title: {
+            display: true,
+            text: 'Secondary Worker Process (PID 14920) Failures',
+            color: tokens.ink,
+            font: { family: 'var(--font-mono)', size: 11, weight: 'bold' }
+          },
+          grid: { color: tokens.line },
+          ticks: { color: tokens.ink3, font: { family: 'var(--font-mono)' } }
+        }
+      }
+    }
+  });
+
+  populateDataDrawer('drawer-toporag-corr', 
+    points.map(p => p.label),
+    ['Failure Category', 'PID 17896 Failures (X)', 'PID 14920 Failures (Y)', 'Cluster Total Failures'],
+    points.map(p => [p.label, p.x, p.y, p.total_failures])
+  );
+}
+
+// 2. ChronoOS Correlation: Event Arrival Rate vs Cascade Acceleration Proxy
+function renderChronoCorrChart(tokens) {
+  const canvas = document.getElementById('chart-chrono-corr');
+  if (!canvas || !state.chronoos || !state.chronoos.correlation) return;
+  const ctx = canvas.getContext('2d');
+  const corr = state.chronoos.correlation;
+  const points = corr.points || [];
+  const stats = corr.stats || {};
+
+  populateCorrelationAddon('addon-chrono-corr', stats);
+
+  const scatterData = points.map(p => ({ x: p.x, y: p.y, time_label: p.time_label, timestamp: p.timestamp }));
+  const trendDataset = createTrendLineDataset(points, stats, tokens);
+
+  const datasets = [
+    {
+      label: '1-Minute Observation Interval',
+      data: scatterData,
+      type: 'scatter',
+      backgroundColor: tokens.shades[2],
+      borderColor: tokens.paper,
+      borderWidth: 1,
+      pointRadius: 5,
+      pointHoverRadius: 7
+    }
+  ];
+  if (trendDataset) datasets.push(trendDataset);
+
+  state.charts.chronoCorr = new Chart(ctx, {
+    data: { datasets: datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+          labels: { color: tokens.ink, font: { family: 'var(--font-mono)', size: 10 }, boxWidth: 12 }
+        },
+        tooltip: {
+          callbacks: {
+            title: (items) => {
+              const raw = items[0].raw;
+              return raw.time_label ? `Window: ${raw.time_label} UTC` : 'Trend Line Point';
+            },
+            label: (ctx) => {
+              const raw = ctx.raw;
+              if (raw.time_label) {
+                return [
+                  `Event Rate lambda(t): ${raw.x} events/min`,
+                  `Cascade Acceleration (Delta lambda): ${raw.y >= 0 ? '+' : ''}${raw.y}`
+                ];
+              }
+              return `Trend: x=${ctx.parsed.x.toFixed(1)}, y=${ctx.parsed.y.toFixed(1)}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom',
+          title: {
+            display: true,
+            text: 'Empirical Event Rate lambda(t) [events/min]',
+            color: tokens.ink,
+            font: { family: 'var(--font-mono)', size: 11, weight: 'bold' }
+          },
+          grid: { color: tokens.line },
+          ticks: { color: tokens.ink3, font: { family: 'var(--font-mono)' } }
+        },
+        y: {
+          type: 'linear',
+          title: {
+            display: true,
+            text: 'Cascade Acceleration Proxy Delta lambda(t) [rate diff]',
+            color: tokens.ink,
+            font: { family: 'var(--font-mono)', size: 11, weight: 'bold' }
+          },
+          grid: { color: tokens.line },
+          ticks: { color: tokens.ink3, font: { family: 'var(--font-mono)' } }
+        }
+      }
+    }
+  });
+
+  populateDataDrawer('drawer-chrono-corr', 
+    points.map(p => p.time_label),
+    ['Window UTC', 'Empirical Rate lambda(t) (events/min)', 'Cascade Acceleration Proxy (Delta lambda)'],
+    points.map(p => [p.timestamp.slice(11, 19), p.x, p.y])
+  );
+}
+
+// 3. StateRAG Correlation: Endpoint URI Length vs Execution Duration Proxy
+function renderStateRAGCorrChart(tokens) {
+  const canvas = document.getElementById('chart-staterag-corr');
+  if (!canvas || !state.staterag || !state.staterag.correlation) return;
+  const ctx = canvas.getContext('2d');
+  const corr = state.staterag.correlation;
+  const endpoints = corr.endpoint_summary || [];
+  const stats = corr.stats || {};
+
+  populateCorrelationAddon('addon-staterag-corr', stats);
+
+  // Grouped endpoints representation for clear visual readability
+  const scatterData = endpoints.map(e => ({
+    x: e.x,
+    y: e.y,
+    path: e.label,
+    count: e.count,
+    max_y: e.max_y,
+    median_y: e.median_y
+  }));
+
+  const trendDataset = createTrendLineDataset(endpoints, stats, tokens, 'Linear Trend Line (OLS, N=544 Events)');
+
+  const datasets = [
+    {
+      label: 'Unique Endpoint Profiles (N=544 Requests)',
+      data: scatterData,
+      type: 'scatter',
+      backgroundColor: tokens.ink,
+      borderColor: tokens.paper,
+      borderWidth: 1.5,
+      pointRadius: endpoints.map(e => Math.min(14, Math.max(5, Math.sqrt(e.count) * 1.8))),
+      pointHoverRadius: 10
+    }
+  ];
+  if (trendDataset) datasets.push(trendDataset);
+
+  state.charts.stateRAGCorr = new Chart(ctx, {
+    data: { datasets: datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+          labels: { color: tokens.ink, font: { family: 'var(--font-mono)', size: 10 }, boxWidth: 12 }
+        },
+        tooltip: {
+          callbacks: {
+            title: (items) => {
+              const raw = items[0].raw;
+              return raw.path ? `Endpoint: ${raw.path}` : 'Trend Line Point';
+            },
+            label: (ctx) => {
+              const raw = ctx.raw;
+              if (raw.path) {
+                return [
+                  `Path URI Length: ${raw.x} characters`,
+                  `Mean Latency: ${raw.y} ms`,
+                  `Median Latency: ${raw.median_y} ms (Max: ${raw.max_y} ms)`,
+                  `Sample Frequency: ${raw.count} events`
+                ];
+              }
+              return `Trend: x=${ctx.parsed.x.toFixed(1)}, y=${ctx.parsed.y.toFixed(1)} ms`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom',
+          title: {
+            display: true,
+            text: 'Endpoint URI Path Character Length [chars]',
+            color: tokens.ink,
+            font: { family: 'var(--font-mono)', size: 11, weight: 'bold' }
+          },
+          grid: { color: tokens.line },
+          ticks: { color: tokens.ink3, font: { family: 'var(--font-mono)' } }
+        },
+        y: {
+          type: 'linear',
+          title: {
+            display: true,
+            text: 'Execution Thread Latency Proxy (duration_ms) [ms]',
+            color: tokens.ink,
+            font: { family: 'var(--font-mono)', size: 11, weight: 'bold' }
+          },
+          grid: { color: tokens.line },
+          ticks: { color: tokens.ink3, font: { family: 'var(--font-mono)' } }
+        }
+      }
+    }
+  });
+
+  populateDataDrawer('drawer-staterag-corr',
+    endpoints.map(e => e.label),
+    ['Endpoint Path', 'URI Character Length', 'Event Volume', 'Mean Latency (ms)', 'Median Latency (ms)', 'Peak Latency (ms)'],
+    endpoints.map(e => [e.label, e.x, e.count, `${e.y} ms`, `${e.median_y} ms`, `${e.max_y} ms`])
+  );
+}
+
+// 4. SafeNeuroOS Correlation: Incident Document Length vs Conformal Distance s(z)
+function renderSafeNeuroCorrChart(tokens) {
+  const canvas = document.getElementById('chart-safeneuro-corr');
+  if (!canvas || !state.safeneuroos || !state.safeneuroos.correlation) return;
+  const ctx = canvas.getContext('2d');
+  const corr = state.safeneuroos.correlation;
+  const points = corr.points || [];
+  const stats = corr.stats || {};
+
+  populateCorrelationAddon('addon-safeneuro-corr', stats);
+
+  const scatterData = points.map(p => ({
+    x: p.x,
+    y: p.y,
+    id: p.id,
+    label: p.label,
+    event_type: p.event_type,
+    severity: p.severity
+  }));
+
+  const trendDataset = createTrendLineDataset(points, stats, tokens);
+
+  // Horizontal Conformal Threshold Line (tau = 0.85)
+  const tauLineDataset = {
+    label: 'Conformal Epistemic Bound (tau = 0.85)',
+    data: [
+      { x: stats.min_x || 270, y: 0.85 },
+      { x: stats.max_x || 350, y: 0.85 }
+    ],
+    type: 'line',
+    borderColor: tokens.ink,
+    borderWidth: 1.5,
+    borderDash: [2, 2],
+    pointRadius: 0,
+    fill: false,
+    tension: 0
+  };
+
+  const datasets = [
+    {
+      label: 'Diagnosed Incident (N=471 Failures)',
+      data: scatterData,
+      type: 'scatter',
+      backgroundColor: tokens.shades[3],
+      borderColor: tokens.paper,
+      borderWidth: 1,
+      pointRadius: 4,
+      pointHoverRadius: 6
+    }
+  ];
+  if (trendDataset) datasets.push(trendDataset);
+  datasets.push(tauLineDataset);
+
+  state.charts.safeneuroCorr = new Chart(ctx, {
+    data: { datasets: datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+          labels: { color: tokens.ink, font: { family: 'var(--font-mono)', size: 10 }, boxWidth: 12 }
+        },
+        tooltip: {
+          callbacks: {
+            title: (items) => {
+              const raw = items[0].raw;
+              return raw.label ? raw.label : 'Reference Boundary Line';
+            },
+            label: (ctx) => {
+              const raw = ctx.raw;
+              if (raw.label) {
+                return [
+                  `Context Document Length: ${raw.x} characters`,
+                  `Conformal Distance: ${raw.y.toFixed(4)}`,
+                  `Severity: ${raw.severity}`,
+                  `Status: ${raw.y <= 0.85 ? 'IN-DISTRIBUTION (SAFE)' : 'OOD QUARANTINE'}`
+                ];
+              }
+              return `Threshold: y = ${ctx.parsed.y.toFixed(2)}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom',
+          title: {
+            display: true,
+            text: 'Context Incident Document Character Length [chars]',
+            color: tokens.ink,
+            font: { family: 'var(--font-mono)', size: 11, weight: 'bold' }
+          },
+          grid: { color: tokens.line },
+          ticks: { color: tokens.ink3, font: { family: 'var(--font-mono)' } }
+        },
+        y: {
+          type: 'linear',
+          min: 0.2,
+          max: 0.9,
+          title: {
+            display: true,
+            text: 'Conformal Retrieval Non-Conformity Distance s(z)',
+            color: tokens.ink,
+            font: { family: 'var(--font-mono)', size: 11, weight: 'bold' }
+          },
+          grid: { color: tokens.line },
+          ticks: { color: tokens.ink3, font: { family: 'var(--font-mono)' } }
+        }
+      }
+    }
+  });
+
+  populateDataDrawer('drawer-safeneuro-corr',
+    points.slice(0, 50).map(p => p.label),
+    ['Incident ID', 'Event Category', 'Context Document Chars', 'Conformal Distance s(z)', 'Epistemic Region'],
+    points.slice(0, 50).map(p => [`#${p.id}`, p.event_type, p.x, p.y.toFixed(4), p.y <= 0.85 ? 'IN-DISTRIBUTION (<=0.85)' : 'OOD NOVEL'])
+  );
+}
+
+// 5. TopoSafe-RAG Correlation: Pipeline Ingest Volume vs Triage Failure Rate
+function renderTopoSafeCorrChart(tokens) {
+  const canvas = document.getElementById('chart-toposafe-corr');
+  if (!canvas || !state.toposaferag || !state.toposaferag.correlation) return;
+  const ctx = canvas.getContext('2d');
+  const corr = state.toposaferag.correlation;
+  const points = corr.points || [];
+  const stats = corr.stats || {};
+
+  populateCorrelationAddon('addon-toposafe-corr', stats);
+
+  const scatterData = points.map(p => ({
+    x: p.x,
+    y: p.y,
+    time_label: p.time_label,
+    timestamp: p.timestamp
+  }));
+
+  const trendDataset = createTrendLineDataset(points, stats, tokens);
+
+  const datasets = [
+    {
+      label: 'Active 1-Minute Telemetry Stream Windows (N=41)',
+      data: scatterData,
+      type: 'scatter',
+      backgroundColor: tokens.ink,
+      borderColor: tokens.paper,
+      borderWidth: 1.5,
+      pointRadius: 5,
+      pointHoverRadius: 8
+    }
+  ];
+  if (trendDataset) datasets.push(trendDataset);
+
+  state.charts.toposafeCorr = new Chart(ctx, {
+    data: { datasets: datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+          labels: { color: tokens.ink, font: { family: 'var(--font-mono)', size: 10 }, boxWidth: 12 }
+        },
+        tooltip: {
+          callbacks: {
+            title: (items) => {
+              const raw = items[0].raw;
+              return raw.time_label ? `Interval: ${raw.time_label} UTC` : 'Trend Line Point';
+            },
+            label: (ctx) => {
+              const raw = ctx.raw;
+              if (raw.time_label) {
+                const triageRatio = raw.x > 0 ? ((raw.y / raw.x) * 100).toFixed(1) : '0.0';
+                return [
+                  `Ingested Events: ${raw.x} events/min`,
+                  `Triaged Failures: ${raw.y} incidents/min`,
+                  `Failure Ratio: ${triageRatio}%`
+                ];
+              }
+              return `Trend: x=${ctx.parsed.x.toFixed(1)}, y=${ctx.parsed.y.toFixed(1)}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom',
+          title: {
+            display: true,
+            text: 'Raw Telemetry Ingest Volume [events/min]',
+            color: tokens.ink,
+            font: { family: 'var(--font-mono)', size: 11, weight: 'bold' }
+          },
+          grid: { color: tokens.line },
+          ticks: { color: tokens.ink3, font: { family: 'var(--font-mono)' } }
+        },
+        y: {
+          type: 'linear',
+          title: {
+            display: true,
+            text: 'Triaged Failures (status=FAILURE) [incidents/min]',
+            color: tokens.ink,
+            font: { family: 'var(--font-mono)', size: 11, weight: 'bold' }
+          },
+          grid: { color: tokens.line },
+          ticks: { color: tokens.ink3, font: { family: 'var(--font-mono)' } }
+        }
+      }
+    }
+  });
+
+  populateDataDrawer('drawer-toposafe-corr',
+    points.map(p => p.time_label),
+    ['Window UTC', 'Raw Ingest Events/min (X)', 'Triaged Failures/min (Y)', 'Triage Extraction Ratio'],
+    points.map(p => [p.timestamp.slice(11, 19), p.x, p.y, `${p.x > 0 ? ((p.y / p.x) * 100).toFixed(1) : 0}%`])
   );
 }
 

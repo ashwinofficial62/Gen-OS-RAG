@@ -130,5 +130,275 @@
         "desc": "Launch local zero-dependency dashboard server."
       }
     ]
+  },
+  "correlation": {
+    "stats": {
+      "n": 41,
+      "method": "Pearson Product-Moment (r)",
+      "pearson_r": 0.8902,
+      "slope": 0.4446,
+      "intercept": -7.4444,
+      "interpretation": "Very Strong Positive Linear Correlation",
+      "mean_x": 42.5854,
+      "mean_y": 11.4878,
+      "min_x": 2.0,
+      "max_x": 102.0,
+      "min_y": 1.0,
+      "max_y": 46.0,
+      "x_name": "Total Ingested Telemetry Events",
+      "y_name": "Triaged Failure Incidents (status=FAILURE)",
+      "x_unit": "events/min",
+      "y_unit": "failures/min",
+      "description": "Correlates total raw multi-source telemetry stream throughput with the triaged failure extraction rate across 41 active minutes. Demonstrates pipeline filtering consistency and triage stability under variable streaming traffic loads.",
+      "causation_note": "Failures represent an empirical subset of ingested stream records (filtered by status=FAILURE); strong positive correlation verifies that incident extraction scales with telemetry volume without backpressure distortion."
+    },
+    "points": [
+      {
+        "timestamp": "2026-02-20T13:00:00+00:00",
+        "time_label": "13:00",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "timestamp": "2026-02-20T13:04:00+00:00",
+        "time_label": "13:04",
+        "x": 3,
+        "y": 3
+      },
+      {
+        "timestamp": "2026-02-20T13:35:00+00:00",
+        "time_label": "13:35",
+        "x": 9,
+        "y": 1
+      },
+      {
+        "timestamp": "2026-02-20T13:36:00+00:00",
+        "time_label": "13:36",
+        "x": 38,
+        "y": 8
+      },
+      {
+        "timestamp": "2026-02-20T13:37:00+00:00",
+        "time_label": "13:37",
+        "x": 53,
+        "y": 11
+      },
+      {
+        "timestamp": "2026-02-20T13:38:00+00:00",
+        "time_label": "13:38",
+        "x": 59,
+        "y": 20
+      },
+      {
+        "timestamp": "2026-02-20T13:39:00+00:00",
+        "time_label": "13:39",
+        "x": 56,
+        "y": 13
+      },
+      {
+        "timestamp": "2026-02-20T13:40:00+00:00",
+        "time_label": "13:40",
+        "x": 45,
+        "y": 11
+      },
+      {
+        "timestamp": "2026-02-20T13:41:00+00:00",
+        "time_label": "13:41",
+        "x": 67,
+        "y": 23
+      },
+      {
+        "timestamp": "2026-02-20T13:42:00+00:00",
+        "time_label": "13:42",
+        "x": 61,
+        "y": 19
+      },
+      {
+        "timestamp": "2026-02-20T13:43:00+00:00",
+        "time_label": "13:43",
+        "x": 70,
+        "y": 24
+      },
+      {
+        "timestamp": "2026-02-20T13:44:00+00:00",
+        "time_label": "13:44",
+        "x": 43,
+        "y": 13
+      },
+      {
+        "timestamp": "2026-02-20T13:45:00+00:00",
+        "time_label": "13:45",
+        "x": 39,
+        "y": 18
+      },
+      {
+        "timestamp": "2026-02-20T13:46:00+00:00",
+        "time_label": "13:46",
+        "x": 38,
+        "y": 9
+      },
+      {
+        "timestamp": "2026-02-20T13:47:00+00:00",
+        "time_label": "13:47",
+        "x": 37,
+        "y": 6
+      },
+      {
+        "timestamp": "2026-02-20T13:48:00+00:00",
+        "time_label": "13:48",
+        "x": 34,
+        "y": 7
+      },
+      {
+        "timestamp": "2026-02-20T13:49:00+00:00",
+        "time_label": "13:49",
+        "x": 39,
+        "y": 10
+      },
+      {
+        "timestamp": "2026-02-20T13:50:00+00:00",
+        "time_label": "13:50",
+        "x": 39,
+        "y": 10
+      },
+      {
+        "timestamp": "2026-02-20T13:51:00+00:00",
+        "time_label": "13:51",
+        "x": 50,
+        "y": 13
+      },
+      {
+        "timestamp": "2026-02-20T13:52:00+00:00",
+        "time_label": "13:52",
+        "x": 41,
+        "y": 11
+      },
+      {
+        "timestamp": "2026-02-20T13:53:00+00:00",
+        "time_label": "13:53",
+        "x": 41,
+        "y": 9
+      },
+      {
+        "timestamp": "2026-02-20T13:54:00+00:00",
+        "time_label": "13:54",
+        "x": 38,
+        "y": 3
+      },
+      {
+        "timestamp": "2026-02-20T13:55:00+00:00",
+        "time_label": "13:55",
+        "x": 36,
+        "y": 2
+      },
+      {
+        "timestamp": "2026-02-20T13:56:00+00:00",
+        "time_label": "13:56",
+        "x": 35,
+        "y": 10
+      },
+      {
+        "timestamp": "2026-02-20T13:57:00+00:00",
+        "time_label": "13:57",
+        "x": 36,
+        "y": 4
+      },
+      {
+        "timestamp": "2026-02-20T13:58:00+00:00",
+        "time_label": "13:58",
+        "x": 39,
+        "y": 5
+      },
+      {
+        "timestamp": "2026-02-20T13:59:00+00:00",
+        "time_label": "13:59",
+        "x": 42,
+        "y": 17
+      },
+      {
+        "timestamp": "2026-02-20T14:00:00+00:00",
+        "time_label": "14:00",
+        "x": 44,
+        "y": 5
+      },
+      {
+        "timestamp": "2026-02-20T14:01:00+00:00",
+        "time_label": "14:01",
+        "x": 31,
+        "y": 7
+      },
+      {
+        "timestamp": "2026-02-20T14:02:00+00:00",
+        "time_label": "14:02",
+        "x": 22,
+        "y": 1
+      },
+      {
+        "timestamp": "2026-02-21T05:52:00+00:00",
+        "time_label": "05:52",
+        "x": 12,
+        "y": 4
+      },
+      {
+        "timestamp": "2026-02-21T05:53:00+00:00",
+        "time_label": "05:53",
+        "x": 49,
+        "y": 13
+      },
+      {
+        "timestamp": "2026-02-21T05:54:00+00:00",
+        "time_label": "05:54",
+        "x": 40,
+        "y": 4
+      },
+      {
+        "timestamp": "2026-02-21T05:55:00+00:00",
+        "time_label": "05:55",
+        "x": 43,
+        "y": 12
+      },
+      {
+        "timestamp": "2026-02-21T05:56:00+00:00",
+        "time_label": "05:56",
+        "x": 93,
+        "y": 44
+      },
+      {
+        "timestamp": "2026-02-21T05:57:00+00:00",
+        "time_label": "05:57",
+        "x": 102,
+        "y": 46
+      },
+      {
+        "timestamp": "2026-02-21T05:58:00+00:00",
+        "time_label": "05:58",
+        "x": 60,
+        "y": 21
+      },
+      {
+        "timestamp": "2026-02-21T05:59:00+00:00",
+        "time_label": "05:59",
+        "x": 39,
+        "y": 6
+      },
+      {
+        "timestamp": "2026-02-21T06:00:00+00:00",
+        "time_label": "06:00",
+        "x": 53,
+        "y": 16
+      },
+      {
+        "timestamp": "2026-02-21T06:01:00+00:00",
+        "time_label": "06:01",
+        "x": 49,
+        "y": 9
+      },
+      {
+        "timestamp": "2026-02-21T06:02:00+00:00",
+        "time_label": "06:02",
+        "x": 19,
+        "y": 2
+      }
+    ]
   }
 }

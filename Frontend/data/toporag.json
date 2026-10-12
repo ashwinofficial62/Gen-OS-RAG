@@ -144,6 +144,66 @@
   },
   "total_failures": 471,
   "unique_files": 3,
+  "correlation": {
+    "stats": {
+      "n": 6,
+      "method": "Pearson Product-Moment (r)",
+      "pearson_r": 0.9521,
+      "slope": 0.6388,
+      "intercept": -1.376,
+      "interpretation": "Very Strong Positive Linear Correlation",
+      "mean_x": 48.3333,
+      "mean_y": 29.5,
+      "min_x": 17.0,
+      "max_x": 116.0,
+      "min_y": 0.0,
+      "max_y": 76.0,
+      "x_name": "Primary Worker (PID 17896) Failures",
+      "y_name": "Secondary Worker (PID 14920) Failures",
+      "x_unit": "failures",
+      "y_unit": "failures",
+      "description": "Correlates failure incident counts by event type between primary worker process PID 17896 and secondary worker process PID 14920. Demonstrates whether failure cascades preserve proportional topological distribution across independent process trees.",
+      "causation_note": "Correlation indicates structural co-occurrence across shared IPC and request dispatching pathways; it does not imply that PID 17896 directly causes errors in PID 14920."
+    },
+    "points": [
+      {
+        "label": "SERVER_ERROR",
+        "x": 116,
+        "y": 76,
+        "total_failures": 194
+      },
+      {
+        "label": "ROUTING_ERROR",
+        "x": 73,
+        "y": 37,
+        "total_failures": 110
+      },
+      {
+        "label": "LOG",
+        "x": 39,
+        "y": 26,
+        "total_failures": 67
+      },
+      {
+        "label": "HTTP_EXCEPTION",
+        "x": 24,
+        "y": 26,
+        "total_failures": 50
+      },
+      {
+        "label": "DB_ERROR",
+        "x": 21,
+        "y": 12,
+        "total_failures": 33
+      },
+      {
+        "label": "HTTP_ERROR",
+        "x": 17,
+        "y": 0,
+        "total_failures": 17
+      }
+    ]
+  },
   "trace_sample": {
     "trace_id": "c62fa3f0",
     "description": "Representative Trace DAG linking client entrypoint to Flask request dispatcher",

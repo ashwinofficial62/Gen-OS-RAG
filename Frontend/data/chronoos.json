@@ -2256,8 +2256,8 @@
       "peak_rate_per_sec": 5.8,
       "event_types": [
         "SERVER_ERROR",
-        "LOG",
-        "DB_ERROR"
+        "DB_ERROR",
+        "LOG"
       ],
       "modules_involved": [
         "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
@@ -2274,8 +2274,8 @@
       "event_types": [
         "SERVER_ERROR",
         "ROUTING_ERROR",
-        "LOG",
-        "DB_ERROR"
+        "DB_ERROR",
+        "LOG"
       ],
       "modules_involved": [
         "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
@@ -2290,10 +2290,10 @@
       "event_count": 6,
       "peak_rate_per_sec": 2.46,
       "event_types": [
-        "HTTP_ERROR",
         "DB_ERROR",
-        "LOG",
+        "HTTP_ERROR",
         "ROUTING_ERROR",
+        "LOG",
         "SERVER_ERROR"
       ],
       "modules_involved": [
@@ -2310,9 +2310,9 @@
       "peak_rate_per_sec": 2.24,
       "event_types": [
         "SERVER_ERROR",
-        "LOG",
+        "ROUTING_ERROR",
         "DB_ERROR",
-        "ROUTING_ERROR"
+        "LOG"
       ],
       "modules_involved": [
         "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
@@ -2327,10 +2327,10 @@
       "event_count": 6,
       "peak_rate_per_sec": 5.26,
       "event_types": [
-        "SERVER_ERROR",
-        "LOG",
         "HTTP_EXCEPTION",
-        "DB_ERROR"
+        "SERVER_ERROR",
+        "DB_ERROR",
+        "LOG"
       ],
       "modules_involved": [
         "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
@@ -2345,9 +2345,9 @@
       "event_count": 6,
       "peak_rate_per_sec": 23.96,
       "event_types": [
+        "HTTP_EXCEPTION",
         "SERVER_ERROR",
-        "LOG",
-        "HTTP_EXCEPTION"
+        "LOG"
       ],
       "modules_involved": [
         "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
@@ -2363,9 +2363,9 @@
       "peak_rate_per_sec": 2.2,
       "event_types": [
         "SERVER_ERROR",
-        "LOG",
+        "ROUTING_ERROR",
         "DB_ERROR",
-        "ROUTING_ERROR"
+        "LOG"
       ],
       "modules_involved": [
         "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
@@ -2380,9 +2380,9 @@
       "event_count": 6,
       "peak_rate_per_sec": 3.59,
       "event_types": [
+        "HTTP_EXCEPTION",
         "SERVER_ERROR",
-        "LOG",
-        "HTTP_EXCEPTION"
+        "LOG"
       ],
       "modules_involved": [
         "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
@@ -2399,8 +2399,8 @@
       "event_types": [
         "SERVER_ERROR",
         "ROUTING_ERROR",
-        "LOG",
-        "DB_ERROR"
+        "DB_ERROR",
+        "LOG"
       ],
       "modules_involved": [
         "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
@@ -2417,8 +2417,8 @@
       "event_types": [
         "SERVER_ERROR",
         "ROUTING_ERROR",
-        "LOG",
-        "DB_ERROR"
+        "DB_ERROR",
+        "LOG"
       ],
       "modules_involved": [
         "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
@@ -2475,5 +2475,275 @@
       "min": 0.0,
       "max": 50.652
     }
-  ]
+  ],
+  "correlation": {
+    "stats": {
+      "n": 41,
+      "method": "Pearson Product-Moment (r)",
+      "pearson_r": 0.4492,
+      "slope": 0.4212,
+      "intercept": -4.6683,
+      "interpretation": "Moderate Positive Linear Correlation",
+      "mean_x": 11.4878,
+      "mean_y": 0.1707,
+      "min_x": 1.0,
+      "max_x": 46.0,
+      "min_y": -25.0,
+      "max_y": 32.0,
+      "x_name": "Empirical Event Rate lambda(t)",
+      "y_name": "Cascade Acceleration Proxy (Delta lambda)",
+      "x_unit": "events/min",
+      "y_unit": "rate delta",
+      "description": "Correlates the 1-minute rolling empirical failure arrival rate lambda(t) with its first difference Delta lambda(t) (acceleration proxy). Reveals how failure storm intensity couples with non-linear cascade expansion.",
+      "causation_note": "Acceleration is mathematically coupled to rate changes as a discrete derivative proxy; correlation models the empirical dynamical phase space, not external causation."
+    },
+    "points": [
+      {
+        "timestamp": "2026-02-20T13:00:00+00:00",
+        "time_label": "13:00",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "timestamp": "2026-02-20T13:04:00+00:00",
+        "time_label": "13:04",
+        "x": 3,
+        "y": 3
+      },
+      {
+        "timestamp": "2026-02-20T13:35:00+00:00",
+        "time_label": "13:35",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "timestamp": "2026-02-20T13:36:00+00:00",
+        "time_label": "13:36",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "timestamp": "2026-02-20T13:37:00+00:00",
+        "time_label": "13:37",
+        "x": 11,
+        "y": 3
+      },
+      {
+        "timestamp": "2026-02-20T13:38:00+00:00",
+        "time_label": "13:38",
+        "x": 20,
+        "y": 9
+      },
+      {
+        "timestamp": "2026-02-20T13:39:00+00:00",
+        "time_label": "13:39",
+        "x": 13,
+        "y": -7
+      },
+      {
+        "timestamp": "2026-02-20T13:40:00+00:00",
+        "time_label": "13:40",
+        "x": 11,
+        "y": -2
+      },
+      {
+        "timestamp": "2026-02-20T13:41:00+00:00",
+        "time_label": "13:41",
+        "x": 23,
+        "y": 12
+      },
+      {
+        "timestamp": "2026-02-20T13:42:00+00:00",
+        "time_label": "13:42",
+        "x": 19,
+        "y": -4
+      },
+      {
+        "timestamp": "2026-02-20T13:43:00+00:00",
+        "time_label": "13:43",
+        "x": 24,
+        "y": 5
+      },
+      {
+        "timestamp": "2026-02-20T13:44:00+00:00",
+        "time_label": "13:44",
+        "x": 13,
+        "y": -11
+      },
+      {
+        "timestamp": "2026-02-20T13:45:00+00:00",
+        "time_label": "13:45",
+        "x": 18,
+        "y": 5
+      },
+      {
+        "timestamp": "2026-02-20T13:46:00+00:00",
+        "time_label": "13:46",
+        "x": 9,
+        "y": -9
+      },
+      {
+        "timestamp": "2026-02-20T13:47:00+00:00",
+        "time_label": "13:47",
+        "x": 6,
+        "y": -3
+      },
+      {
+        "timestamp": "2026-02-20T13:48:00+00:00",
+        "time_label": "13:48",
+        "x": 7,
+        "y": 1
+      },
+      {
+        "timestamp": "2026-02-20T13:49:00+00:00",
+        "time_label": "13:49",
+        "x": 10,
+        "y": 3
+      },
+      {
+        "timestamp": "2026-02-20T13:50:00+00:00",
+        "time_label": "13:50",
+        "x": 10,
+        "y": 0
+      },
+      {
+        "timestamp": "2026-02-20T13:51:00+00:00",
+        "time_label": "13:51",
+        "x": 13,
+        "y": 3
+      },
+      {
+        "timestamp": "2026-02-20T13:52:00+00:00",
+        "time_label": "13:52",
+        "x": 11,
+        "y": -2
+      },
+      {
+        "timestamp": "2026-02-20T13:53:00+00:00",
+        "time_label": "13:53",
+        "x": 9,
+        "y": -2
+      },
+      {
+        "timestamp": "2026-02-20T13:54:00+00:00",
+        "time_label": "13:54",
+        "x": 3,
+        "y": -6
+      },
+      {
+        "timestamp": "2026-02-20T13:55:00+00:00",
+        "time_label": "13:55",
+        "x": 2,
+        "y": -1
+      },
+      {
+        "timestamp": "2026-02-20T13:56:00+00:00",
+        "time_label": "13:56",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "timestamp": "2026-02-20T13:57:00+00:00",
+        "time_label": "13:57",
+        "x": 4,
+        "y": -6
+      },
+      {
+        "timestamp": "2026-02-20T13:58:00+00:00",
+        "time_label": "13:58",
+        "x": 5,
+        "y": 1
+      },
+      {
+        "timestamp": "2026-02-20T13:59:00+00:00",
+        "time_label": "13:59",
+        "x": 17,
+        "y": 12
+      },
+      {
+        "timestamp": "2026-02-20T14:00:00+00:00",
+        "time_label": "14:00",
+        "x": 5,
+        "y": -12
+      },
+      {
+        "timestamp": "2026-02-20T14:01:00+00:00",
+        "time_label": "14:01",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "timestamp": "2026-02-20T14:02:00+00:00",
+        "time_label": "14:02",
+        "x": 1,
+        "y": -6
+      },
+      {
+        "timestamp": "2026-02-21T05:52:00+00:00",
+        "time_label": "05:52",
+        "x": 4,
+        "y": 4
+      },
+      {
+        "timestamp": "2026-02-21T05:53:00+00:00",
+        "time_label": "05:53",
+        "x": 13,
+        "y": 9
+      },
+      {
+        "timestamp": "2026-02-21T05:54:00+00:00",
+        "time_label": "05:54",
+        "x": 4,
+        "y": -9
+      },
+      {
+        "timestamp": "2026-02-21T05:55:00+00:00",
+        "time_label": "05:55",
+        "x": 12,
+        "y": 8
+      },
+      {
+        "timestamp": "2026-02-21T05:56:00+00:00",
+        "time_label": "05:56",
+        "x": 44,
+        "y": 32
+      },
+      {
+        "timestamp": "2026-02-21T05:57:00+00:00",
+        "time_label": "05:57",
+        "x": 46,
+        "y": 2
+      },
+      {
+        "timestamp": "2026-02-21T05:58:00+00:00",
+        "time_label": "05:58",
+        "x": 21,
+        "y": -25
+      },
+      {
+        "timestamp": "2026-02-21T05:59:00+00:00",
+        "time_label": "05:59",
+        "x": 6,
+        "y": -15
+      },
+      {
+        "timestamp": "2026-02-21T06:00:00+00:00",
+        "time_label": "06:00",
+        "x": 16,
+        "y": 10
+      },
+      {
+        "timestamp": "2026-02-21T06:01:00+00:00",
+        "time_label": "06:01",
+        "x": 9,
+        "y": -7
+      },
+      {
+        "timestamp": "2026-02-21T06:02:00+00:00",
+        "time_label": "06:02",
+        "x": 2,
+        "y": -7
+      }
+    ]
+  }
 }
