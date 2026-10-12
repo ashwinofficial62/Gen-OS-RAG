@@ -164,7 +164,7 @@ python Code/visualize_results.py
 
 ## 📊 7. Telemetry Visualizations & Reliability Metrics
 
-Each run automatically generates 6 high-resolution (300 DPI) analytical graphs in `Output/RUN_k/`:
+Each run automatically generates 7 high-resolution (300 DPI) analytical graphs in `Output/RUN_k/`:
 
 | Visualization | Description & OS Reliability Metric |
 |---|---|
@@ -174,6 +174,7 @@ Each run automatically generates 6 high-resolution (300 DPI) analytical graphs i
 | **4. Top Failing Modules** (`top_failing_components.png`) | Horizontal bar chart pinpointing the top failing source files/modules (e.g. `client_app.py`, `flask/app.py`, `database/connector.py`, `network.py`) to aid OS module triage. |
 | **5. Conformal Uncertainty Distance** (`conformal_distance_distribution.png`) | Histogram with KDE tracking topological vector retrieval distances against calibrated conformal uncertainty bounds ($\tau = 0.85$) to flag novel zero-day faults. |
 | **6. Inter-Event Latency Deltas ($\Delta t$)** (`inter_event_deltat_distribution.png`) | Frequency distribution of continuous physical time gaps between consecutive failure events to diagnose rapid cascade bursts ($< 2\,\text{s}$) versus slow background drift. |
+| **7. Execution Latency Proxy ($\text{duration\_ms}$)** (`duration_ms_proxy.png`) | Histogram and KDE of roundtrip service task durations for StateRAG serving as an empirical telemetry proxy for thread latency and execution stalls. |
 
 ---
 

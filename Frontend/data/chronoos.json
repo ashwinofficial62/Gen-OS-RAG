@@ -2260,8 +2260,8 @@
         "DB_ERROR"
       ],
       "modules_involved": [
-        "system_framework/app.py",
-        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py"
+        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "system_framework/app.py"
       ]
     },
     {
@@ -2273,13 +2273,13 @@
       "peak_rate_per_sec": 1.85,
       "event_types": [
         "SERVER_ERROR",
-        "LOG",
         "ROUTING_ERROR",
+        "LOG",
         "DB_ERROR"
       ],
       "modules_involved": [
-        "system_framework/app.py",
-        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py"
+        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "system_framework/app.py"
       ]
     },
     {
@@ -2290,15 +2290,15 @@
       "event_count": 6,
       "peak_rate_per_sec": 2.46,
       "event_types": [
-        "LOG",
-        "DB_ERROR",
         "HTTP_ERROR",
-        "SERVER_ERROR",
-        "ROUTING_ERROR"
+        "DB_ERROR",
+        "LOG",
+        "ROUTING_ERROR",
+        "SERVER_ERROR"
       ],
       "modules_involved": [
-        "system_framework/app.py",
-        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py"
+        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "system_framework/app.py"
       ]
     },
     {
@@ -2315,8 +2315,8 @@
         "ROUTING_ERROR"
       ],
       "modules_involved": [
-        "system_framework/app.py",
-        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py"
+        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "system_framework/app.py"
       ]
     },
     {
@@ -2328,13 +2328,13 @@
       "peak_rate_per_sec": 5.26,
       "event_types": [
         "SERVER_ERROR",
-        "HTTP_EXCEPTION",
         "LOG",
+        "HTTP_EXCEPTION",
         "DB_ERROR"
       ],
       "modules_involved": [
-        "system_framework/app.py",
-        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py"
+        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "system_framework/app.py"
       ]
     },
     {
@@ -2346,12 +2346,12 @@
       "peak_rate_per_sec": 23.96,
       "event_types": [
         "SERVER_ERROR",
-        "HTTP_EXCEPTION",
-        "LOG"
+        "LOG",
+        "HTTP_EXCEPTION"
       ],
       "modules_involved": [
-        "system_framework/app.py",
-        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py"
+        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "system_framework/app.py"
       ]
     },
     {
@@ -2368,8 +2368,8 @@
         "ROUTING_ERROR"
       ],
       "modules_involved": [
-        "system_framework/app.py",
-        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py"
+        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "system_framework/app.py"
       ]
     },
     {
@@ -2381,12 +2381,12 @@
       "peak_rate_per_sec": 3.59,
       "event_types": [
         "SERVER_ERROR",
-        "HTTP_EXCEPTION",
-        "LOG"
+        "LOG",
+        "HTTP_EXCEPTION"
       ],
       "modules_involved": [
-        "system_framework/app.py",
-        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py"
+        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "system_framework/app.py"
       ]
     },
     {
@@ -2398,13 +2398,13 @@
       "peak_rate_per_sec": 3.28,
       "event_types": [
         "SERVER_ERROR",
-        "LOG",
         "ROUTING_ERROR",
+        "LOG",
         "DB_ERROR"
       ],
       "modules_involved": [
-        "system_framework/app.py",
-        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py"
+        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "system_framework/app.py"
       ]
     },
     {
@@ -2416,13 +2416,13 @@
       "peak_rate_per_sec": 3.25,
       "event_types": [
         "SERVER_ERROR",
-        "LOG",
         "ROUTING_ERROR",
+        "LOG",
         "DB_ERROR"
       ],
       "modules_involved": [
-        "system_framework/app.py",
-        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py"
+        "C:\\Users\\DeLL\\python\\Lib\\site-packages\\flask\\app.py",
+        "system_framework/app.py"
       ]
     }
   ],

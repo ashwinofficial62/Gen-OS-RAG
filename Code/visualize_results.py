@@ -343,6 +343,43 @@ def generate_visualizations(csv_file=None, output_dir=None):
         print(f"    [+] Saved: {out_path}")
         plt.close(fig)
 
+    # 7. NEW: Execution Latency Proxy (duration_ms) Distribution for StateRAG
+    duration_series = None
+    if 'duration_ms' in df.columns and df['duration_ms'].notna().sum() > 0:
+        duration_series = df['duration_ms'].dropna()
+    else:
+        # Check raw telemetry processed_events_analysis.csv
+        proc_csv = os.path.join(os.path.dirname(csv_file), "..", "Data", "processed_events_analysis.csv")
+        if not os.path.exists(proc_csv):
+            proc_csv = os.path.join("Data", "processed_events_analysis.csv")
+        if os.path.exists(proc_csv):
+            try:
+                proc_df = pd.read_csv(proc_csv)
+                if 'duration_ms' in proc_df.columns and proc_df['duration_ms'].notna().sum() > 0:
+                    duration_series = proc_df['duration_ms'].dropna()
+            except Exception:
+                pass
+
+    if duration_series is not None and len(duration_series) > 0:
+        fig, ax = plt.subplots(figsize=(10, 5))
+        sns.histplot(duration_series, bins=15, kde=True, color="#475569", ax=ax, edgecolor="black")
+        mean_dur = float(duration_series.mean())
+        median_dur = float(duration_series.median())
+        ax.axvline(mean_dur, color='#dc2626', linestyle='--', linewidth=2, label=f'Mean Duration ({mean_dur:.1f} ms)')
+        ax.axvline(median_dur, color='#0284c7', linestyle=':', linewidth=2, label=f'Median Duration ({median_dur:.1f} ms)')
+
+        ax.set_title('Execution Duration (duration_ms) Telemetry Latency Proxy Distribution', fontsize=13, fontweight='bold', pad=15)
+        ax.set_xlabel('Execution Duration (milliseconds)', fontsize=11)
+        ax.set_ylabel(f'Event Frequency (n={len(duration_series)})', fontsize=11)
+        ax.legend(loc='upper right', frameon=True, shadow=True)
+        ax.grid(True, linestyle='--', alpha=0.5)
+
+        plt.tight_layout()
+        out_path = os.path.join(target_dir, 'duration_ms_proxy.png')
+        plt.savefig(out_path, dpi=300)
+        print(f"    [+] Saved: {out_path}")
+        plt.close(fig)
+
     print(f"\n[+] Visualizations successfully generated in: '{target_dir}'")
     return target_dir
 

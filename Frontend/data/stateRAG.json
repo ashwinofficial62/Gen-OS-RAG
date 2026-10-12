@@ -37,12 +37,53 @@
     "metric_name": "duration_ms (Execution Latency)",
     "source": "processed_events_analysis.csv / final_output_diagnosis.csv",
     "description": "Roundtrip request/task duration in milliseconds recorded during service execution.",
-    "count": 0,
-    "mean_ms": 0.0,
-    "median_ms": 0.0,
-    "p95_ms": 0.0,
-    "max_ms": 0.0,
-    "histogram": []
+    "count": 544,
+    "mean_ms": 269.28,
+    "median_ms": 18.0,
+    "p95_ms": 2327.7,
+    "max_ms": 5037.0,
+    "histogram": [
+      {
+        "bin_range": "0-504 ms",
+        "count": 482
+      },
+      {
+        "bin_range": "504-1007 ms",
+        "count": 9
+      },
+      {
+        "bin_range": "1007-1511 ms",
+        "count": 15
+      },
+      {
+        "bin_range": "1511-2015 ms",
+        "count": 9
+      },
+      {
+        "bin_range": "2015-2518 ms",
+        "count": 2
+      },
+      {
+        "bin_range": "2518-3022 ms",
+        "count": 7
+      },
+      {
+        "bin_range": "3022-3526 ms",
+        "count": 9
+      },
+      {
+        "bin_range": "3526-4030 ms",
+        "count": 10
+      },
+      {
+        "bin_range": "4030-4533 ms",
+        "count": 0
+      },
+      {
+        "bin_range": "4533-5037 ms",
+        "count": 1
+      }
+    ]
   },
   "theoretical_architecture": {
     "text_tower": "TransformerEncoder(tokens) -> R^{L x d}",

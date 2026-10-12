@@ -390,11 +390,11 @@ staterag_data = {
         "metric_name": "duration_ms (Execution Latency)",
         "source": "processed_events_analysis.csv / final_output_diagnosis.csv",
         "description": "Roundtrip request/task duration in milliseconds recorded during service execution.",
-        "count": int(len(durations_diag)),
-        "mean_ms": round(float(durations_diag.mean()), 2) if len(durations_diag) > 0 else 0.0,
-        "median_ms": round(float(durations_diag.median()), 2) if len(durations_diag) > 0 else 0.0,
-        "p95_ms": round(float(durations_diag.quantile(0.95)), 2) if len(durations_diag) > 0 else 0.0,
-        "max_ms": round(float(durations_diag.max()), 2) if len(durations_diag) > 0 else 0.0,
+        "count": int(len(durations_proc)),
+        "mean_ms": round(float(durations_proc.mean()), 2) if len(durations_proc) > 0 else 0.0,
+        "median_ms": round(float(durations_proc.median()), 2) if len(durations_proc) > 0 else 0.0,
+        "p95_ms": round(float(durations_proc.quantile(0.95)), 2) if len(durations_proc) > 0 else 0.0,
+        "max_ms": round(float(durations_proc.max()), 2) if len(durations_proc) > 0 else 0.0,
         "histogram": []
     },
     "theoretical_architecture": {
@@ -405,8 +405,8 @@ staterag_data = {
     }
 }
 
-if len(durations_diag) > 0:
-    dur_hist, dur_edges = np.histogram(durations_diag, bins=10)
+if len(durations_proc) > 0:
+    dur_hist, dur_edges = np.histogram(durations_proc, bins=10)
     for i in range(len(dur_hist)):
         staterag_data["available_proxy_metrics"]["histogram"].append({
             "bin_range": f"{dur_edges[i]:.0f}-{dur_edges[i+1]:.0f} ms",
