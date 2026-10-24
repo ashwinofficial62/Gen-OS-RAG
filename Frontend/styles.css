@@ -177,6 +177,12 @@ body {
   color: var(--ink-muted);
 }
 
+.nav-link:not(#nav-toposaferag) > span:first-child,
+.nav-link:not(#nav-toposaferag) .nav-label {
+  text-decoration: line-through !important;
+}
+
+
 .sidebar-footer {
   padding-top: 1rem;
   border-top: 1px solid var(--line);
