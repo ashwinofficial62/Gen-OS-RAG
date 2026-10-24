@@ -822,6 +822,18 @@ toposaferag_data = {
             "status": "Fully Implemented & Active Production Pipeline"
         }
     ],
+    "stage_breakdown": [
+        {"stage": "1. Ingest Stream", "in_count": 1746, "out_count": 471, "dropped": 1275, "drop_reason": "Filtered benign SUCCESS events"},
+        {"stage": "2. Causal Encoder", "in_count": 471, "out_count": 471, "dropped": 0, "drop_reason": "Topological + Hawkes time features attached"},
+        {"stage": "3. Conformal Gate", "in_count": 471, "out_count": 471, "dropped": 0, "drop_reason": "All s(z) <= 0.85 (0 OOD quarantined)"},
+        {"stage": "4. Reasoner (FLAN-T5)", "in_count": 471, "out_count": 471, "dropped": 0, "drop_reason": "Contextual diagnoses & fixes synthesized"},
+        {"stage": "5. POSIX Validator", "in_count": 471, "out_count": 471, "dropped": 0, "drop_reason": "Checked against INV-1..6 (0 blocked)"}
+    ],
+    "severity_breakdown": [
+        {"severity": "LOW", "count": int((df_diag["severity"] == "LOW").sum()), "percentage": round(float((df_diag["severity"] == "LOW").sum()) / total_failures * 100, 2)},
+        {"severity": "HIGH", "count": int((df_diag["severity"] == "HIGH").sum()), "percentage": round(float((df_diag["severity"] == "HIGH").sum()) / total_failures * 100, 2)}
+    ],
+    "event_type_breakdown": sorted_evts,
     "reproducibility": {
         "steps": [
             {"command": "python -m venv venv", "desc": "Initialize isolated Python environment."},

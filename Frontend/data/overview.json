@@ -10,7 +10,7 @@
     "blocked_count": 0,
     "pct_flagged_ood": 0.0,
     "ood_count": 0,
-    "median_conformal_distance": 0.8902,
+    "median_conformal_distance": 0.4271,
     "mean_conformal_distance": 0.4283,
     "tau_bound": 0.85
   },

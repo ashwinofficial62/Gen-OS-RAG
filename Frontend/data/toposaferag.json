@@ -99,6 +99,87 @@
       "status": "Fully Implemented & Active Production Pipeline"
     }
   ],
+  "stage_breakdown": [
+    {
+      "stage": "1. Ingest Stream",
+      "in_count": 1746,
+      "out_count": 471,
+      "dropped": 1275,
+      "drop_reason": "Filtered benign SUCCESS events"
+    },
+    {
+      "stage": "2. Causal Encoder",
+      "in_count": 471,
+      "out_count": 471,
+      "dropped": 0,
+      "drop_reason": "Topological + Hawkes time features attached"
+    },
+    {
+      "stage": "3. Conformal Gate",
+      "in_count": 471,
+      "out_count": 471,
+      "dropped": 0,
+      "drop_reason": "All s(z) <= 0.85 (0 OOD quarantined)"
+    },
+    {
+      "stage": "4. Reasoner (FLAN-T5)",
+      "in_count": 471,
+      "out_count": 471,
+      "dropped": 0,
+      "drop_reason": "Contextual diagnoses & fixes synthesized"
+    },
+    {
+      "stage": "5. POSIX Validator",
+      "in_count": 471,
+      "out_count": 471,
+      "dropped": 0,
+      "drop_reason": "Checked against INV-1..6 (0 blocked)"
+    }
+  ],
+  "severity_breakdown": [
+    {
+      "severity": "LOW",
+      "count": 354,
+      "percentage": 75.16
+    },
+    {
+      "severity": "HIGH",
+      "count": 117,
+      "percentage": 24.84
+    }
+  ],
+  "event_type_breakdown": [
+    {
+      "event_type": "SERVER_ERROR",
+      "count": 194,
+      "percentage": 41.19
+    },
+    {
+      "event_type": "ROUTING_ERROR",
+      "count": 110,
+      "percentage": 23.35
+    },
+    {
+      "event_type": "LOG",
+      "count": 67,
+      "percentage": 14.23
+    },
+    {
+      "event_type": "HTTP_EXCEPTION",
+      "count": 50,
+      "percentage": 10.62
+    },
+    {
+      "event_type": "DB_ERROR",
+      "count": 33,
+      "percentage": 7.01
+    },
+    {
+      "event_type": "HTTP_ERROR",
+      "count": 17,
+      "percentage": 3.61
+    }
+  ],
   "reproducibility": {
     "steps": [
       {

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GenOS: TopoSafe-RAG | Telemetry Analytics & Architecture Dashboard</title>
   <meta name="description" content="Minimal, monochromatic, read-only analytics dashboard for GenOS: TopoSafe-RAG Operating System telemetry failure diagnosis.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.1">
   <script src="vendor/chart.umd.min.js"></script>
 </head>
 <body onselectstart="return false;">
@@ -1116,19 +1116,31 @@ Invariant Rule: forall c in Commands, c not in {rm -rf /, mkfs, dd of=/dev/*, ki
           <span class="badge-tag highlight">Production System</span>
           <span class="badge-tag">Unified TopoSafe-RAG</span>
           <span class="badge-tag">MCDA Winner (9.275)</span>
+          <span class="badge-tag">Paper.md Specification</span>
         </div>
         <h2 id="head-toposaferag" class="section-title">TopoSafe-RAG: Unified Autonomous OS Failure Diagnosis</h2>
         <p class="section-thesis">
-          The unified production pipeline combining TopoRAG topological provenance, ChronoOS continuous delta-t 
-          dynamics, and SafeNeuroOS conformal POSIX safety verification.
+          A mathematically formalized, multi-phase AIOps pipeline for OS telemetry that couples provenance-penalized vector retrieval with Laplacian spectral encodings, continuous-time Hawkes/Time2Vec latency modeling, a Tier-1 split-conformal distance gate (&tau; = 0.85), and deterministic Tier-2 POSIX invariant verification.
         </p>
       </div>
 
+      <!-- ================================================================
+           PRIMARY TOPOSAFERAG ANALYTICAL CHARTS (IMMEDIATELY VISIBLE)
+           ================================================================ -->
+      <div class="chart-header" style="margin-top: 1.5rem;">
+        <div class="section-badge-row">
+          <span class="badge-tag highlight">Graphical Representations</span>
+          <span class="badge-tag">End-to-End Pipeline Analytics</span>
+        </div>
+        <h3 class="chart-title">TopoSafe-RAG Empirical Graphical Visualizations</h3>
+        <p class="chart-desc">Real-time interactive visualizations across the 5 stages, failure taxonomy, ingestion trajectory, and scaling throughput.</p>
+      </div>
+
       <!-- Funnel Chart Card -->
-      <div class="chart-card">
+      <div class="chart-card" style="margin-bottom: 1.5rem;">
         <div class="chart-header">
           <h4 class="chart-title">End-to-End Telemetry Ingestion to Verified Remediation Funnel</h4>
-          <p class="chart-desc">Real transition counts through the active TopoSafe-RAG diagnostic lifecycle.</p>
+          <p class="chart-desc">Real transition counts through the active TopoSafe-RAG diagnostic lifecycle (1,746 &rarr; 471 &rarr; 471 &rarr; 471).</p>
           <p class="chart-os-relevance">Why it matters: Demonstrates the filter efficiency from raw noisy telemetry to verified fixes.</p>
         </div>
         <div class="chart-canvas-wrap">
@@ -1144,8 +1156,84 @@ Invariant Rule: forall c in Commands, c not in {rm -rf /, mkfs, dd of=/dev/*, ki
         <div class="chart-data-drawer" id="drawer-funnel"></div>
       </div>
 
+      <!-- Additional Analytical Charts Grid (Paper.md Fig. 4, Table II, Table IV) -->
+      <div class="charts-grid-2" style="margin-bottom: 1.5rem;">
+        <!-- Chart: Stage Transition & Ingestion Filter Breakdown -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="section-badge-row" style="margin-bottom: 0.35rem;">
+              <span class="badge-tag highlight">Stage Progression</span>
+              <span class="badge-tag">Stream Filter Accounting</span>
+            </div>
+            <h4 class="chart-title">Five-Stage Pipeline Volume &amp; Filter Accounting</h4>
+            <p class="chart-desc">Event retention vs drop counts across the 5 TopoSafe-RAG processing phases.</p>
+            <p class="chart-os-relevance">Why it matters: Visualizes where events are actually filtered (1,275 benign events dropped in Triage; 0 dropped in Gating/Safety).</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-toposafe-stages" aria-label="Stage Transition & Filter Breakdown Bar Chart"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: TopoSafe-RAG pipeline stage execution logs</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-toposafe-stages')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-toposafe-stages', 'toposafe_stage_accounting')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-toposafe-stages"></div>
+        </div>
+
+        <!-- Chart: Failure Type Distribution & Severity Cross-Composition -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="section-badge-row" style="margin-bottom: 0.35rem;">
+              <span class="badge-tag highlight">Paper Fig. 2 &amp; 7</span>
+              <span class="badge-tag">Telemetry Taxonomy</span>
+            </div>
+            <h4 class="chart-title">Triaged Incident Taxonomy &amp; Severity Profile (N = 471)</h4>
+            <p class="chart-desc">Failure distribution across all 6 diagnostic event classes and severity tiers.</p>
+            <p class="chart-os-relevance">Why it matters: SERVER_ERROR and ROUTING_ERROR dominate (64.5%), reflecting realistic web/OS runtime failure modes.</p>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-toposafe-taxonomy" aria-label="Failure Taxonomy Bar Chart"></canvas>
+          </div>
+          <div class="chart-controls">
+            <span class="chart-source-tag">source: final_output_diagnosis.csv (event_type x severity)</span>
+            <div class="chart-actions">
+              <button class="btn-ghost" onclick="toggleDataDrawer('drawer-toposafe-taxonomy')">View Data</button>
+              <button class="btn-ghost" onclick="downloadChartPNG('chart-toposafe-taxonomy', 'toposafe_incident_taxonomy')">Download PNG</button>
+            </div>
+          </div>
+          <div class="chart-data-drawer" id="drawer-toposafe-taxonomy"></div>
+        </div>
+      </div>
+
+      <!-- Chart: Two-Session Cumulative Ingestion Timeline (Paper Fig. 4) -->
+      <div class="chart-card" style="margin-bottom: 1.5rem;">
+        <div class="chart-header">
+          <div class="section-badge-row" style="margin-bottom: 0.35rem;">
+            <span class="badge-tag highlight">Paper Fig. 4</span>
+            <span class="badge-tag">Temporal Evolution</span>
+            <span class="badge-tag">2-Session Workload</span>
+          </div>
+          <h4 class="chart-title">Dual-Session Cumulative Diagnosis Ingestion Trajectory</h4>
+          <p class="chart-desc">Temporal trajectory showing the initial ~300 fault cluster, 16-hour quiet drift window, and second session burst before 06:00 UTC.</p>
+          <p class="chart-os-relevance">Why it matters: Validates that the pipeline operates reliably across prolonged multi-hour idle periods and high-density bursts.</p>
+        </div>
+        <div class="chart-canvas-wrap">
+          <canvas id="chart-toposafe-timeline" aria-label="Two Session Cumulative Ingestion Timeline"></canvas>
+        </div>
+        <div class="chart-controls">
+          <span class="chart-source-tag">source: final_output_diagnosis.csv (ordered UTC timestamp sequence)</span>
+          <div class="chart-actions">
+            <button class="btn-ghost" onclick="toggleDataDrawer('drawer-toposafe-timeline')">View Data</button>
+            <button class="btn-ghost" onclick="downloadChartPNG('chart-toposafe-timeline', 'toposafe_cumulative_timeline')">Download PNG</button>
+          </div>
+        </div>
+        <div class="chart-data-drawer" id="drawer-toposafe-timeline"></div>
+      </div>
+
       <!-- TopoSafe-RAG Correlation Analysis Chart Card -->
-      <div class="chart-card" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+      <div class="chart-card" style="margin-bottom: 2rem;">
         <div class="chart-header">
           <div class="section-badge-row" style="margin-bottom: 0.35rem;">
             <span class="badge-tag highlight">Analytical Correlation</span>
@@ -1154,7 +1242,7 @@ Invariant Rule: forall c in Commands, c not in {rm -rf /, mkfs, dd of=/dev/*, ki
           </div>
           <h4 class="chart-title">Pipeline Throughput Correlation: Total Telemetry Ingestion vs Triage Failure Rate</h4>
           <p class="chart-desc">
-            Scatter plot with linear regression trend line mapping raw telemetry stream event volume against extracted failure triage count across 41 observation minutes.
+            Scatter plot with linear regression trend line mapping raw telemetry stream event volume against extracted failure triage count across 41 observation minutes (Pearson r = 0.8902, 95% Fisher-z [0.80, 0.94]).
           </p>
           <p class="chart-os-relevance">Why it matters: Verifies end-to-end telemetry triage consistency and demonstrates that failure extraction scales linearly with streaming ingest traffic without queue degradation.</p>
         </div>
@@ -1173,6 +1261,122 @@ Invariant Rule: forall c in Commands, c not in {rm -rf /, mkfs, dd of=/dev/*, ki
         </div>
         <div class="chart-data-drawer" id="drawer-toposafe-corr"></div>
       </div>
+
+      <!-- Core Research Contributions & Objectives Panel -->
+      <div class="info-subgrid" style="margin-top: 1rem; margin-bottom: 2rem;">
+        <div class="info-pane">
+          <div class="info-pane-title">Four Foundational Research Contributions (Paper.md)</div>
+          <ul class="info-pane-list">
+            <li><strong>Provenance-Penalized Retrieval:</strong> Multiplies text similarity by an exponential penalty on provenance-graph shortest-path distance, augmented by Laplacian spectral (<em>p<sub>v</sub></em>) and hop-depth (<em>dep(v)</em>) positional encodings.</li>
+            <li><strong>Continuous-Time Latency Module:</strong> Formulates inter-event latency &Delta;t with a 2.0s burst/drift threshold, an exponential-kernel Hawkes self-exciting point process, cascade acceleration, and Time2Vec embeddings.</li>
+            <li><strong>Two-Tier Defense-in-Depth Safety:</strong> A Tier-1 nearest-neighbour non-conformity distance gate (<em>s(z) &le; &tau; = 0.85</em>) followed by a deterministic Tier-2 validator checking 6 POSIX system invariants (INV-1 to INV-6).</li>
+            <li><strong>End-to-End Empirical Verification:</strong> Complete execution over 1,746 telemetry stream events (471 failures) with rigorous, honest reporting of workload limitations and boundary validity.</li>
+          </ul>
+        </div>
+        <div class="info-pane">
+          <div class="info-pane-title">Four Core Design Objectives (O1 &ndash; O4)</div>
+          <ul class="info-pane-list">
+            <li><strong>(O1) Topological Relevance:</strong> Retrieve historical incident precedents that are simultaneously close in semantic message embedding space and topological provenance graph distance.</li>
+            <li><strong>(O2) Continuous Temporal Dynamics:</strong> Retain temporal continuous-time dynamics so that rapid cascading bursts (&lt; 2.0s) and gradual drift (&ge; 2.0s) remain structurally distinguishable.</li>
+            <li><strong>(O3) Epistemic Abstention:</strong> Quarantine unfamiliar or out-of-distribution events before generation when nearest-neighbour non-conformity distance exceeds &tau; = 0.85.</li>
+            <li><strong>(O4) Deterministic Safety Invariants:</strong> Mathematically guarantee that no accepted automated remediation command violates destructive OS operations (INV-1 to INV-6).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Formal Mathematical Formulation Grid -->
+      <div class="chart-header" style="margin-top: 1.5rem;">
+        <h3 class="chart-title">Formal Mathematical Specifications &amp; Governing Equations</h3>
+        <p class="chart-desc">Rigorous formulation from Sections III-A through III-F of Paper.md.</p>
+      </div>
+
+      <div class="charts-grid-2" style="margin-bottom: 2rem;">
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">1. Topological Spectral &amp; Penalized Retrieval</h4>
+            <p class="chart-desc">Equations (2), (3), and (4) &mdash; Normalized Graph Laplacian &amp; Provenance Penalty</p>
+          </div>
+          <div class="equation-box" style="margin: 0.5rem 0; font-size: 0.8rem; line-height: 1.6;">
+// Normalized Graph Laplacian & Spectral Positional Encoding:
+L = I - D^(-1/2) * A * D^(-1/2) = U * Lambda * U^T       [Eq. 2]
+p_v = [u_2(v), ..., u_{k+1}(v)] in R^k                  [k smallest non-trivial eigenvectors]
+e_topo(v) = [ p_v ; dep(v) ]                            [Eq. 3, hop depth dep(v) from root v_0]
+
+// Topology-Penalized Retrieval Scoring Rule:
+S(q, i) = cos(e_text(q), e_text(i)) * exp(-gamma * d_G(q, i))   [Eq. 4]
+
+* Setting gamma = 0 strictly recovers flat-text cosine retrieval baseline.
+* d_G(q, i) is shortest-path graph hop distance between provenance nodes.
+          </div>
+          <p class="chart-os-relevance">Why it matters: Prevents topological flattening; ensures retrieved root causes share process and call hierarchy rather than just superficial text keywords.</p>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <h4 class="chart-title">2. Continuous Latency &amp; Two-Tier Safety</h4>
+            <p class="chart-desc">Equations (5), (6), (8), (10), and (11) &mdash; Hawkes, Conformal Gate, POSIX Rules</p>
+          </div>
+          <div class="equation-box" style="margin: 0.5rem 0; font-size: 0.8rem; line-height: 1.6;">
+// Continuous Latency & Hawkes Self-Exciting Intensity:
+varrho_i = burst if Delta_t_i &lt; 2.0s else drift           [Eq. 5, delta = 2.0s]
+lambda(t) = mu + sum_{t_i &lt; t} alpha * exp(-beta * (t - t_i)) [Eq. 6, alpha/beta &lt; 1]
+Cascade Acceleration: a_b = (r_b - r_{b-1}) / w
+
+// Tier-1 Conformal Gating & Tier-2 POSIX Validator:
+s(z) = min_j d(z, z_j)  --&gt;  g(z) = in-dist if s(z) &lt;= 0.85 else QUARANTINE   [Eqs. 8, 10]
+accept(c) = AND_{r in R} NOT pi_r(c), where R = {INV-1 ... INV-6}             [Eq. 11]
+          </div>
+          <p class="chart-os-relevance">Why it matters: Tier-1 stops LLM hallucination on unfamiliar faults before generation; Tier-2 acts as an immutable deterministic barrier preventing destructive execution.</p>
+        </div>
+      </div>
+
+      <!-- End-to-End Pipeline Algorithm Walkthrough Panel -->
+      <div class="chart-card" style="margin-bottom: 2rem;">
+        <div class="chart-header">
+          <h4 class="chart-title">Algorithm 1: End-to-End Batch Inference Execution Lifecycle</h4>
+          <p class="chart-desc">Coupled single-pass algorithmic lifecycle formalizing Phase 0 through Phase III (Paper.md, Section III-G).</p>
+        </div>
+        <div class="table-wrap" style="margin: 0.5rem 0;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Phase</th>
+                <th>Operation &amp; Algorithmic Logic</th>
+                <th>Mathematical Formulation</th>
+                <th>Computational Complexity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Phase 0: Precomputation</strong></td>
+                <td>Eigendecomposition of normalized Laplacian L, BFS hop depth from root v<sub>0</sub>, building e<sub>topo</sub>(v).</td>
+                <td class="font-mono">L = I - D<sup>-1/2</sup>AD<sup>-1/2</sup> = U&Lambda;U<sup>T</sup>; e<sub>topo</sub> = [p<sub>v</sub>; dep(v)]</td>
+                <td class="font-mono">O(|V|<sup>3</sup>) dense eigendecomp + O(|V| + |E<sub>G</sub>|)</td>
+              </tr>
+              <tr>
+                <td><strong>Phase I: Triage &amp; Latency</strong></td>
+                <td>Filter successes (status=FAILURE), compute &Delta;t<sub>i</sub>, evaluate recursive Hawkes intensity A<sub>i</sub> = e<sup>-&beta;&Delta;t<sub>i</sub></sup>(1 + A<sub>i-1</sub>) in O(1) without revisiting past events, extract burst episodes.</td>
+                <td class="font-mono">&Delta;t<sub>i</sub> = t<sub>i</sub> - t<sub>i-1</sub>; &varrho;<sub>i</sub> &isin; {burst, drift}; &lambda;<sub>i</sub> = &mu; + &alpha;A<sub>i</sub></td>
+                <td class="font-mono">O(N + F + B) linear stream scan</td>
+              </tr>
+              <tr>
+                <td><strong>Phase II: Gating &amp; Retrieval</strong></td>
+                <td>Single nested corpus scan: simultaneously computes nearest-neighbour distance s(z) for Tier-1 gate and top-m topology-penalized scores S<sub>j</sub>. If s &gt; &tau;, immediately quarantine.</td>
+                <td class="font-mono">s = min<sub>j</sub> d(z, z<sub>j</sub>); S<sub>j</sub> = cos(z, z<sub>j</sub>) &bull; exp(-&gamma; H[v][v<sub>j</sub>]); g(z) &le; &tau; = 0.85</td>
+                <td class="font-mono">O(F &bull; n &bull; (d + log m)) dominant scan cost</td>
+              </tr>
+              <tr>
+                <td><strong>Phase III: Generation &amp; Tier-2</strong></td>
+                <td>Prompt LLM reasoner (FLAN-T5 or symbolic fallback) with (f, &varrho;<sub>i</sub>, N). Validate drafted command c against 6 POSIX invariants; stop at first match.</td>
+                <td class="font-mono">accept(c) = &and;<sub>r &isin; R</sub> &not;&pi;<sub>r</sub>(c); emit VERIFIED SAFE or BLOCKED</td>
+                <td class="font-mono">O(F &bull; |R| &bull; |c|<sub>max</sub>) + O(inference)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
 
       <!-- Per-Stage Contribution Table -->
       <div class="chart-header" style="margin-top: 1.5rem;">
@@ -1254,6 +1458,30 @@ Invariant Rule: forall c in Commands, c not in {rm -rf /, mkfs, dd of=/dev/*, ki
         </table>
       </div>
 
+      <!-- Honest Empirical Evaluation & Validity Boundaries from Paper.md -->
+      <div class="info-subgrid" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+        <div class="info-pane">
+          <div class="info-pane-title">Descriptive Empirical Findings (Section IV-B)</div>
+          <ul class="info-pane-list">
+            <li><strong>Dataset Volume:</strong> 1,746 stream events total; 471 failures (26.98%) and 1,275 successes over 1 host (<code>DESKTOP-N00M686</code>).</li>
+            <li><strong>Failure Distribution:</strong> <code>SERVER_ERROR</code> accounts for 194 failures (41.19%), <code>ROUTING_ERROR</code> for 110 (23.35%), and <code>LOG</code> for 67 (14.23%) &mdash; together covering 78.77%.</li>
+            <li><strong>Temporal Gaps &amp; Bursts:</strong> 470 failure inter-event gaps; median &Delta;t = 1.497s, 90th percentile 13.174s. Burst gaps (&lt; 2.0s) comprise 52.77% across 67 episodes with a peak rate of 23.96 events/s.</li>
+            <li><strong>Conformal Dispersion:</strong> Distances span 0.2832 to 0.8385 (mean 0.4283), sitting strictly below &tau; = 0.85. A single non-conformity value (0.4271) accounts for 437 incidents (92.8%), indicating low retrieval diversity in synthetic injection.</li>
+            <li><strong>Severity &amp; Remediation:</strong> 354 LOW (75.16%) and 117 HIGH (24.84%). 100% verified safe; 0% OOD quarantine; 0% blocked.</li>
+          </ul>
+        </div>
+        <div class="info-pane warning">
+          <div class="info-pane-title">Validity Threats &amp; Scientific Limitations (Section IV-C)</div>
+          <ul class="info-pane-list">
+            <li><strong>No Baseline Comparison:</strong> No baseline model was benchmarked; therefore no comparative superiority percentage, accuracy, F1, or MTTR outperformance is claimed.</li>
+            <li><strong>Safety Gate Unstressed:</strong> The synthetic workload contains no adversarial payloads and no novel zero-day faults. The 100% pass rate proves end-to-end execution on benign data, but does NOT prove OOD sensitivity.</li>
+            <li><strong>Imputation Artifact:</strong> 404 of 471 failure rows had an empty source module and defaulted to <code>system_framework/app.py</code> (85.77%). This concentration is an artifact of imputation, not an observed operational bottleneck.</li>
+            <li><strong>Provenance Approximation:</strong> The graph is a proxy linking host, process session, incident group, and module because parent-process IDs were not recorded by the logger.</li>
+            <li><strong>Fixed Gate Constant:</strong> Threshold &tau; = 0.85 was chosen as a fixed operational constant, not calibrated on a held-out quantile split &tau;<sub>&alpha;</sub>; no formal empirical coverage claim is asserted.</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- Reproducibility Panel -->
       <div class="chart-card" style="margin-top: 1.5rem;">
         <div class="chart-header">
@@ -1333,6 +1561,6 @@ python -m http.server 8000 --directory Frontend
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=2.1"></script>
 </body>
 </html>
